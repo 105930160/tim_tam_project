@@ -1,66 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--Change the meta tags for your ownnn documents-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name = "author" content="Akira Ellis">
-    <meta name = "description" content="">
-    <meta name = "keywords" content="">
-
-    <title>Tam Tim and co. </title>
-    <link rel="stylesheet" href="/styles/styles.css"></link>
-
+    <meta name="author" content="Akira Ellis">
+    <meta name="description" content="Landing page (home page) for the company 'Generic IT Company'">
+    <meta name="keywords" content="Generic IT Company, Generic IT Company ltd., IT">
+    <title>Generic IT Company - Home</title>
+    <!--Possibly have unique stylesheets for each page (subject to discussion) in any case the css for this stuff is seperate to our individual work-->
+    <link href="./styles/global.css" rel="stylesheet">
+    <link href="styles/styles.css">
 </head>
-
 <body>
-    <header>
+    <!--didn't put in a header because i didn't see why we needed one-->
+    <!--also we could make the navbar fixed at the top of the page. something to discuss also.-->
 
-    </header>
-    
-    <nav >
-        <ul id="navbar">
-            <li class="navcontainer">
-                <a href="index.html">
-                   <img id="logo" src="./Images/Epic Logo.png" alt="Fish">
-                </a>
-            </li>
-            <li class="navcontainer">
-                <a class = "navlink" href="index.html"><p>Home</p></a>
-            </li>
-            <li class="navcontainer">
-                <a class = "navlink" href="jobs.html"><p>Jobs</p></a>
-            </li>
-            <li class="navcontainer">
-                <a class = "navlink" href="apply.html"><p>Apply!</p></a>
-            </li>
-            <li class="navcontainer">
-                <a class = "navlink" href="about.html"><p>About Us</p></a>
-            </li>
-        </ul>
+    <nav>
+        <!--nav is seperated into top and bottom in order to more easily deal with everything-->
+        <div id="navtop">
+            <!--likewise, navtop is seperated into two seperate divs-->
+            <div id="navtopmiddle">
+                <a href="index.html"><img id="logo" src="Images/GenericITCompanyLogo.png" alt="Generic IT Company Logo"></a>
+            </div>
+            <div id="navtopright">
+                <a href="mailto:tamstim72@gmail.com" id="contactus"><p>Contact Us!</p></a>
+            </div>
+       </div>
+        <div id="navbottom">
+                <a id="homebutton" href="index.html"><p>Home</p></a>
+                <a href="apply.html"><p>Apply</p></a>
+                <a href="about.html"><p>About</p></a>
+                <a href="jobs.html"><p>Jobs</p></a>
+        </div>
     </nav>
-
+    <!--Main for all the... Main stuff (:O)-->
     <main>
-        <h1>Tam Tim and Co.<sub>&#174</sub></h1>
-        <h2>Our Company Commitments</h2>
-            <ul>
-                <li><p>Eco-friendly</p></li>
-                <li><p>Lots of Fish</p></li>
-                <li><p>Grapes too</p></li>
-
-            </ul>
-        <h2>Past Projects</h2>
-        <ul>
-            <li><p>We made facebook actually</p></li>
-            <li><p>Killed all the fish</p></li>
-            <li><p>Granite rocks, we came up with those</p></li>
-        </ul>
-        <h2></h2>
 
     </main>
-
-    <footer>
-        <a href="https://tamstim72.atlassian.net/jira/software/projects/SCRUM/boards/1"><p>Our Jira</p></a>
-    </footer>
+    <footer><a href="https://tamstim72.atlassian.net/jira/software/projects/SCRUM/boards/1" target="_blank"><p> Our Jira</p></a></footer>
 </body>
-
 </html>
