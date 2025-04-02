@@ -31,16 +31,18 @@ body
     display: flex;
     justify-content: right;
     align-items: center;
-    float:right;
     min-width: 16.66%;
     height: 120px;
+    grid-column-start: 3;
+    grid-row-start: 1;
 }
 #navtopmiddle
 {
     display: flex;
     justify-content: center;
-    float:right;
     min-width: 66.66%;
+    grid-column-start: 2;
+    grid-row-start: 1;
 }
 #contactus
 {
@@ -70,7 +72,8 @@ nav
 #navtop
 {
     width: 100%;
-    display: inline-block;
+    display: grid;
+    grid-template-columns: minmax(0,16.66%) 66.6% 16.66%;
     /*display: flex;
     padding: 0px;
     margin: 0px;
@@ -80,8 +83,8 @@ nav
 
 #navbottom a
 {
-    padding-right: 4em;
-    padding-left:4em;
+    padding-right: 5%;
+    padding-left: 5%;
     border-right: 1px solid white;
     color: white;
     text-decoration: none;
