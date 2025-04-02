@@ -76,34 +76,29 @@ nav
     margin: 0px;
     justify-content: space-evenly;*/
     }
-nav ul 
-{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    width: 100%;
-    margin-top: 0px;
-    padding-left: 0px;;
-}
-nav ul li
+
+
+#navbottom a
 {
     padding-right: 4em;
     padding-left:4em;
     border-right: 1px solid white;
-}
-nav ul li a
-{
     color: white;
     text-decoration: none;
 }
-nav ul li:hover
+#navbottom a:hover
 {
     background-color: #1a1a1a;
 }
 #navbottom
 {
     border-top: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    margin-top: 0px;
+    padding-left: 0px;;
 }
 #homebutton
 {
