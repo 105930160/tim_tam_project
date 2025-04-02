@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="job application form">
+        <meta name="keywords" content="Form, HTML, Job application,"> <!--add company name here-->
+        <meta name="author" content="Sasha Panisset">
+        <meta name="viewport" content="width=device-width, install-scale=1.0">
+
+        <title>Apply for Job Position at [Company Name]</title>
+        <link rel="stylesheet" href="/styles/styles.css">
+    </head>
+
+    <body>
+
+        <p>note: titles, the words used in answers, and aditional text for clarity sake can be changed</p>
+
+        <!--SP [1/4 3:00pm]: form begins-->
+        <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+           
+            <label for="job_ref_num">Job Reference Number:</label>
+                <select id="job_ref_num" name="Job Ref Number">
+                    <option value="">Please Select</option required="required" selected>
+                    <option value="job num 1">[job 1 ref number]</option>
+                    <option value="job num 2">[job 2 ref number]</option>
+                    <option value="job num 3">[job 3 ref number]</option>
+                </select>
+                <br>
+            <!--SP [1/4 3:00pm]: applicant's personal details begin:-->
+            <fieldset>
+                <legend>Personal Details:</legend>
+                <label for="first_name">First Name:</label>
+                    <input type="text" id="first_name" maxlength="20" pattern="^[a-zA-Z]+$" required="required" title="please enter your first name.">
+
+                <label for="last_name">Last Name:</label>
+                    <input type="text" id="last_name" maxlength="20" pattern="^[a-zA-Z]+$" required="required" title="please enter your last name.">
+
+                <label for="birth_date">Date of birth:</label>
+                    <input type="date" id="birth_date" required="required" title="select your date of birth.">
+
+                <fieldset>  <!--SP [1/4 3:11pm]: Gender feildset begins-->
+                    <legend>Gender:</legend>
+                    <input type="radio" id="man" name="gender" value="man" required="required" checked="checked">
+                    <label for="man">Man</label>
+                        
+                    <input type="radio" id="woman" name="gender" value="woman">
+                    <label for="woman">Woman</label>
+                        
+                    <input type="radio" id="non_binary" name="gender" value="non_binary">
+                    <label for="non_binary">Non-Binary</label>
+
+                    <input type="radio" id="g_other" name="gender" value="other">
+                    <label for="g_other">Other</label>
+
+                    <input type="radio" id="g_no" name="gender" value="prefer not to say">
+                    <label for="g_no">Prefer not to say</label>
+                    
+                </fieldset>  <!--SP [1/4 3:11pm]: Gender feildset ends-->
+            </fieldset>   <!--SP [1/4 3:15pm]: end personal info fieldset-->
+
+            <fieldset>  <!--SP [1/4 3:15pm]: begin address fieldset-->
+                <legend>Address:</legend>
+                <label for="street_address">Street Address:</label>
+                    <input type="text" id="street_address" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="00 Road St">
+
+                <label for="suburb_address">Suburb:</label>
+                    <input type="text" id="suburb_address" maxlength="40" pattern="^[a-zA-Z]+$" required="required" title="suburb">
+                
+                <label for="state_address">State:</label>
+                    <select id="state_address" name="state">
+                        <option value="">Please Select</option required="required" selected>
+                        <option value="VIC">Victoria</option>
+                        <option value="NSW">New South Wales</option>
+                        <option value="QLD">Queensland</option>
+                        <option value="NT">Northern Territory</option>
+                        <option value="WA">West Australia</option>
+                        <option value="SA">South Australia</option>
+                        <option value="TAS">Tasmania</option>
+                        <option value="ACT">Aus. Capital Territory</option>
+                    </select>
+                
+                <label for="postcode">Postcode</label>
+                    <input type="text" id="postcode" maxlength="4" pattern="^\d+$" required="required" placeholder="0000">  <!--SP [1/4 3:30]: need to figure out the pattern for postcode *based on state*-->
+                        
+
+            </fieldset> <!--SP [1/4 3:15pm]: end address fieldset-->
+
+             <!--SP [1/4 4:06pm]: applicant contact detals-->
+            <label for="applicant_email">Email:</label>
+                <input type="text" id="applicant_email" pattern="^.+@.+\..{1,2,3}$" placeholder="name@example.com" title="email" required="required">
+
+            <label for="applicant_phone">Phone Number:</label>
+                <input type="text" id="applicant_phone" maxlength="12" pattern="^\d+" title="phone number">
+
+
+            <!--SP [1/4 3:51]: begin skills section. technical skills checkboxes-->
+            <p>Required technical skills, please select:</p>
+                <input type="checkbox" id="skill_1" name="skills[]" value="skill_1" checked="checked" multiple required="required">
+                <label for="skill_1">[skill 1]</label>    
+
+                <input type="checkbox" id="skill_2" name="skills[]" value="skill_2" multiple>
+                <label for="skill_2">[skill 2]</label>
+
+                <input type="checkbox" id="skill_3" name="skills[]" value="skill_3" multiple>
+                <label for="skill_3">[skill 3]</label>
+
+                <input type="checkbox" id="skill_4" name="skills[]" value="skill_4" multiple>
+                <label for="skill_4">[skill 4]</label>
+
+                <input type="checkbox" id="skill_5" name="skills[]" value="skill_5" multiple>
+                <label for="skill_5">[skill 5]</label>
+
+                <input type="checkbox" id="skill_6" name="skills[]" value="skill_6" multiple>
+                <label for="skill_6">[skill 6]</label>
+
+            <p><label>Other applicable skills: <br></label>
+                <textarea name="other skills" rows="4" cols="20" placeholder="enter other applicable skills you may have here."></textarea>
+            </p>
+            <hr>
+            <p>    
+                <input type="reset" Value="Reset">
+                <input type="submit" value="Apply">
+            </p>
+        </form>
+
+
+    </body>
+
+
+</html>
