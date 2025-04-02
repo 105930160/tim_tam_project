@@ -1,0 +1,44 @@
+/*Navlink Class*/
+/*This is the class given to the anchors (<a>) in the navbar*/
+
+.navlink
+{
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+/*css for when menu items have not been visited (clicked yet)*/
+.navlink:link
+{
+    text-decoration: none;
+    color:azure;  
+}
+/*css for when menu items have been visited (clicked)*/
+.navlink:visited
+{
+    text-decoration: none;
+    color: azure;
+}
+/*css for when user hovers of menu items*/
+.navlink:hover
+{
+    background-color: #100;
+}
+/*Navigation Container for Navlinks*/
+#navbar
+{
+    display:flex;
+    justify-content: center;
+    background-color: #112;    
+    list-style-type: none;
+    align-items: center;
+    margin:0;
+    padding:0;
+    overflow: hidden;
+}
+/*Image of Company Logo*/
+#logo
+{
+    scale:0.95
+}
