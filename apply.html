@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, install-scale=1.0">
 
         <title>Apply for Job Position at [Company Name]</title>
-        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/global.css">
     </head>
 
     <body>
@@ -44,32 +44,33 @@
                 <section id="personal_details">
                 <h2>Personal Details:</h2>
                     <label for="first_name">First Name:</label>
-                        <input type="text" id="first_name" maxlength="20" pattern="^[a-zA-Z]+$" required="required" title="please enter your first name.">
-    
+                        <input type="text" id="first_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" title="please enter your first name.">
+                    <br>
                     <label for="last_name">Last Name:</label>
-                        <input type="text" id="last_name" maxlength="20" pattern="^[a-zA-Z]+$" required="required" title="please enter your last name.">
-    
+                        <input type="text" id="last_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" title="please enter your last name.">
+                    <br>
                     <label for="birth_date">Date of birth:</label>
                         <input type="date" id="birth_date" required="required" title="select your date of birth.">
-    
+                    <br>
                     <fieldset>  <!--SP [1/4 3:11pm]: Gender feildset begins-->
                         <legend>Gender:</legend>
                         <div id="gender_list">
-                        <input type="radio" id="man" name="gender" value="man" required="required" checked="checked">
-                        <label for="man">Man</label>
-                            
-                        <input type="radio" id="woman" name="gender" value="woman">
-                        <label for="woman">Woman</label>
-                            
-                        <input type="radio" id="non_binary" name="gender" value="non_binary">
-                        <label for="non_binary">Non-Binary</label>
-    
-                        <input type="radio" id="g_other" name="gender" value="other">
-                        <label for="g_other">Other</label>
-    
-                        <input type="radio" id="g_no" name="gender" value="prefer not to say">
-                        <label for="g_no">Prefer not to say</label>
-                        </div>
+                        <ul>
+                            <li><input type="radio" id="man" name="gender" value="man" required="required" checked="checked">
+                            <label for="man">Man</label></li>
+                                
+                            <li><input type="radio" id="woman" name="gender" value="woman">
+                            <label for="woman">Woman</label></li>
+                                
+                            <li><input type="radio" id="non_binary" name="gender" value="non_binary">
+                            <label for="non_binary">Non-Binary</label></li>
+        
+                            <li><input type="radio" id="g_other" name="gender" value="other">
+                            <label for="g_other">Other</label></li>
+        
+                            <li><input type="radio" id="g_no" name="gender" value="prefer not to say">
+                            <label for="g_no">Prefer not to say</label></li>
+                        </ul></div>
                     </fieldset>  <!--SP [1/4 3:11pm]: Gender feildset ends-->
                 </section>  <!--SP [1/4 3:15pm]: end personal info section-->
 
@@ -77,10 +78,10 @@
                     <h2>Address:</h2>
                     <label for="street_address">Street Address:</label>
                         <input type="text" id="street_address" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="00 Road St">
-    
+                    <br>
                     <label for="suburb_address">Suburb:</label>
                         <input type="text" id="suburb_address" maxlength="40" pattern="^[a-zA-Z]+$" required="required" title="suburb">
-                    
+                    <br>
                     <label for="state_address">State:</label>
                         <select id="state_address" name="state">
                             <option value="">Please Select</option required="required" selected>
@@ -95,7 +96,7 @@
                         </select>
                     
                     <label for="postcode">Postcode:</label>
-                        <input type="text" id="postcode" maxlength="4" pattern="^\d+$" required="required" placeholder="0000">  
+                        <input type="text" id="postcode" size="4" maxlength="4" pattern="^\d+$" required="required" placeholder="0000">  
                         <!--SP [1/4 3:30]: need to figure out the pattern for postcode *based on state*-->
                 </section>  <!--SP [1/4 3:15pm]: end address section-->
                 <br> <br>
@@ -115,24 +116,25 @@
                 <fieldset>
                 <legend>Required technical skills, please select:</legend>
                 <div id="skills_list">
-                    <input type="checkbox" id="skill_1" name="skills[]" value="skill_1" checked="checked" multiple required="required">
-                    <label for="skill_1">[skill 1]</label>    
-    
-                    <input type="checkbox" id="skill_2" name="skills[]" value="skill_2" multiple>
-                    <label for="skill_2">[skill 2]</label>
-    
-                    <input type="checkbox" id="skill_3" name="skills[]" value="skill_3" multiple>
-                    <label for="skill_3">[skill 3]</label>
-    
-                    <input type="checkbox" id="skill_4" name="skills[]" value="skill_4" multiple>
-                    <label for="skill_4">[skill 4]</label>
-    
-                    <input type="checkbox" id="skill_5" name="skills[]" value="skill_5" multiple>
-                    <label for="skill_5">[skill 5]</label>
-    
-                    <input type="checkbox" id="skill_6" name="skills[]" value="skill_6" multiple>
-                    <label for="skill_6">[skill 6]</label>
-                </div>
+                    <ul>
+                        <li><input type="checkbox" id="skill_1" name="skills[]" value="skill_1" checked="checked" multiple required="required">
+                        <label for="skill_1">[skill 1]</label></li>
+        
+                        <li><input type="checkbox" id="skill_2" name="skills[]" value="skill_2" multiple>
+                        <label for="skill_2">[skill 2]</label></li>
+        
+                        <li><input type="checkbox" id="skill_3" name="skills[]" value="skill_3" multiple>
+                        <label for="skill_3">[skill 3]</label></li>
+        
+                        <li><input type="checkbox" id="skill_4" name="skills[]" value="skill_4" multiple>
+                        <label for="skill_4">[skill 4]</label></li>
+        
+                        <li><input type="checkbox" id="skill_5" name="skills[]" value="skill_5" multiple>
+                        <label for="skill_5">[skill 5]</label></li>
+        
+                        <li><input type="checkbox" id="skill_6" name="skills[]" value="skill_6" multiple>
+                        <label for="skill_6">[skill 6]</label></li>
+                </ul></div>
                 </fieldset>
                 <p><label for="other_skills">Other applicable skills: <br></label>
                     <textarea id="other_skills" name="other skills" rows="4" cols="20" placeholder="enter other applicable skills you may have here."></textarea>
@@ -145,7 +147,7 @@
                     <input type="text" id="applicant_email" pattern="^.+@.+\..{1,2,3}$" placeholder="name@example.com" title="email" required="required">
     
                 <label for="applicant_phone">Phone Number:</label>
-                    <input type="text" id="applicant_phone" maxlength="12" pattern="^\d+" title="phone number">
+                    <input type="tel" id="applicant_phone" maxlength="12" pattern="^\d+" title="phone number">
                 </section>                
                 
                 <hr>
@@ -156,13 +158,9 @@
             </form>
 
         </main>
-
+        <br>
+        <hr>
         <footer><a href="https://tamstim72.atlassian.net/jira/software/projects/SCRUM/boards/1" target="_blank"><p> Our Jira</p></a></footer>
     </body>
-
-
-
-
-
 
 </html>
