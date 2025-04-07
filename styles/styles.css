@@ -1,0 +1,107 @@
+
+
+section {
+    background-color: #e7e7e7;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+}
+
+
+/* ---APPLICATION FORM STYLES--- */
+
+#form_title {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+label, legend {
+    color: darkgreen;
+    padding-right: 0.1rem;
+}
+
+input, textarea {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+}
+
+
+form section:not(.form_bottom) {
+    margin-top: 0px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0px;
+}
+
+.form_left, .form_right {
+    padding-top: 0px;
+    margin-top: 0px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: transparent;
+}
+
+#address, #personal_details {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: transparent;
+
+} 
+
+#skills, #contact {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: transparent;
+
+} 
+
+#skills_list, #gender_list {
+    list-style-type: none;
+    text-align: left;
+    list-style-position: outside;
+    background-color: transparent;
+
+}
+
+.form_bottom { 
+    margin: 5px;
+    margin-right: 25px;
+    padding: 5px;
+    box-shadow: none;
+    float: right;
+    background-color: transparent;
+}
+
+.button {
+    background-color: darkgreen;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button:hover {
+    transition-duration: 0.4s;
+    background-color: seagreen;
+    font-weight: bold;
+}
+
+footer { 
+    clear:both;
+    height: 30px;
+}
+
+
