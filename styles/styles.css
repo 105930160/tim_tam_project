@@ -1,11 +1,21 @@
-section {
-    background-color: #f9f9f947;
+.jobPosting {
+    background-color: #e2e2e2c2;
     padding: 2rem;
     margin: 2rem auto;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
+    max-width: 1000px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
 }
 
 
-
+.jobPosting aside {
+    background-color: #a8a8a8b8;
+    padding: 1rem;
+    margin: 5px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
