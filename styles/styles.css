@@ -9,18 +9,23 @@ main {
 }
 
 #groupinfo {
-    display: flex;
-    justify-content: right;
+    color: #00ff48;
+    padding: 2%;
+}
+
+figcaption {
     color: #00ff48;
 }
 
 #contributions {
     color: #00ff48;
+    padding: 2%;
 }
 
 #inttable {
     background-color: #000000;
     color: #00ff48;
+    padding: 2%;
 }
 
 #tablecap {
@@ -31,6 +36,7 @@ main {
     border: 1px solid;
     border-radius: 10px;
     font-weight: bold;
+    padding: 3px;
 }
 
 .tableheading:hover {
@@ -41,9 +47,56 @@ main {
 .tablecell {
     border: 1px solid;
     border-radius: 10px;
+    padding: 3px;
 }
 
 .tablecell:hover {
     background-color: #00ff48;
     color: #000000;
 }
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(1, 2fr 1fr);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    justify-items: stretch;
+    align-items: stretch;
+    justify-content: start;
+    align-content: start;
+    grid-auto-flow: row;
+  }
+  #item1 {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
+  }
+  #item2 {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
+  }
+#item3 {
+  grid-column: auto;
+  grid-row: auto;
+  justify-self: center;
+  align-self: auto;
+  grid-area: auto;
+  order: 0;
+}
+#item4 {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
+  }
