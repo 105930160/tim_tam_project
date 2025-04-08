@@ -9,7 +9,7 @@
     <meta name="keywords" content="About, Group information, Contributions">
     <title>About our Group</title>
     <link href="./styles/global.css" rel="stylesheet">
-    <link href="./styles/styles.css" rel="stylesheet2">
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
 
@@ -32,17 +32,17 @@
         </div>
     </nav>
 
-    <main>
-        <h1>Our Team</h1>
-            <section>
-                <h2 id="groupinfolist">Group Information</h2>
+    <main id="aboutmain">
+        <h1 id="mainheading">Our Team</h1>
+            <section id="groupinfo">
+                <h2>Group Information</h2>
             <ul>
                 <li>Group name: Tim Tams</li>
                 <li>Class day and time: Wednesday 4:30pm</li>
                 <li>Group members
                     <ul>
                         <li>Angel - (student ID here)</li>
-                        <li>Sasha - (student ID here)</li>
+                        <li>Sasha - 106004587</li>
                         <li>Akira - (student ID here)</li>
                         <li>Ethan - 105784587</li>
                     </ul>
@@ -51,8 +51,8 @@
             </ul>
             </section>
         
-            <section>
-                <h2 id="contributionslist">Contributions</h2>
+            <section id="contributions">
+                <h2>Contributions</h2>
             <dl>
                 <dt>Angel</dt>
                 <dd>Created github project, Created and styled the jobs page</dd>
@@ -70,10 +70,9 @@
                 <figcaption>Group photo with all members</figcaption>
             </figure>
 
-            <section>
-                <table id="intereststable">
-                    <caption>Group Interests</caption>
-    
+            <section id="tablesection">
+                <table id="inttable">
+                    <caption id="tablecap">Group Interests</caption>
                     <thead>
                         <tr>
                             <th class="tableheading">Name</th>
@@ -84,21 +83,21 @@
     
                     <tbody>
                         <tr>
-                            <td>Angel</td>
-                            <td>Placeholder</td>
-                            <td rowspan="4">Using HTML and CSS to create webpages!</td> <!--merge this into all 4 cells of final column-->
+                            <td class="tablecell">Angel</td>
+                            <td class="tablecell">Placeholder</td>
+                            <td class="tablecell" rowspan="4">Using HTML and CSS to create webpages!</td> <!--merge this into all 4 cells of final column-->
                         </tr>
                         <tr>
-                            <td>Sasha</td>
-                            <td>Placeholder</td>
+                            <td class="tablecell">Sasha</td>
+                            <td class="tablecell">DnD, Drawing</td>
                         </tr>
                         <tr>
-                            <td>Akira</td>
-                            <td>Placeholder</td>
+                            <td class="tablecell">Akira</td>
+                            <td class="tablecell">Placeholder</td>
                         </tr>
                         <tr>
-                            <td>Ethan</td>
-                            <td>Gaming, Reading</td>
+                            <td class="tablecell">Ethan</td>
+                            <td class="tablecell">Gaming, Reading</td>
                         </tr>
                     </tbody>
                 </table>

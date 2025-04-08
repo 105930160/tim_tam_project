@@ -1,0 +1,49 @@
+main {
+    background-color: #000000;
+}
+
+#mainheading {
+    text-align: center;
+    font-family: sans-serif;
+    color: #00ff48;
+}
+
+#groupinfo {
+    display: flex;
+    justify-content: right;
+    color: #00ff48;
+}
+
+#contributions {
+    color: #00ff48;
+}
+
+#inttable {
+    background-color: #000000;
+    color: #00ff48;
+}
+
+#tablecap {
+    font-size: larger;
+}
+
+.tableheading {
+    border: 1px solid;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.tableheading:hover {
+    background-color: #00ff48;
+    color: #000000;
+}
+
+.tablecell {
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.tablecell:hover {
+    background-color: #00ff48;
+    color: #000000;
+}
