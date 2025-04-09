@@ -9,12 +9,23 @@ main {
 }
 
 #groupinfo {
+    float: right;
     color: #00ff48;
     padding: 2%;
 }
 
+#figsec {
+    float: right;
+    clear: right;
+}
+
 figcaption {
     color: #00ff48;
+    text-align: center;
+}
+
+#groupphoto {
+    border: 2px blue single;
 }
 
 #contributions {
@@ -26,6 +37,7 @@ figcaption {
     background-color: #000000;
     color: #00ff48;
     padding: 2%;
+    margin: auto;
 }
 
 #tablecap {
