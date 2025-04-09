@@ -1,17 +1,8 @@
+/* APPLICATION FORM STYLES */
 
 
-section {
-    background-color: #e7e7e7;
-    padding: 2rem;
-    margin: 2rem auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-}
 
-
-/* ---APPLICATION FORM STYLES--- */
-
+/* form heading */
 #form_title {
     text-align: center;
     margin-bottom: 1rem;
@@ -19,103 +10,174 @@ section {
 }
 
 
-
-label, legend {
-    color: darkgreen;
-    padding-right: 0.1rem;
-    display: inline-block;
-}
-
-input, textarea {
+input[type=text], input[type=date], input[type=tel], textarea, select {   /* styling inputs */
     color: darkgreen;
     background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px colid #ccc;
     border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
 }
 
-input { display: inline; }
-
-/* custom select menus */
-select { display: inline-block; }
-
-
-
-form section:not(.form_bottom) {
-    margin-top: 0px;
-    padding-top: 0px;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 0px;
+label {                        /* styling labels */
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+.list_label {
+    display: none; 
 }
 
 
+/* form background */
+form {
+    background-color: #e7e7e7;
+    padding: 1rem;
+    margin: 1rem auto;
+    border-radius: 12px;
+    max-width: 900px;
+}
 
-
-.form_left, .form_right {
-    padding-top: 0px;
-    margin-top: 0px;
+/* form body */
+.form_main {
+    margin: 0px 1rem 0px;
+    padding: 0px 1rem 0px;
     box-shadow: none;
-    display: flex;
+    display: flex;              /* display flex */
     flex-direction: column;
     flex-wrap: wrap;
     background-color: transparent;
-    
 }
 
-#address, #personal_details {
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+/* Details, Address, Skills and Contacts boxes */
+.form_section {
+    margin: 0% 20px;
+    padding: 0% 20px 1em;
     background-color: transparent;
-
+    box-shadow: none;
 } 
 
-#skills, #contact {
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: transparent;
+/* float labels left: 25% width */
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
 
-} 
+/* float inputs left: 75% width */
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
 
-#skills_list, #gender_list {
+/* clearing floating after each input line. */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* make layout responsive */
+@media screen and (max-width: 600px) {
+    .col-25, .col-75 {
+      width: 100%;
+      margin-top: 0;
+    }
+    
+    /* makes legends invisible for narrow screens + replaces with text. */
+    legend {  
+        color: #e7e7e7;
+    }
+    .list_label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+    }
+}
+
+/* formatting gender and skills lists */
+input[type=radio], input[type=checkbox] {
+    position: relative;
+    accent-color: #1A8E3C; 
+}
+#skills_list {
+    margin: 0;
+    padding: 0;
     list-style-type: none;
     text-align: left;
     list-style-position: outside;
     background-color: transparent;
-
 }
 
+fieldset {
+    border: 0;
+    width: 100%;
+}
+fieldset legend {                    /* styling legends */
+    width: 25%;
+    margin-top: 6px;
+    padding-right: 10px;
+    position: relative;
+    top: -5px;
+    left: -16px;
+}
+fieldset #gender_list {
+    border-radius: 4px;
+    border: 2px solid #979797;
+    float:right;
+    position: relative;
+    top: -42px;
+    left: -12px;
+}
+fieldset #skills_list {
+    border-radius: 4px;
+    border: 2px solid #979797;
+    float:right;
+    position: relative;
+    top: -35px;
+    left: -16px;
+    
+}
+#gender_list label {
+    position: relative;
+    left: 10px;
+}
+#skills_list label {
+    position: relative;
+    left: 10px;
+}
+#skills_list .subtitle {
+    position: relative;
+    left: 10px;
+}
+
+
+/* button section */
 .form_bottom { 
     margin: 5px;
     margin-right: 25px;
     padding: 5px;
-    box-shadow: none;
-    float: right;
     background-color: transparent;
-}
-
-.button {
-    background-color: darkgreen;
+    display: flex;
+    margin-left: auto; }
+.button {                       /* button styling */
+    background-color: black;
     border: none;
     color: white;
     padding: 15px 32px;
+    margin: 0% 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-}
-
+    font-size: 16px; }
 .button:hover {
     transition-duration: 0.4s;
-    background-color: seagreen;
-    font-weight: bold;
-}
-
+    background-color: #157030;
+    font-weight: bold; }
 footer { 
     clear:both;
-    height: 30px;
-}
+    height: 30px; }
 
 
