@@ -7,7 +7,7 @@
         <meta name="author" content="Sasha Panisset">
         <meta name="viewport" content="width=device-width, install-scale=1.0">
 
-        <title>Apply for Job Position at [Company Name]</title>
+        <title>Application Form - Generic IT Company ltd.</title>
         <link rel="stylesheet" href="styles/global.css">
         <link rel="stylesheet" href="styles/styles.css">
     </head>
@@ -39,51 +39,55 @@
         <main>
 
             <h1 id="form_title">Application Form</h1>
+            
             <!--SP [1/4 3:00pm]: form begins-->
             <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
-               
+            <section class="main_form">   
                 <!--SP [1/4 3:00pm]: applicant's personal details begin:-->
-                <section class="main_form"><section class="form_left"><div id="personal_details">
-                <h2 class="form_section">Personal Details:</h2>
-                    <label for="first_name">First Name:</label>
-                        <input type="text" id="first_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" title="please enter your first name.">
-                    <br>
-                    <label for="last_name">Last Name:</label>
-                        <input type="text" id="last_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" title="please enter your last name.">
-                    <br>
-                    <label for="birth_date">Date of birth:</label>
-                        <input type="date" id="birth_date" required="required" title="select your date of birth.">
-                    <br>
-                    <fieldset>  <!--SP [1/4 3:11pm]: Gender feildset begins-->
-                        <legend>Gender:</legend>
-                        <ul id="gender_list">
-                            <li><input type="radio" id="man" name="gender" value="man" required="required" checked="checked">
-                            <label for="man">Man</label></li>
-                                
-                            <li><input type="radio" id="woman" name="gender" value="woman">
-                            <label for="woman">Woman</label></li>
-                                
-                            <li><input type="radio" id="non_binary" name="gender" value="non_binary">
-                            <label for="non_binary">Non-Binary</label></li>
-        
-                            <li><input type="radio" id="g_other" name="gender" value="other">
-                            <label for="g_other">Other</label></li>
-        
-                            <li><input type="radio" id="g_no" name="gender" value="prefer not to say">
-                            <label for="g_no">Prefer not to say</label></li>
-                        </ul>
-                    </fieldset>  <!--SP [1/4 3:11pm]: Gender feildset ends-->
-                </div>  <!--SP [1/4 3:15pm]: end personal info section-->
+                <section class="form_left">
+                    <div id="personal_details">
+                    <h2>Your Details:</h2>
+                        <label for="first_name">First Name:</label>
+                            <input type="text" id="first_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" title="please enter your first name.">
+                        <br>
+                        <label for="last_name">Last Name:</label>
+                            <input type="text" id="last_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" title="please enter your last name.">
+                        <br>
+                        <label for="birth_date">Date of birth:</label>
+                            <input type="date" id="birth_date" required="required" title="select your date of birth.">
+                        <br>
+                        <fieldset>  <!--SP [1/4 3:11pm]: Gender feildset begins-->
+                            <legend>Gender:</legend>
+                            <ul id="gender_list">
+                                <li><input type="radio" id="man" name="gender" value="man" required="required" checked="checked">
+                                <label for="man">Man</label></li>
+                                    
+                                <li><input type="radio" id="woman" name="gender" value="woman">
+                                <label for="woman">Woman</label></li>
+                                    
+                                <li><input type="radio" id="non_binary" name="gender" value="non_binary">
+                                <label for="non_binary">Non-Binary</label></li>
+            
+                                <li><input type="radio" id="g_other" name="gender" value="other">
+                                <label for="g_other">Other</label></li>
+            
+                                <li><input type="radio" id="g_no" name="gender" value="prefer not to say">
+                                <label for="g_no">Prefer not to say</label></li>
+                            </ul>
+                        </fieldset>  <!--SP [1/4 3:11pm]: Gender feildset ends-->
+                    </div>  <!--end div personal_details-->  
 
-                <div id="address"> <!--SP [1/4 3:15pm]: begin address section-->
-                    <h2 class="form_section">Address:</h2>
+                    <div id="address"> <!--SP [1/4 3:15pm]: begin address section-->
+                    <h2>Address:</h2>
                         <label for="street_address">Street Address:</label>
                             <input type="text" id="street_address" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="00 Road St">
                         <br>
                         <label for="suburb_address">Suburb:</label>
                             <input type="text" id="suburb_address" maxlength="40" pattern="^[a-zA-Z]+$" required="required" title="suburb">
                         <br>
+
                         <label for="state_address">State:</label>
+                            <div class="custom_select">
                             <select id="state_address" name="state" required>
                                 <option value="" selected>Please Select</option>
                                 <option value="VIC">Victoria</option>
@@ -95,65 +99,71 @@
                                 <option value="TAS">Tasmania</option>
                                 <option value="ACT">Aus. Capital Territory</option>
                             </select>
-                        
-                            <br>
+                            </div>
+
                         <label for="postcode">Postcode:</label>
                             <input type="text" id="postcode" size="4" maxlength="4" pattern="^\d+$" required="required" placeholder="0000">  
-                            <!--SP [1/4 3:30]: need to figure out the pattern for postcode *based on state*-->
-                </section></div>  <!--SP [1/4 3:15pm]: end address section-->
-              
+                                <!--SP [1/4 3:30]: need to figure out the pattern for postcode *based on state*-->
+                    </div><!--SP [1/4 3:15pm]: end address div-->
+                
+                    <div id="contact"> <!--SP [1/4 4:06pm]: begin contact detals div-->
+                        <h2>How can we reach you?</h2>
+                            <label for="applicant_email">Email:</label>
+                                <input type="text" id="applicant_email" pattern="^.+@.+\..{1,2,3}$" placeholder="name@example.com" title="email" required="required">
+                            
+                                <br>
+                            <label for="applicant_phone">Phone:</label>
+                                <input type="tel" id="applicant_phone" maxlength="12" pattern="^\d+" title="phone number">
+                    </div>  <!--end contact div-->
 
-                <!--SP [1/4 3:51]: begin skills section. technical skills checkboxes-->
-                <section class="form_right"><div id="skills">
-                <h2 class="form_section">Relevant skills</h2>
-                    <label for="job_ref_num">Job Reference Number:</label>
-                        <select id="job_ref_num" name="Job Ref Number" required>
-                            <option value="" selected>Please Select</option>
-                            <option value="job num 1">[job 1 ref number]</option>
-                            <option value="job num 2">[job 2 ref number]</option>
-                            <option value="job num 3">[job 3 ref number]</option>
-                        </select>
+                </section> <!--SP [12/4 12:02pm] end form_left section-->
+
                 
+                <section class="form_right"> <!--begin Form_right section-->
+                    <div id="skills">   <!--SP [1/4 3:51]: begin skills div. technical skills checkboxes-->
+                    <h2>Relevant Skills:</h2>
+                        <label for="job_ref_num">Job Reference Number:</label>
+                        <div class="custom_select">    
+                        <select id="job_ref_num" name="Job Ref No." required>
+                                <option value="" selected>Please Select</option>
+                                <option value="job num 1">00001 - Network Admin</option>
+                                <option value="job num 2">[job 2 ref number]</option>
+                                <option value="job num 3">[job 3 ref number]</option>
+                            </select>
+                        </div>
+                     
+                        <fieldset>
+                        <legend>Required technical skills:</legend>
+                            <ul id="skills_list">
+                                <li><input type="checkbox" id="skill_1" name="skills[]" value="skill_1" checked="checked" required="required">
+                                <label for="skill_1">[skill 1]</label></li>
                 
-                <fieldset>
-                <legend>Required technical skills:</legend>
-                    <ul id="skills_list">
-                        <li><input type="checkbox" id="skill_1" name="skills[]" value="skill_1" checked="checked" required="required">
-                        <label for="skill_1">[skill 1]</label></li>
-        
-                        <li><input type="checkbox" id="skill_2" name="skills[]" value="skill_2">
-                        <label for="skill_2">[skill 2]</label></li>
-        
-                        <li><input type="checkbox" id="skill_3" name="skills[]" value="skill_3">
-                        <label for="skill_3">[skill 3]</label></li>
-        
-                        <li><input type="checkbox" id="skill_4" name="skills[]" value="skill_4">
-                        <label for="skill_4">[skill 4]</label></li>
-        
-                        <li><input type="checkbox" id="skill_5" name="skills[]" value="skill_5">
-                        <label for="skill_5">[skill 5]</label></li>
-        
-                        <li><input type="checkbox" id="skill_6" name="skills[]" value="skill_6">
-                        <label for="skill_6">[skill 6]</label></li>
-                </ul>
-                </fieldset>
-                <p><label for="other_skills">Other applicable skills: <br></label>
-                    <textarea id="other_skills" name="other skills" rows="4" cols="30" placeholder="enter other applicable skills you may have here."></textarea>
-                </p>
-                </div>  <!--SP [6/4 5:21]: end skills section-->
+                                <li><input type="checkbox" id="skill_2" name="skills[]" value="skill_2">
+                                <label for="skill_2">[skill 2]</label></li>
                 
-                <!--SP [1/4 4:06pm]: applicant contact detals-->
-                <div id="contact"> 
-                <h2 class="form_section">How can we reach you?</h2>
-                    <label for="applicant_email">Email:</label>
-                        <input type="text" id="applicant_email" pattern="^.+@.+\..{1,2,3}$" placeholder="name@example.com" title="email" required="required">
+                                <li><input type="checkbox" id="skill_3" name="skills[]" value="skill_3">
+                                <label for="skill_3">[skill 3]</label></li>
+                
+                                <li><input type="checkbox" id="skill_4" name="skills[]" value="skill_4">
+                                <label for="skill_4">[skill 4]</label></li>
+                
+                                <li><input type="checkbox" id="skill_5" name="skills[]" value="skill_5">
+                                <label for="skill_5">[skill 5]</label></li>
+                
+                                <li><input type="checkbox" id="skill_6" name="skills[]" value="skill_6">
+                                <label for="skill_6">[skill 6]</label></li>
+                        </ul>
+                        </fieldset>
+
+                        <p><label for="other_skills">Other applicable skills: <br></label>
+                            <textarea id="other_skills" name="other skills" rows="4" cols="30" placeholder="enter other applicable skills you may have here."></textarea>
+                        </p>
+                    </div>  <!--SP [6/4 5:21]: end skills section-->
                     
-                        <br>
-                    <label for="applicant_phone">Phone:</label>
-                        <input type="tel" id="applicant_phone" maxlength="12" pattern="^\d+" title="phone number">
-                </div>
-                </section>                
-                </section> 
+                    
+
+                    </section>                
+                </section>     
 
                 <section class="form_bottom">
                 <p>    

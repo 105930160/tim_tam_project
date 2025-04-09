@@ -18,15 +18,25 @@ section {
     padding-bottom: 1rem;
 }
 
+
+
 label, legend {
     color: darkgreen;
     padding-right: 0.1rem;
+    display: inline-block;
 }
 
 input, textarea {
     color: darkgreen;
     background-color: rgba(105, 105, 105, 0.154);
+    border-radius: 4px;
 }
+
+input { display: inline; }
+
+/* custom select menus */
+select { display: inline-block; }
+
 
 
 form section:not(.form_bottom) {
@@ -37,6 +47,9 @@ form section:not(.form_bottom) {
     margin-bottom: 0px;
 }
 
+
+
+
 .form_left, .form_right {
     padding-top: 0px;
     margin-top: 0px;
@@ -45,6 +58,7 @@ form section:not(.form_bottom) {
     flex-direction: column;
     flex-wrap: wrap;
     background-color: transparent;
+    
 }
 
 #address, #personal_details {
