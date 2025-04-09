@@ -1,0 +1,19 @@
+.jobPosting {
+    background-color: #e2e2e2c2;
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 12px;
+    max-width: 75vw;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.jobPosting aside {
+    background-color: #a8a8a8b8;
+    padding: 1rem;
+    margin: 5px;
+    border-radius: 12px;
+    max-width: 25vw;
+    min-width: 25vw;
+}
