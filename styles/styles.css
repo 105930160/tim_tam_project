@@ -18,6 +18,7 @@ video source
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
+    box-shadow: 15px 15px 1px rgb(0, 3, 1);
 }
 
 .jobPosting aside {
@@ -27,4 +28,5 @@ video source
     border-radius: 12px;
     max-width: 25vw;
     min-width: 25vw;
+    box-shadow: 5px 5px 2.5px #183319;
 }
