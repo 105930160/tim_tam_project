@@ -15,7 +15,7 @@ input[type=text], input[type=date], input[type=tel], textarea, select {   /* sty
     background-color: rgba(105, 105, 105, 0.154);
     width:100%;
     padding: 12px;
-    border: 1px colid #ccc;
+    border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     resize: vertical;
@@ -60,6 +60,7 @@ form {
 
 /* float labels left: 25% width */
 .col-25 {
+    display: block;
     float: left;
     width: 25%;
     margin-top: 6px;
@@ -138,7 +139,6 @@ fieldset #skills_list {
     position: relative;
     top: -35px;
     left: -16px;
-    
 }
 #gender_list label {
     position: relative;
@@ -149,8 +149,17 @@ fieldset #skills_list {
     left: 10px;
 }
 #skills_list .subtitle {
+    display: block;
     position: relative;
     left: 10px;
+    top: 10px;
+    padding-bottom: 10px;
+    color:#696969;
+}
+
+.break {
+    display: block;
+    color: black;
 }
 
 
