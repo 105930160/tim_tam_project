@@ -2,9 +2,17 @@
 filename: styles.css
 author: Ethan Roden
 created: 05/04/25
-last modified: 09/04/25
+last modified: 11/04/25
 description: Currently CSS for about page only
 */
+
+/* main {
+    background-color: #000000;
+} */
+
+.aboutmain {
+    background-color: rgb(49, 49, 49);
+}
 
 #mainheading {
     text-align: center;
@@ -12,20 +20,43 @@ description: Currently CSS for about page only
     color: #00ff48;
 }
 
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    justify-items: stretch;
+    align-items: stretch;
+    justify-content: start;
+    align-content: start;
+    grid-auto-flow: row;
+}
+
 #groupinfo {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
     background-color: #000000;
     color: #00ff48;
-    float: right;
     border-radius: 15px;
     padding: 2%;
     margin: 3%;
 }
 
 #figsec {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
     background-color: #000000;
+    color: #00ff48;
+    text-align: center;
     border-radius: 15px;
-    float: right;
-    clear: right;
 }
 
 #figcapabout {
@@ -38,6 +69,12 @@ description: Currently CSS for about page only
 }
 
 #contributions {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
     background-color: #000000;
     color: #00ff48;
     border-radius: 15px;
@@ -46,12 +83,24 @@ description: Currently CSS for about page only
 }
 
 #inttable {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: center;
+    grid-area: auto;
+    order: 0;
     background-color: #000000;
     color: #00ff48;
+    caption-side: bottom;
     border-radius: 15px;
     padding: 2%;
     margin: auto;
-    align-content: center;
+}
+
+#inttableheading {
+    text-align: center;
+    font-family: sans-serif;
+    color: #00ff48;
 }
 
 #tablecap {
@@ -79,12 +128,4 @@ description: Currently CSS for about page only
 .tablecell:hover {
     background-color: #00ff48;
     color: #000000;
-}
-
-#aboutwhole {
-    background-color: #000000;
-}
-
-footer {
-    clear: both;
 }
