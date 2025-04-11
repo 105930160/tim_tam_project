@@ -11,7 +11,7 @@ description: Currently CSS for about page only
 } */
 
 .aboutmain {
-    background-color: rgb(49, 49, 49);
+    background-color: rgb(36, 35, 35);
 }
 
 #mainheading {
@@ -20,10 +20,10 @@ description: Currently CSS for about page only
     color: #00ff48;
 }
 
-.container {
+.containerabout {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 2fr 3fr;
     gap: 10px;
     justify-items: stretch;
     align-items: stretch;
@@ -39,6 +39,7 @@ description: Currently CSS for about page only
     align-self: auto;
     grid-area: auto;
     order: 0;
+
     background-color: #000000;
     color: #00ff48;
     border-radius: 15px;
@@ -57,6 +58,7 @@ description: Currently CSS for about page only
     color: #00ff48;
     text-align: center;
     border-radius: 15px;
+    float: right;
 }
 
 #figcapabout {
@@ -82,7 +84,7 @@ description: Currently CSS for about page only
     margin: 3%;
 }
 
-#inttable {
+#tablesection {
     grid-column: auto;
     grid-row: auto;
     justify-self: center;
