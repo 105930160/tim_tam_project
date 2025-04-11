@@ -1,6 +1,10 @@
-main {
-    background-color: #000000;
-}
+/*
+filename: styles.css
+author: Ethan Roden
+created: 05/04/25
+last modified: 09/04/25
+description: Currently CSS for about page only
+*/
 
 #mainheading {
     text-align: center;
@@ -9,35 +13,45 @@ main {
 }
 
 #groupinfo {
-    float: right;
+    background-color: #000000;
     color: #00ff48;
+    float: right;
+    border-radius: 15px;
     padding: 2%;
+    margin: 3%;
 }
 
 #figsec {
+    background-color: #000000;
+    border-radius: 15px;
     float: right;
     clear: right;
 }
 
-figcaption {
+#figcapabout {
     color: #00ff48;
     text-align: center;
 }
 
-#groupphoto {
-    border: 2px blue single;
+#grouppic {
+    border: solid 5px red;
 }
 
 #contributions {
+    background-color: #000000;
     color: #00ff48;
+    border-radius: 15px;
     padding: 2%;
+    margin: 3%;
 }
 
 #inttable {
     background-color: #000000;
     color: #00ff48;
+    border-radius: 15px;
     padding: 2%;
     margin: auto;
+    align-content: center;
 }
 
 #tablecap {
@@ -67,48 +81,10 @@ figcaption {
     color: #000000;
 }
 
-
-
-.container {
-    display: grid;
-    grid-template-columns: repeat(1, 2fr 1fr);
-    grid-template-rows: repeat(3, 100px);
-    gap: 10px;
-    justify-items: stretch;
-    align-items: stretch;
-    justify-content: start;
-    align-content: start;
-    grid-auto-flow: row;
-  }
-  #item1 {
-    grid-column: auto;
-    grid-row: auto;
-    justify-self: center;
-    align-self: auto;
-    grid-area: auto;
-    order: 0;
-  }
-  #item2 {
-    grid-column: auto;
-    grid-row: auto;
-    justify-self: center;
-    align-self: auto;
-    grid-area: auto;
-    order: 0;
-  }
-#item3 {
-  grid-column: auto;
-  grid-row: auto;
-  justify-self: center;
-  align-self: auto;
-  grid-area: auto;
-  order: 0;
+#aboutwhole {
+    background-color: #000000;
 }
-#item4 {
-    grid-column: auto;
-    grid-row: auto;
-    justify-self: center;
-    align-self: auto;
-    grid-area: auto;
-    order: 0;
-  }
+
+footer {
+    clear: both;
+}

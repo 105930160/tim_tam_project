@@ -12,11 +12,8 @@
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
-
     <nav>
-        <!--nav is seperated into top and bottom in order to more easily deal with everything-->
         <div id="navtop">
-            <!--likewise, navtop is seperated into two seperate divs-->
             <div id="navtopmiddle">
                 <a href="index.html"><img id="logo" src="Images/GenericITCompanyLogo.png" alt="Generic IT Company Logo"></a>
             </div>
@@ -34,6 +31,7 @@
 
     <main id="aboutmain">
         <h1 id="mainheading">Our Team</h1>
+        <div id="aboutwhole">
             <section id="groupinfo">
                 <h2>Group Information</h2>
             <ul>
@@ -41,9 +39,9 @@
                 <li>Class day and time: Wednesday 4:30pm</li>
                 <li>Group members
                     <ul>
-                        <li>Angel - (student ID here)</li>
+                        <li>Angel - 105930160</li>
                         <li>Sasha - 106004587</li>
-                        <li>Akira - (student ID here)</li>
+                        <li>Akira - 105913349</li>
                         <li>Ethan - 105784587</li>
                     </ul>
                 </li>
@@ -53,8 +51,8 @@
 
             <section id="figsec">
                 <figure>
-                    <img id="groupphoto" src="images/placeholder_potato.jpg" alt="Group photo with all 4 members">
-                    <figcaption>Group photo with all members</figcaption>
+                    <img id="grouppic" src="images/Group_photo.jpg" alt="Group photo with all 4 members">
+                    <figcaption id="figcapabout">Group photo with all members</figcaption>
                 </figure>
             </section>
         
@@ -86,7 +84,7 @@
                     <tbody>
                         <tr>
                             <td class="tablecell">Angel</td>
-                            <td class="tablecell">Placeholder</td>
+                            <td class="tablecell">Music, Programming</td>
                             <td class="tablecell" rowspan="4">Using HTML and CSS to create webpages!</td> <!--merge this into all 4 cells of final column-->
                         </tr>
                         <tr>
@@ -95,7 +93,7 @@
                         </tr>
                         <tr>
                             <td class="tablecell">Akira</td>
-                            <td class="tablecell">Placeholder</td>
+                            <td class="tablecell">Programming, Doodling, Fish</td>
                         </tr>
                         <tr>
                             <td class="tablecell">Ethan</td>
@@ -103,10 +101,11 @@
                         </tr>
                     </tbody>
                 </table>
-            </section>  
+            </section> 
+        </div> 
     </main>
 
-    <footer id="aboutfooter">
+    <footer>
         <a href="https://tamstim72.atlassian.net/jira/software/projects/SCRUM/boards/1" target="_blank"><p> Our Jira</p></a>
     </footer>
 
