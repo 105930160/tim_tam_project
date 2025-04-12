@@ -2,24 +2,22 @@
 filename: styles.css
 author: Ethan Roden
 created: 05/04/25
-last modified: 11/04/25
+last modified: 12/04/25
 description: Currently CSS for about page only
 */
 
-/* main {
-    background-color: #000000;
-} */
-
+/* sets up font and color for whole page */
 .aboutmain {
     background-color: rgb(36, 35, 35);
-}
-
-#mainheading {
-    text-align: center;
     font-family: sans-serif;
     color: #00ff48;
 }
 
+#aboutheading {
+    text-align: center;
+}
+
+/* used for making a CSS grid containing the 4 main parts of the page, sets up size of each row and column using fraction measurement */
 .containerabout {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -39,12 +37,11 @@ description: Currently CSS for about page only
     align-self: auto;
     grid-area: auto;
     order: 0;
-
-    background-color: #000000;
+    /*background-color: #000000;*/
     color: #00ff48;
     border-radius: 15px;
     padding: 2%;
-    margin: 3%;
+    margin: auto;
 }
 
 #figsec {
@@ -54,7 +51,7 @@ description: Currently CSS for about page only
     align-self: auto;
     grid-area: auto;
     order: 0;
-    background-color: #000000;
+    /*background-color: #000000;*/
     color: #00ff48;
     text-align: center;
     border-radius: 15px;
@@ -67,7 +64,11 @@ description: Currently CSS for about page only
 }
 
 #grouppic {
-    border: solid 5px red;
+    border: solid 2px #00ff48;
+}
+
+#contheading {
+    text-align: center;
 }
 
 #contributions {
@@ -77,11 +78,11 @@ description: Currently CSS for about page only
     align-self: auto;
     grid-area: auto;
     order: 0;
-    background-color: #000000;
+    /*background-color: #000000;*/
     color: #00ff48;
     border-radius: 15px;
     padding: 2%;
-    margin: 3%;
+    margin: auto%;
 }
 
 #tablesection {
@@ -91,7 +92,7 @@ description: Currently CSS for about page only
     align-self: center;
     grid-area: auto;
     order: 0;
-    background-color: #000000;
+    /*background-color: #000000;*/
     color: #00ff48;
     caption-side: bottom;
     border-radius: 15px;
@@ -109,11 +110,13 @@ description: Currently CSS for about page only
     font-size: larger;
 }
 
+/* class is used here for styling as there are multiple of the same things i want styled */
 .tableheading {
     border: 1px solid;
     border-radius: 10px;
     font-weight: bold;
-    padding: 3px;
+    padding: 10px;
+    background-color: #000000;
 }
 
 .tableheading:hover {
@@ -121,10 +124,12 @@ description: Currently CSS for about page only
     color: #000000;
 }
 
+/* class is used here for styling as there are multiple of the same things i want styled */
 .tablecell {
+    background-color: #000000;
     border: 1px solid;
     border-radius: 10px;
-    padding: 3px;
+    padding: 10px;
 }
 
 .tablecell:hover {

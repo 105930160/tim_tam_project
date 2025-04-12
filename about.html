@@ -11,6 +11,7 @@
     <link href="./styles/global.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
+
 <body>
     <nav>
         <div id="navtop">
@@ -29,25 +30,28 @@
         </div>
     </nav>
 
-    <main class="aboutmain">
-        <h1 id="mainheading">Our Team</h1>
-        <div class="containerabout">
+    <!-- <h1> and all <h2> have id tags, to style individually and not interfere with other pages when using shared CSS file-->
+    <!-- <main>, <div>, and elements potentially used on other pages have ID's with what it is + 'about', for styling CSS without conflicts and to know which page its from -->
 
-            <section id="contributions">
-                <h2>Contributions</h2>
+    <main class="aboutmain">
+        <h1 id="aboutheading">Our Team</h1>
+
+        <div class="containerabout"> <!-- put all 4 'sections' inside a larger whole so that i can set up CSS grid layout - ID for styling without conflict with other <div> -->
+            <section id="contributions"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading -->
+                <h2 id="contheading">Contributions</h2>
             <dl>
                 <dt>Angel</dt>
-                <dd>Created github project, Created and styled the jobs page</dd>
+                <dd>Created github project. Created and styled the jobs page</dd>
                 <dt>Sasha</dt>
-                <dd>Created initial design for header, navbar and footer, Created and styled the Application page</dd>
+                <dd>Drew up initial design for header, navbar and footer. Created and styled the Application page</dd>
                 <dt>Akira</dt>
-                <dd>Created group email and Jira, created HTML template, Created and styled the home page</dd>
+                <dd>Created group email and Jira, created HTML template. Created and styled the home page</dd>
                 <dt>Ethan</dt>
                 <dd>Created and styled the About page</dd>
             </dl>
             </section>
 
-            <section id="groupinfo">
+            <section id="groupinfo"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading -->
                 <h2>Group Information</h2>
             <ul>
                 <li>Group name: Tim Tams</li>
@@ -64,9 +68,9 @@
             </ul>
             </section>
 
-            <section id="tablesection">
+            <section id="tablesection"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading -->
+                <h2 id="inttableheading">Group Interests</h2> 
                 <table id="inttable">
-                    <h2 id="inttableheading">Group Interests</h2>
                     <caption id="tablecap">Of course we all love HTML and CSS, why wouldnt we!</caption>
                     <thead>
                         <tr>
@@ -75,7 +79,6 @@
                             <th class="tableheading">Shared interest</th> <!--Need to show off merged section of table, this gives good reason to-->
                         </tr>
                     </thead>
-    
                     <tbody>
                         <tr>
                             <td class="tablecell">Angel</td>
@@ -98,21 +101,19 @@
                 </table>
             </section> 
 
-            <section id="figsec">
+            <section id="figsec"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading -->
                 <h2>Group Photo</h2>
                 <figure>
                     <img id="grouppic" src="images/Group_photo.jpg" alt="Group photo with all 4 members">
                     <figcaption id="figcapabout">From left to right: Sasha, Ethan, Angel and Akira</figcaption>
                 </figure>
             </section>
-        
         </div> 
     </main>
 
     <footer>
         <a href="https://tamstim72.atlassian.net/jira/software/projects/SCRUM/boards/1" target="_blank"><p> Our Jira</p></a>
     </footer>
-
 </body>
 
 </html>
