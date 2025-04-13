@@ -8,7 +8,7 @@ video source
 {
     background-color: blue;
 }
-
+/* this is the ain container to hold all info of each job position */
 .jobPosting {
     background-color: #e2e2e2c2;
     padding: 2rem;
@@ -20,7 +20,7 @@ video source
     justify-content: space-around;
     box-shadow: 15px 15px 1px rgb(0, 3, 1);
 }
-
+/* used to display responsibilities and qualifications */
 .jobPosting aside {
     background-color: #a8a8a8b8;
     padding: 1rem;
@@ -160,7 +160,7 @@ footer a p
 body{
     background-color: #172817;
 }
-
+/* this is for the title that will be displayed at the top of the webpage */
 #JobPostingTitle {
     font: italic small-caps bold 52px "Segoe UI", sans-serif;
     color: wheat;
