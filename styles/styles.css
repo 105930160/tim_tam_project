@@ -151,6 +151,7 @@ footer
     background-color: #1a1a1a;
     font-style: oblique;
     font-family: sans-serif;
+    text-align: center;
 }
 footer a p 
 {
@@ -158,4 +159,12 @@ footer a p
 }
 body{
     background-color: #172817;
+}
+
+#JobPostingTitle {
+    font: italic small-caps bold 52px "Segoe UI", sans-serif;
+    color: wheat;
+    padding-left: 12.5vw;
+    text-shadow: 4px 4px 1px rgb(0, 3, 1);
+
 }
