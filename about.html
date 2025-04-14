@@ -13,31 +13,32 @@
 </head>
 
 <body>
-    <header>
-        <!--nav is seperated into top and bottom in order to more easily deal with everything-->
+    <nav>
         <div id="navtop">
-            <!--likewise, navtop is seperated into two seperate divs-->
             <div id="navtopmiddle">
                 <a href="index.html"><img id="logo" src="Images/GenericITCompanyLogo.png" alt="Generic IT Company Logo"></a>
             </div>
-            <aside>
+            <div id="navtopright">
                 <a href="mailto:tamstim72@gmail.com" id="contactus"><p>Contact Us!</p></a>
-            </aside>
+            </div>
        </div>
-        <nav>
+        <div id="navbottom">
                 <a id="homebutton" href="index.html"><p>Home</p></a>
                 <a href="apply.html"><p>Apply</p></a>
                 <a href="about.html"><p>About</p></a>
                 <a href="jobs.html"><p>Jobs</p></a>
-        </nav>
-    </header>
+        </div>
+    </nav>
+
+    <!-- <h1> and all <h2> have id tags, to style individually and not interfere with other pages when using shared CSS file-->
+    <!-- <main>, <div>, and elements potentially used on other pages have ID's with what it is + 'about', for styling CSS without conflicts and to know which page its from -->
 
     <main class="aboutmain">
-        <h1 id="aboutheading">Our Team</h1> <!-- descriptive id, easy to comprehend and avoids CSS conflicts with other <h1> elements from other pages -->
+        <h1 id="aboutheading">Our Team</h1>
 
-        <div class="containerabout"> <!-- put all 4 'sections' inside, so that i can set up CSS grid layout - ID for styling without conflict with any other <div> -->
-            <section id="contributions"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading, id used for easy styling of whole section -->
-                <h2 id="contributionsheading">Contributions</h2> <!-- descriptive id used for <h2> element for ease of understanding and avoiding CSS conflict with other <h2>-->
+        <div class="containerabout"> <!-- put all 4 'sections' inside a larger whole so that i can set up CSS grid layout - ID for styling without conflict with other <div> -->
+            <section id="contributions"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading -->
+                <h2 id="contheading">Contributions</h2>
             <dl>
                 <dt>Angel</dt>
                 <dd>Created github project. Created and styled the jobs page</dd>
@@ -50,8 +51,8 @@
             </dl>
             </section>
 
-            <section id="groupinfo"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading, id used for easy styling of whole section -->
-                <h2 id="groupinfoheading">Group Information</h2> <!-- descriptive id used for <h2> element for ease of understanding and avoiding CSS conflict with other <h2>-->
+            <section id="groupinfo"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading -->
+                <h2>Group Information</h2>
             <ul>
                 <li>Group name: Tim Tams</li>
                 <li>Class day and time: Wednesday 4:30pm</li>
@@ -67,41 +68,41 @@
             </ul>
             </section>
 
-            <section id="tablesection"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading, id used for easy styling of whole section -->
-                <h2 id="intereststableheading">Group Interests</h2> <!-- descriptive id used for <h2> element for ease of understanding and avoiding CSS conflict with other <h2>-->
-                <table id="intereststable">
+            <section id="tablesection"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading -->
+                <h2 id="inttableheading">Group Interests</h2> 
+                <table id="inttable">
                     <caption id="tablecap">Of course we all love HTML and CSS, why wouldnt we!</caption>
                     <thead>
                         <tr>
-                            <th class="tableheading">Name</th> <!-- class used as multiple elements of the table require same styling -->
+                            <th class="tableheading">Name</th>
                             <th class="tableheading">Interests</th>
                             <th class="tableheading">Shared interest</th> <!--Need to show off merged section of table, this gives good reason to-->
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="tablecell">Angel</td> <!-- class used as multiple elements of the table require same styling -->
+                            <td class="tablecell">Angel</td>
                             <td class="tablecell">Music, Programming</td>
                             <td class="tablecell" rowspan="4">Using HTML and CSS to create webpages!</td> <!--merge this into all 4 cells of final column-->
                         </tr>
                         <tr>
-                            <td class="tablecell">Sasha</td> <!-- class used as multiple elements of the table require same styling -->
+                            <td class="tablecell">Sasha</td>
                             <td class="tablecell">DnD, Drawing</td>
                         </tr>
                         <tr>
-                            <td class="tablecell">Akira</td> <!-- class used as multiple elements of the table require same styling -->
+                            <td class="tablecell">Akira</td>
                             <td class="tablecell">Programming, Doodling, Fish</td>
                         </tr>
                         <tr>
-                            <td class="tablecell">Ethan</td> <!-- class used as multiple elements of the table require same styling -->
+                            <td class="tablecell">Ethan</td>
                             <td class="tablecell">Gaming, Reading</td>
                         </tr>
                     </tbody>
                 </table>
             </section> 
 
-            <section id="figsec"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading, id used for easy styling of whole section -->
-                <h2 id="groupphotoheading">Group Photo</h2> <!-- descriptive id used for <h2> element for ease of understanding and avoiding CSS conflict with other <h2>-->
+            <section id="figsec"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading -->
+                <h2>Group Photo</h2>
                 <figure>
                     <img id="grouppic" src="images/Group_photo.jpg" alt="Group photo with all 4 members">
                     <figcaption id="figcapabout">From left to right: Sasha, Ethan, Angel and Akira</figcaption>

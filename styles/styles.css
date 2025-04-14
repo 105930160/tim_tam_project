@@ -1,10 +1,20 @@
-/*-------------------------------------------------------------------------------------------------------------------------------------------*/
-/*about.html CSS*/
+/*
+filename: styles.css
+author: Ethan Roden
+created: 05/04/25
+last modified: 12/04/25
+description: Currently CSS for about page only
+*/
 
-/* ID used for the <h1> of the about page */
+/* sets up font and color for whole page */
+.aboutmain {
+    background-color: rgb(36, 35, 35);
+    font-family: sans-serif;
+    color: #00ff48;
+}
+
 #aboutheading {
     text-align: center;
-    color: #00ff48;
 }
 
 /* used for making a CSS grid containing the 4 main parts of the page, sets up size of each row and column using fraction measurement */
@@ -18,21 +28,8 @@
     justify-content: start;
     align-content: start;
     grid-auto-flow: row;
-    width: 90%;
-    margin: 0%;
-    padding: 15px;
 }
 
-/* media query used to allow the container to adjust size based on smaller screens */
-/* this section of code is from the week 5 lessons on canvas */
-@media only screen and (max-width: 768px) {
-    .container {
-        width: 100%;
-        padding: 10px;
-    }
-}
-
-/* id for the <section> that is group information */
 #groupinfo {
     grid-column: auto;
     grid-row: auto;
@@ -40,23 +37,13 @@
     align-self: auto;
     grid-area: auto;
     order: 0;
+    /*background-color: #000000;*/
     color: #00ff48;
     border-radius: 15px;
     padding: 2%;
     margin: auto;
 }
 
-/* id for <h2> of group information section */
-#groupinfoheading {
-    text-align: center;
-}
-
-/* id for group photo section <h2 element */
-#groupphotoheading {
-    text-align: center;
-}
-
-/* id for the <section> containing the group photo and accompanying elements */
 #figsec {
     grid-column: auto;
     grid-row: auto;
@@ -64,31 +51,26 @@
     align-self: auto;
     grid-area: auto;
     order: 0;
+    /*background-color: #000000;*/
     color: #00ff48;
     text-align: center;
     border-radius: 15px;
     float: right;
 }
 
-/* styling the figure caption in the figure section*/
 #figcapabout {
     color: #00ff48;
     text-align: center;
 }
 
-/* styling the <img> in the group photo section */
 #grouppic {
     border: solid 2px #00ff48;
-    max-width: 100%;
-    height: auto;
 }
 
-/* id for <h2> of contributions section*/
-#contributionsheading {
+#contheading {
     text-align: center;
 }
 
-/* id for the <section> that is about the group contributions */
 #contributions {
     grid-column: auto;
     grid-row: auto;
@@ -96,13 +78,13 @@
     align-self: auto;
     grid-area: auto;
     order: 0;
+    /*background-color: #000000;*/
     color: #00ff48;
     border-radius: 15px;
     padding: 2%;
-    margin: auto;
+    margin: auto%;
 }
 
-/* id for the table <section> on about page */
 #tablesection {
     grid-column: auto;
     grid-row: auto;
@@ -110,6 +92,7 @@
     align-self: center;
     grid-area: auto;
     order: 0;
+    /*background-color: #000000;*/
     color: #00ff48;
     caption-side: bottom;
     border-radius: 15px;
@@ -117,18 +100,17 @@
     margin: auto;
 }
 
-/* id used for interest table <h2> element */
-#intereststableheading {
+#inttableheading {
     text-align: center;
+    font-family: sans-serif;
     color: #00ff48;
 }
 
-/* id for caption of the table */
 #tablecap {
     font-size: larger;
 }
 
-/* class is used here for styling as there are multiple of the same thing to be styled */
+/* class is used here for styling as there are multiple of the same things i want styled */
 .tableheading {
     border: 1px solid;
     border-radius: 10px;
@@ -137,13 +119,12 @@
     background-color: #000000;
 }
 
-/* class used to stlye multiple of the same thing */
 .tableheading:hover {
     background-color: #00ff48;
     color: #000000;
 }
 
-/* class is used here for styling as there are multiple of the same thing to be styled */
+/* class is used here for styling as there are multiple of the same things i want styled */
 .tablecell {
     background-color: #000000;
     border: 1px solid;
@@ -151,7 +132,6 @@
     padding: 10px;
 }
 
-/* class used to stlye multiple of the same thing */
 .tablecell:hover {
     background-color: #00ff48;
     color: #000000;
