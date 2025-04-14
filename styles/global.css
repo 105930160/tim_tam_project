@@ -94,6 +94,7 @@ header aside
 nav
 {
     border-top: 2px solid white;
+    border-bottom: 2px solid white;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -132,4 +133,7 @@ footer a p
 {
     color: #00ff48;
     margin: 0;
+}
+body{
+    background-color: #172817;
 }
