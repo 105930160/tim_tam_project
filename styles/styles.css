@@ -1,5 +1,138 @@
 /*
 filename: styles.css
+*/
+
+/* sets up font and color for whole page */
+.aboutmain {
+    background-color: rgb(36, 35, 35);
+    font-family: sans-serif;
+    color: #00ff48;
+}
+
+#aboutheading {
+    text-align: center;
+}
+
+/* used for making a CSS grid containing the 4 main parts of the page, sets up size of each row and column using fraction measurement */
+.containerabout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 3fr;
+    gap: 10px;
+    justify-items: stretch;
+    align-items: stretch;
+    justify-content: start;
+    align-content: start;
+    grid-auto-flow: row;
+}
+
+#groupinfo {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
+    /*background-color: #000000;*/
+    color: #00ff48;
+    border-radius: 15px;
+    padding: 2%;
+    margin: auto;
+}
+
+#figsec {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
+    /*background-color: #000000;*/
+    color: #00ff48;
+    text-align: center;
+    border-radius: 15px;
+    float: right;
+}
+
+#figcapabout {
+    color: #00ff48;
+    text-align: center;
+}
+
+#grouppic {
+    border: solid 2px #00ff48;
+}
+
+#contheading {
+    text-align: center;
+}
+
+#contributions {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
+    /*background-color: #000000;*/
+    color: #00ff48;
+    border-radius: 15px;
+    padding: 2%;
+    margin: auto%;
+}
+
+#tablesection {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: center;
+    grid-area: auto;
+    order: 0;
+    /*background-color: #000000;*/
+    color: #00ff48;
+    caption-side: bottom;
+    border-radius: 15px;
+    padding: 2%;
+    margin: auto;
+}
+
+#inttableheading {
+    text-align: center;
+    font-family: sans-serif;
+    color: #00ff48;
+}
+
+#tablecap {
+    font-size: larger;
+}
+
+/* class is used here for styling as there are multiple of the same things i want styled */
+.tableheading {
+    border: 1px solid;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #000000;
+}
+
+.tableheading:hover {
+    background-color: #00ff48;
+    color: #000000;
+}
+
+/* class is used here for styling as there are multiple of the same things i want styled */
+.tablecell {
+    background-color: #000000;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.tablecell:hover {
+    background-color: #00ff48;
+    color: #000000;
+}
+=======
 authors: Ethan Roden, Angel Parra, Sasha Panisset , Akira Ellis
 created: 26/03/25
 last modified: 14/04/25
@@ -441,3 +574,4 @@ figure
     text-shadow: 4px 4px 1px rgb(0, 3, 1);
 
 }
+
