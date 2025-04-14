@@ -1,19 +1,47 @@
-/**/
+/*
+filename: styles.css
+author: 
+created: 26/03/25
+last modified: 14/04/25
+description: singular css document, used for all pages. 
+*/
 
+
+/*--------------------------------------------------------------------------------------------------------------*/
+/*global CSS*/
+
+body
+{
+    background-color: #172817;
+}
+footer
+{
+    margin:0;
+    padding:0;
+}
+footer a p 
+{
+    color: #00ff48;
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------*/
+/*index.html CSS*/
+
+
+/*video container for stock footage video, has rainbow background while vid loads on client*/
 video
 {
     background: linear-gradient(to right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
     opacity: 0.95;
 }
-body
-{
-    background-color: #172817;
-}
+/*semantic container for video*/
 figure
 {
     margin:0;
     position:relative;
 }
+/*overlay text is positioned absolutely relatively to parent (figure)*/
 #overlaytext {
     position: absolute;
     top: 40%;
@@ -21,7 +49,6 @@ figure
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
-    
 }
 #overlaytext h1
 {
@@ -32,35 +59,40 @@ figure
 }
 #overlaytext p 
 {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
     font-size: 2vmax
 }
+/*containers for fields containing very important but basic company description*/
 .companydescription
 {
     color: black;
-    background-color: #a8a8a8b8;
+    background-color: white;
     text-align: center;
     margin: 5vw;
     border-radius: 12px;
     padding:1vmax;
-    box-shadow: 10 10 10 #dddd;
+    box-shadow: 15px 15px 100px rgb(0, 256, 0);
 }
 .companydescription p 
 {
     font-size: 2vmax;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 .companydescription h2
 {
     font-size: 3vmax;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+/*container of all company descriptions*/
 #companydescriptions
 {
     max-width: 90vw;
     margin-right:5vw;
     margin-left:5vw;
-    background-color:  #e2e2e2c2;
+    background-color:  black;
     padding-top: 0.1vw;
     padding-bottom: 0.1vw;  
+    border-left: 10px solid #00ff48;
+    border-right: 10px solid #00ff48;
+    margin-bottom: 0;
 }
