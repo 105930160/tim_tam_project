@@ -93,7 +93,7 @@ figure
     max-width: 90vw;
     margin-right:5vw;
     margin-left:5vw;
-    background-color:  black;
+    background-image: linear-gradient(black, rgb(0, 60, 0), black);
     padding-top: 0.1vw;
     padding-bottom: 0.1vw;  
     border-left: 10px solid #00ff48;
