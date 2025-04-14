@@ -17,7 +17,7 @@ body
     margin:0;
 }
 /*this is the container for the navigation bar. The background is black*/
-nav
+header
 {
     background-color: black;  
 }
@@ -30,12 +30,12 @@ navtop is a bit weird as i had to do some jiggeri pokery to get it working but t
     grid-template-columns: minmax(0,16.66%) 66.6% 16.66%;
 }
 /*navtopmiddle contains the Logo and navtop right contains the 'contact us'*/
-#navtopmiddle, #navtopright
+#navtopmiddle, header aside
 {
     min-height: 100%;
 }
 /*uses a flex-layout to align the button contained within. min width for dynamic design (part of the grid layout)*/
-#navtopright
+header aside
 {
     display: flex;
     justify-content: right;
@@ -91,7 +91,7 @@ navtop is a bit weird as i had to do some jiggeri pokery to get it working but t
     background-color: #00290c;
 }
 /*bottom part of the nav element, contains the main navigation buttons and uses a flex-layout*/
-#navbottom
+nav
 {
     border-top: 2px solid white;
     display: flex;
@@ -102,7 +102,7 @@ navtop is a bit weird as i had to do some jiggeri pokery to get it working but t
     padding-left: 0px;;
 }
 /*styling for the buttonnsss which are technically anchors but don't worry about that*/ 
-#navbottom a
+nav a
 {
     padding-right: 5%;
     padding-left: 5%;
@@ -111,7 +111,7 @@ navtop is a bit weird as i had to do some jiggeri pokery to get it working but t
     text-decoration: none;
 }
 /*hovering to change the color OoooOoo*/
-#navbottom a:hover
+nav a:hover
 {
     background-color: #1a1a1a;
 }
@@ -130,4 +130,7 @@ footer
 footer a p 
 {
     color: white;
+}
+body{
+    background-color: #172817;
 }
