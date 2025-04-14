@@ -26,7 +26,7 @@
 /* media query used to allow the container to adjust size based on smaller screens */
 /* this section of code is from the week 5 lessons on canvas */
 @media only screen and (max-width: 768px) {
-    .containerabout {
+    .container {
         width: 100%;
         padding: 10px;
     }
