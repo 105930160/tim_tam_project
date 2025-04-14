@@ -13,24 +13,24 @@
     </head>
 
     <body>    
-        <nav>
+        <header>
             <!--nav is seperated into top and bottom in order to more easily deal with everything-->
             <div id="navtop">
                 <!--likewise, navtop is seperated into two seperate divs-->
                 <div id="navtopmiddle">
                     <a href="index.html"><img id="logo" src="Images/GenericITCompanyLogo.png" alt="Generic IT Company Logo"></a>
                 </div>
-                <div id="navtopright">
+                <aside>
                     <a href="mailto:tamstim72@gmail.com" id="contactus"><p>Contact Us!</p></a>
-                </div>
+                </aside>
            </div>
-            <div id="navbottom">
-                    <a id="homebutton" href="index.html"><p>Home</p></a>
-                    <a id="applybutton" href="apply.html"><p>Apply</p></a>
-                    <a id="aboutbutton" href="about.html"><p>About</p></a>
-                    <a id="jobsbutton" href="jobs.html"><p>Jobs</p></a>
-            </div>
-        </nav>
+            <nav>
+                <a id="homebutton" href="index.html"><p>Home</p></a>
+                <a id="applybutton" href="apply.html"><p>Apply</p></a>
+                <a href="about.html"><p>About</p></a>
+                <a href="jobs.html"><p>Jobs</p></a>
+            </nav>
+        </header>
 
         <!--Main for all the... Main stuff (:O)-->
         <main>
@@ -77,7 +77,7 @@
                         <h2>Address:</h2>
                             <div class="row">
                                 <div class="col-25"><label for="street_address">Street Address:</label></div>
-                                    <div class="col-75"><input type="text" id="street_address" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="00 Road St"></div>
+                                    <div class="col-75"><input type="text" id="street_address" maxlength="40" pattern="^[a-zA-Z0-9 ]+$" required="required" placeholder="00 Road St"></div>
                             </div>
                             <br>
                             
@@ -106,8 +106,8 @@
 
                             <div class="row">
                                 <div class="col-25"><label for="postcode">Postcode:</label></div>
-                                    <div class="col-75"><input type="text" id="postcode" size="4" maxlength="4" pattern="^\d+$" required="required" placeholder="0000"></div>
-                            </div>  <!--SP [1/4 3:30]: need to figure out the pattern for postcode *based on state*-->
+                                    <div class="col-75"><input type="text" id="postcode" size="4" maxlength="4" pattern="^([0-9]{4})([200|9944])$" required="required" placeholder="0000"></div>
+                            </div>  
                             
                         </section><!--SP [1/4 3:15pm]: end address div-->
                     
@@ -144,41 +144,41 @@
                                 <legend><span>Required Skills:</span></legend>
                                     <ul id="skills_list"> <!--network admin skills-->
                                         <li class="subtitle col-75">----- For Network Admin: -----</li>
-                                        <li><div class="col-75"><label for="job1_skill1"><input type="checkbox" id="job1_skill1" name="skills[]" value="skill_1" checked="checked" required="required">
-                                        Bachelor's degree in Information Technology, Computer Science, or related field.</label></div></li>
+                                        <li><div class="col-75"><label for="job1_skill1"><input type="checkbox" id="job1_skill1" name="skills[]" value="BA IT/CS/related" checked="checked">
+                                        Bachelor's degree in Information Tech, Computer Science, or related field.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job1_skill2"><input type="checkbox" id="job1_skill2" name="skills[]" value="skill_2">
+                                        <li><div class="col-75"><label for="job1_skill2"><input type="checkbox" id="job1_skill2" name="skills[]" value="3+yrs network admin">
                                         3 years of experience in network administration.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job1_skill3"><input type="checkbox" id="job1_skill3" name="skills[]" value="skill_3">
+                                        <li><div class="col-75"><label for="job1_skill3"><input type="checkbox" id="job1_skill3" name="skills[]" value="router + switch config prof">
                                         Proficiency in configuring routers and switches.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job1_skill4"><input type="checkbox" id="job1_skill4" name="skills[]" value="skill_4">
+                                        <li><div class="col-75"><label for="job1_skill4"><input type="checkbox" id="job1_skill4" name="skills[]" value="trblsht prob-solv skill">
                                         Strong troubleshooting and problem-solving skills.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job1_skill5"><input type="checkbox" id="job1_skill5" name="skills[]" value="skill_5">
+                                        <li><div class="col-75"><label for="job1_skill5"><input type="checkbox" id="job1_skill5" name="skills[]" value="CCNA certif">
                                         Certifications such as CCNA.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job1_skill6"><input type="checkbox" id="job1_skill6" name="skills[]" value="skill_6">
+                                        <li><div class="col-75"><label for="job1_skill6"><input type="checkbox" id="job1_skill6" name="skills[]" value="cloud net exp">
                                         Experience with cloud networking</label></div></li>
                                         
                                         <li class="subtitle col-75">----- For Software Developer: -----</li> <!--software developer skills-->
-                                        <li><div class="col-75"><label for="job2_skill1"><input type="checkbox" id="job2_skill1" name="skills[]" value="skill_1" checked="checked" required="required">
+                                        <li><div class="col-75"><label for="job2_skill1"><input type="checkbox" id="job2_skill1" name="skills[]" value="BA CS/related" checked="checked">
                                         Bachelor's degree in Computer Science or related field</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job2_skill2"><input type="checkbox" id="job2_skill2" name="skills[]" value="skill_2">
+                                        <li><div class="col-75"><label for="job2_skill2"><input type="checkbox" id="job2_skill2" name="skills[]" value="3+yrs softwr dev">
                                         3+ years of experience in software development</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job2_skill3"><input type="checkbox" id="job2_skill3" name="skills[]" value="skill_3">
+                                        <li><div class="col-75"><label for="job2_skill3"><input type="checkbox" id="job2_skill3" name="skills[]" value="Python/C++ prof">
                                         Proficiency in Python, or C++</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job2_skill4"><input type="checkbox" id="job2_skill4" name="skills[]" value="skill_4">
+                                        <li><div class="col-75"><label for="job2_skill4"><input type="checkbox" id="job2_skill4" name="skills[]" value="prob-solv skill">
                                         Strong problem-solving skills.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job2_skill5"><input type="checkbox" id="job2_skill5" name="skills[]" value="skill_5">
+                                        <li><div class="col-75"><label for="job2_skill5"><input type="checkbox" id="job2_skill5" name="skills[]" value="cloud tech exp">
                                         Experience with cloud technologies</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job2_skill6"><input type="checkbox" id="job2_skill6" name="skills[]" value="skill_6">
+                                        <li><div class="col-75"><label for="job2_skill6"><input type="checkbox" id="job2_skill6" name="skills[]" value="Agile exp">
                                         Familiarity with Agile frameworks</label></div></li>
                                     </ul>
                             </fieldset>
