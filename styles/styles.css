@@ -34,6 +34,7 @@ video
 {
     background: linear-gradient(to right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
     opacity: 0.95;
+    width: 100%;
 }
 /*semantic container for video*/
 figure
@@ -78,7 +79,7 @@ figure
     font-size: 2vmax;
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
-.companydescription h2
+.companydescription h3
 {
     font-size: 3vmax;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -86,6 +87,8 @@ figure
 /*container of all company descriptions*/
 #companydescriptions
 {
+    text-align: center;
+    color: #00ff48;
     max-width: 90vw;
     margin-right:5vw;
     margin-left:5vw;
@@ -95,4 +98,10 @@ figure
     border-left: 10px solid #00ff48;
     border-right: 10px solid #00ff48;
     margin-bottom: 0;
+}
+#companydescriptions h2
+{
+    
+    font-size: 3.2vmax;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
