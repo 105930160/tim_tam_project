@@ -1,7 +1,11 @@
 /*
-filename: styles.css
+authors: Ethan Roden, Angel Parra, Sasha Panisset , Akira Ellis
+created: 26/03/25
+last modified: 14/04/25
+description: singular css document, used for all pages. 
 */
 
+/*---------------------------------------------------- about.html CSS ----------------------------------------------------------*/
 /* sets up font and color for whole page */
 .aboutmain {
     background-color: rgb(36, 35, 35);
@@ -101,7 +105,7 @@ filename: styles.css
     color: #00ff48;
     border-radius: 15px;
     padding: 2%;
-    margin: auto%;
+    margin: auto;
 }
 
 #tablesection {
@@ -155,12 +159,7 @@ filename: styles.css
     background-color: #00ff48;
     color: #000000;
 }
-=======
-authors: Ethan Roden, Angel Parra, Sasha Panisset , Akira Ellis
-created: 26/03/25
-last modified: 14/04/25
-description: singular css document, used for all pages. 
-*/
+
 
 /* ---------------------------------------------------------------------apply.html css----------------------------------------------*/
 /* nav bar: changing the colour of the apply button to signal current page */
