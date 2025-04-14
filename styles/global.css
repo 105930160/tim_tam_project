@@ -101,6 +101,7 @@ nav
     width: 100%;
     margin-top: 0px;
     padding-left: 0px;;
+    border-bottom: 2px solid white;
 }
 /*styling for the buttonnsss which are technically anchors but don't worry about that*/ 
 nav a
@@ -130,7 +131,8 @@ footer
 }
 footer a p 
 {
-    color: white;
+    color: #00ff48;
+    margin: 0;
 }
 body{
     background-color: #172817;
