@@ -310,6 +310,14 @@ nav a:hover
 {
     border-left: 1px solid white
 }
+#aboutbutton
+{
+    background-color: #1A8E3C;
+}
+#jobsbutton
+{
+    background-color: #1A8E3C;
+}
 /*basic footer stuff really*/
 footer
 {
