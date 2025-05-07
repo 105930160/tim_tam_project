@@ -92,9 +92,7 @@
         </div> 
     </main>
 
-    <footer>
-        <a href="https://tamstim72.atlassian.net/jira/software/projects/SCRUM/boards/1" target="_blank"><p> Our Jira</p></a>
-    </footer>
+    <?php include 'footer.inc'; ?>
 </body>
 
 </html>
