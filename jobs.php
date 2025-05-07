@@ -10,24 +10,7 @@
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
-    <header>
-        <!--nav is seperated into top and bottom in order to more easily deal with everything-->
-        <div id="navtop">
-            <!--likewise, navtop is seperated into two seperate divs-->
-            <div id="navtopmiddle">
-                <a href="index.html"><img id="logo" src="Images/GenericITCompanyLogo.png" alt="Generic IT Company Logo"></a>
-            </div>
-            <aside>
-                <a href="mailto:info@genericitcompany.com.au" id="contactus"><p>Contact Us!</p></a>
-            </aside>
-       </div>
-        <nav>
-                <a id="homebutton" href="index.html"><p>Home</p></a>
-                <a href="apply.html"><p>Apply</p></a>
-                <a href="about.html"><p>About</p></a>
-                <a id="jobsbutton" href="jobs.html"><p>Jobs</p></a>
-        </nav>
-    </header>
+    <?php include 'header.inc'; ?>
     <h1 id="JobPostingTitle">Jobs Available</h1>
 
     <!-- Each posting layout
