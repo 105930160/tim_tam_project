@@ -9,6 +9,21 @@
         <title>Search EOIs</title>
     </head>
     <body>
-        
+        <h1>EOI Manager</h1>
+
+        <table> <caption>Pending Expressions of Interest:</caption>
+            <tr>
+                <th>EOI Num</th>
+                <th>Job Ref Num</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Skills</th>
+                <th>Other Skills</th>
+            </tr>
+            
+        </table>
     </body>
 </html>
