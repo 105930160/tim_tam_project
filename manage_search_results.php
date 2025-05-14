@@ -6,6 +6,14 @@
     </head>
     <body>
         <h1>EOI Manager</h1>
+        <?php
+        require_once "settings.php";
+        require_once "process_eoi.php";
+        $conn = @mysqli_connect ($host,$username,$password,$database);
+        if (!$conn) {
+            echo "<p>Unable to connect to the db.</p>";
+        }
+        ?>
         <!--search boxes begin here-->
         <form method="GET" action="manage_search_results.php">
             <label>Job position:</label>
@@ -16,11 +24,7 @@
             <input type="text" name="last_name">
             <input type="submit" value="Search">
         </form>
-        <?php
-        require_once "settings.php";
-        require_once "process_eoi.php";
-        $conn = @mysqli_connect ($host,$username,$password,$database);
-        ?>
+
         <table> <caption>Pending Expressions of Interest:</caption>
             <tr>
                 <th>EOI Num</th>
@@ -34,12 +38,15 @@
                 <th>Other Skills</th>
             </tr>
         <?php
-        if (!$conn) {
-            echo "<p>Unable to connect to the db.</p>";
-        }
-        else{
-            $query = "SELECT * FROM eoi";
+
+        if (isset($_GET['job_ref_num'], $_GET['first_name'], $_GET['last_name'])) {
+            $job_ref_num = mysqli_real_escape_string($conn, $_GET['job_ref_num']);
+            $first_name = mysqli_real_escape_string($conn, $_GET['first_name']);
+            $last_name = mysqli_real_escape_string($conn, $_GET['last_name']);
+        
+            $query = "SELECT * FROM eoi WHERE job_ref_num LIKE '$job_ref_num' OR first_name LIKE '$first_name' OR last_name LIKE '$last_name'";
             $result = mysqli_query($conn, $query);
+
             if ($result && mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)){
                     $eoi_num = ($row['eoi_num']);
@@ -65,10 +72,9 @@
                     }
             }else{ 
                 echo "<td colspan='5'>No EOIs found with matching fields.</td>";
-                
             }
-        mysqli_close($dbconn);
-        }    
+        }
+        mysqli_close($dbconn);    
         ?>
         </table>
     </body>
