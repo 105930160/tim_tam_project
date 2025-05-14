@@ -20,6 +20,11 @@
             <input type="text" name="last_name">
             <input type="submit" value="Search">
         </form>
+        <?php
+        require_once "settings.php";
+        require_once "process_eoi.php";
+        $conn = @mysqli_connect ($host,$username,$password,$database);
+        ?>
         <table> <caption>Pending Expressions of Interest:</caption>
             <tr>
                 <th>EOI Num</th>
@@ -32,7 +37,42 @@
                 <th>Skills</th>
                 <th>Other Skills</th>
             </tr>
-            
+        <?php
+        if (!$conn) {
+            echo "<p>Unable to connect to the db.</p>";
+        }
+        else{
+            $query = "SELECT * FROM eoi";
+            $result = mysqli_query($conn, $query);
+            if ($result && mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)){
+                    $eoi_num = ($row['eoi_num']);
+                    $job_ref_num = ($row['job_ref_num']);
+                    $first_name = htmlspecialchars($row['first_name']);
+                    $last_name = htmlspecialchars($row['last_name']);
+                    $address = htmlspecialchars($row['address']);
+                    $email = htmlspecialchars($row['email']);
+                    $phone_num = htmlspecialchars($row['phone_num']);
+                    $skills = htmlspecialchars($row['skills']);
+                    $other = htmlspecialchars($row['other']);
+                    echo "<tr>";
+                    echo "<td>" . $eoi_num . "</td>";
+                    echo "<td>" . $job_ref_num . "</td>";
+                    echo "<td>" . $first_name . "</td>";
+                    echo "<td>$" . $last_name . "</td>";
+                    echo "<td>" . $address . "</td>";
+                    echo "<td>" . $email . "</td>";
+                    echo "<td>" . $phone_num . "</td>";
+                    echo "<td>" . $skills . "</td>";
+                    echo "<td>" . $other . "</td>";
+                    echo "</tr>";
+                    }
+            }else{ 
+                echo "<td colspan='5'> no EOIs found in the database.</td>";
+            }
+        mysqli_close($dbconn);
+        }    
+        ?>
         </table>
     </body>
 </html>
