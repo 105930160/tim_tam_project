@@ -53,7 +53,10 @@
                     $job_ref_num = ($row['job_ref_num']);
                     $first_name = htmlspecialchars($row['first_name']);
                     $last_name = htmlspecialchars($row['last_name']);
-                    $address = htmlspecialchars($row['address']);
+                    $street = htmlspecialchars($row['street']);
+                    $suburb = htmlspecialchars($row['suburb']);
+                    $state = htmlspecialchars($row['state']);
+                    $postcode = htmlspecialchars($row['postcode']);
                     $email = htmlspecialchars($row['email']);
                     $phone_num = htmlspecialchars($row['phone_num']);
                     $skills = htmlspecialchars($row['skills']);
@@ -63,7 +66,7 @@
                     echo "<td>" . $job_ref_num . "</td>";
                     echo "<td>" . $first_name . "</td>";
                     echo "<td>$" . $last_name . "</td>";
-                    echo "<td>" . $address . "</td>";
+                    echo "<td>" . $street . "<br>" . $suburb . ", " . $state . ", " . $postcode . "</td>";
                     echo "<td>" . $email . "</td>";
                     echo "<td>" . $phone_num . "</td>";
                     echo "<td>" . $skills . "</td>";
