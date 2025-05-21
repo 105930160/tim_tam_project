@@ -25,6 +25,7 @@
             <input type="submit" value="Search">
         </form>
 
+        <form>
         <table> <caption>Pending Expressions of Interest:</caption>
             <tr>
                 <th>EOI Num</th>
@@ -131,5 +132,7 @@
         mysqli_close($dbconn);    
         ?>
         </table>
+
+        </form>
     </body>
 </html>
