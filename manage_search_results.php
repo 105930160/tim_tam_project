@@ -68,7 +68,7 @@
                     echo "<td>" . $eoi_num . "</td>";
                     echo "<td>" . $job_ref_num . "</td>";
                     echo "<td>" . $first_name . "</td>";
-                    echo "<td>$" . $last_name . "</td>";
+                    echo "<td>" . $last_name . "</td>";
                     echo "<td>" . $street . "<br>" . $suburb . ", " . $state . ", " . $postcode . "</td>";
                     echo "<td>" . $email . "</td>";
                     echo "<td>" . $phone_num . "</td>";
