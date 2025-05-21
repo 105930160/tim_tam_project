@@ -17,11 +17,11 @@
         <!--search boxes begin here-->
         <form method="GET" action="manage_search_results.php">
             <label>Job position:</label>
-            <input type="text" name="job_ref_num">
+            <input type="text" name="Job_Reference_Number">
             <label>First name:</label>
-            <input type="text" name="first_name">
+            <input type="text" name="First_Name">
             <label>Last name:</label>
-            <input type="text" name="last_name">
+            <input type="text" name="Last_Name">
             <input type="submit" value="Search">
         </form>
 
@@ -36,33 +36,37 @@
                 <th>Phone</th>
                 <th>Skills</th>
                 <th>Other Skills</th>
+                <th>D.O.B</th>
+                <th>Gender</th>
                 <th>Status</th>
             </tr>
         <?php
 
-        if (isset($_GET['job_ref_num'], $_GET['first_name'], $_GET['last_name'])) {
-            $job_ref_num = mysqli_real_escape_string($conn, $_GET['job_ref_num']);
-            $first_name = mysqli_real_escape_string($conn, $_GET['first_name']);
-            $last_name = mysqli_real_escape_string($conn, $_GET['last_name']);
+        if (isset($_GET['Job_Reference_Number'], $_GET['First_Name'], $_GET['Last_Name'])) {
+            $job_ref_num = mysqli_real_escape_string($conn, $_GET['Job_Reference_Number']);
+            $first_name = mysqli_real_escape_string($conn, $_GET['First_Name']);
+            $last_name = mysqli_real_escape_string($conn, $_GET['Last_Name']);
         
-            $query = "SELECT * FROM eoi WHERE job_ref_num LIKE '$job_ref_num' OR first_name LIKE '$first_name' OR last_name LIKE '$last_name'";
+            $query = "SELECT * FROM eoi WHERE Job_Reference_Number LIKE '$job_ref_num' OR First_Name LIKE '$first_name' OR Last_Name LIKE '$last_name'";
             $result = mysqli_query($conn, $query);
 
             if ($result && mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)){
-                    $eoi_num = ($row['eoi_num']);
-                    $job_ref_num = ($row['job_ref_num']);
-                    $first_name = htmlspecialchars($row['first_name']);
-                    $last_name = htmlspecialchars($row['last_name']);
-                    $street = htmlspecialchars($row['street']);
-                    $suburb = htmlspecialchars($row['suburb']);
-                    $state = htmlspecialchars($row['state']);
-                    $postcode = htmlspecialchars($row['postcode']);
-                    $email = htmlspecialchars($row['email']);
-                    $phone_num = htmlspecialchars($row['phone_num']);
-                    $skills = htmlspecialchars($row['skills']);
-                    $other = htmlspecialchars($row['other']);
-                    $status = htmlspecialchars($row['status']);
+                    $eoi_num = ($row['EOI_ID']);
+                    $job_ref_num = ($row['Job_Reference_Number']);
+                    $first_name = htmlspecialchars($row['First_Name']);
+                    $last_name = htmlspecialchars($row['Last_Name']);
+                    $street = htmlspecialchars($row['Street_Address']);
+                    $suburb = htmlspecialchars($row['Sbuurb/Town']);
+                    $state = htmlspecialchars($row['State']);
+                    $postcode = htmlspecialchars($row['Postcode']);
+                    $email = htmlspecialchars($row['Email_Address']);
+                    $phone_num = htmlspecialchars($row['Phone_Number']);
+                    $skills = htmlspecialchars($row['Skills_ID']);  // link to skills table somehow
+                    $other = htmlspecialchars($row['Other_Skills']);
+                    $dob = htmlspecialchars($row['Date_Of_Birth']);
+                    $gender = htmlspecialchars($row['Gender']);
+                    $status = htmlspecialchars($row['Status']);
 
                     echo "<tr>";
                     echo "<td>" . $eoi_num . "</td>";
@@ -72,11 +76,14 @@
                     echo "<td>" . $street . "<br>" . $suburb . ", " . $state . ", " . $postcode . "</td>";
                     echo "<td>" . $email . "</td>";
                     echo "<td>" . $phone_num . "</td>";
-                    echo "<td>" . $skills . "</td>";
-                    echo "<td>" . $other . "</td>";
-                    echo "<td>" . $status . "</td>";
+                    echo "<td>" . $skills_id . "</td>";     // link to skills table somehow. 
+                    echo "<td>" . $other_skills . "</td>";
+                    echo "<td>" . $dob . "</td>";
+                    echo "<td>" . $gender . "</td>";
+                    echo "<td>" . $status . "</td>"; // make select input as part of form
                     echo "</tr>";
                     }
+                    // add delete and update buttons. 'change database' form ends here
             }else{ 
                 echo "<td colspan='5'>No EOIs found with matching fields.</td>";
             }
