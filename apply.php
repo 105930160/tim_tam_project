@@ -35,7 +35,7 @@
         <main>
 
             <!--SP [1/4 3:00pm]: form begins-->
-            <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+            <form action="process_eoi.php" method="post" novalidate>
                 <section class="form_main">
                     <h1 id="form_title">Application Form</h1>       
                     <!--SP [1/4 3:00pm]: applicant's personal details begin:-->
@@ -43,17 +43,17 @@
                         <h2>Your Details:</h2>
                             <div class="row">
                                 <div class="col-25"><label for="first_name">First Name:</label></div>
-                                    <div class="col-75"><input type="text" id="first_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your first name."></div>
+                                    <div class="col-75"><input type="text" id="first_name" name="first_name" size="15" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your first name."></div>
                             </div><br>
                             
                             <div class="row">
                                 <div class="col-25"><label for="last_name">Last Name:</label></div>
-                                    <div class="col-75"><input type="text" id="last_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your last name."></div> 
+                                    <div class="col-75"><input type="text" id="last_name" name="last_name" size="15" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your last name."></div> 
                             </div><br> 
 
                             <div class="row">
                                 <div class="col-25"><label for="birth_date">Date of birth:</label></div>
-                                        <div class="col-75"><input type="date" id="birth_date" required="required" title="select your date of birth."></div>
+                                        <div class="col-75"><input type="date" id="birth_date" name="birth_date" required="required" title="select your date of birth."></div>
                             </div>
                             <br>
 
@@ -62,8 +62,8 @@
                                 <fieldset id="gender_field">  <!--SP [1/4 3:11pm]: Gender feildset begins-->
                                     <legend><span class="col-25">Gender:</span></legend>
                                         <div class="col-75" id="gender_list">
-                                            <label for="man"><input type="radio" id="man" name="gender" value="man" required="required" checked="checked">Man</label>
-                                            <label for="woman"><input type="radio" id="woman" name="gender" value="woman">Woman</label>
+                                            <label for="man"><input type="radio" id="man" name="gender" value="male" checked="checked">Male</label>
+                                            <label for="woman"><input type="radio" id="woman" name="gender" value="female">Female</label>
                                             <label for="non_binary"><input type="radio" id="non_binary" name="gender" value="non_binary">Non-Binary</label>
                                             <label for="g_other"><input type="radio" id="g_other" name="gender" value="other">Other<span class="checkmark"></span></label>
                                             <label for="g_no"><input type="radio" id="g_no" name="gender" value="prefer not to say">Prefer not to say</label>
@@ -76,13 +76,13 @@
                         <h2>Address:</h2>
                             <div class="row">
                                 <div class="col-25"><label for="street_address">Street Address:</label></div>
-                                    <div class="col-75"><input type="text" id="street_address" maxlength="40" pattern="^[a-zA-Z0-9 ]+$" required="required" placeholder="00 Road St"></div>
+                                    <div class="col-75"><input type="text" id="street_address" name="street_address" maxlength="40" pattern="^[a-zA-Z0-9 ]+$" required="required" placeholder="00 Road St"></div>
                             </div>
                             <br>
                             
                             <div class="row">
                                 <div class="col-25"><label for="suburb_address">Suburb:</label></div>
-                                    <div class="col-75"><input type="text" id="suburb_address" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="e.g. Richmond" title="suburb"></div>
+                                    <div class="col-75"><input type="text" id="suburb_address" name="subtown_address"maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="e.g. Richmond" title="suburb"></div>
                             </div>
                             <br>
 
@@ -105,7 +105,7 @@
 
                             <div class="row">
                                 <div class="col-25"><label for="postcode">Postcode:</label></div>
-                                    <div class="col-75"><input type="text" id="postcode" size="4" maxlength="4" pattern="^([0-9]{4})([200|9944])$" required="required" placeholder="0000"></div>
+                                    <div class="col-75"><input type="text" id="postcode" name="postcode" size="4" maxlength="4" minlength="4" pattern="^[0-9]{4}$" required="required" placeholder="0000"></div>
                             </div>  
                             
                         </section><!--SP [1/4 3:15pm]: end address div-->
@@ -114,13 +114,13 @@
                             <h2>How can we reach you?</h2>
                             <div class="row">
                                 <div class="col-25"><label for="applicant_email">Email:</label></div>
-                                    <div class="col-75"><input type="text" id="applicant_email" pattern="^.+@.+\..{1,2,3}$" placeholder="name@example.com" title="email" required="required"></div>
+                                    <div class="col-75"><input type="text" id="applicant_email" name="applicant_email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="name@example.com" title="email" required="required"></div>
                             </div>
                             <br>
                                 
                             <div class="row">
                                 <div class="col-25"><label for="applicant_phone">Phone:</label></div>
-                                    <div class="col-75"><input type="tel" id="applicant_phone" maxlength="12" pattern="^\d+" placeholder="+X (XXX) XXX XXXX" title="phone number"></div>
+                                    <div class="col-75"><input type="tel" id="applicant_phone" name="applicant_phone" minlength="8" maxlength="12" pattern="^\d+" placeholder="+X (XXX) XXX XXXX" title="phone number"></div>
                             </div>
                         </section>  <!--end contact section-->
                     
@@ -129,10 +129,10 @@
                             <div class="row">
                                 <div class="col-25"><label for="job_ref_num">Job Reference Number:</label></div>
                                     <div class="custom_select col-75">    
-                                    <select id="job_ref_num" name="Job Ref No." required>
+                                    <select id="job_ref_num" name="job_reference_number" required>
                                             <option value="" selected>---------- </option>
-                                            <option value="job_00001">00001 - Network Admin</option>
-                                            <option value="job_00002">00002 - Software Developer</option>                                        </select>
+                                            <option value="00001">00001 - Network Admin</option>
+                                            <option value="00002">00002 - Software Developer</option>                                        </select>
                                     </div> <!--custon select-->
                             </div>
                             <br>
@@ -143,42 +143,47 @@
                                 <legend><span>Required Skills:</span></legend>
                                     <ul id="skills_list"> <!--network admin skills-->
                                         <li class="subtitle col-75">----- For Network Admin: -----</li>
-                                        <li><div class="col-75"><label for="job1_skill1"><input type="checkbox" id="job1_skill1" name="skills[]" value="BA IT/CS/related" checked="checked">
+                                        <li><div class="col-75"><label for="job1_skill1"><input type="checkbox" id="job1_skill1" name="skills[j1s1]" value="1" checked="checked">
                                         Bachelor's degree in Information Tech, Computer Science, or related field.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job1_skill2"><input type="checkbox" id="job1_skill2" name="skills[]" value="3+yrs network admin">
+                                        <li><div class="col-75"><label for="job1_skill2"><input type="checkbox" id="job1_skill2" name="skills[j1s2]" value="1">
                                         3 years of experience in network administration.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job1_skill3"><input type="checkbox" id="job1_skill3" name="skills[]" value="router + switch config prof">
+                                        <li><div class="col-75"><label for="job1_skill3"><input type="checkbox" id="job1_skill3" name="skills[j1s3]" value="1">
                                         Proficiency in configuring routers and switches.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job1_skill4"><input type="checkbox" id="job1_skill4" name="skills[]" value="trblsht prob-solv skill">
+                                        <li><div class="col-75"><label for="job1_skill4"><input type="checkbox" id="job1_skill4" name="skills[j1s4]" value="1">
                                         Strong troubleshooting and problem-solving skills.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job1_skill5"><input type="checkbox" id="job1_skill5" name="skills[]" value="CCNA certif">
+                                        <li><div class="col-75"><label for="job1_skill5"><input type="checkbox" id="job1_skill5" name="skills[j1s5]" value="1">
                                         Certifications such as CCNA.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job1_skill6"><input type="checkbox" id="job1_skill6" name="skills[]" value="cloud net exp">
+                                        <li><div class="col-75"><label for="job1_skill6"><input type="checkbox" id="job1_skill6" name="skills[j1s6]" value="1">
                                         Experience with cloud networking</label></div></li>
                                         
                                         <li class="subtitle col-75">----- For Software Developer: -----</li> <!--software developer skills-->
-                                        <li><div class="col-75"><label for="job2_skill1"><input type="checkbox" id="job2_skill1" name="skills[]" value="BA CS/related" checked="checked">
+                                        <li><div class="col-75"><label for="job2_skill1"><input type="checkbox" id="job2_skill1" name="skills[j2s1]" value="1">
                                         Bachelor's degree in Computer Science or related field</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job2_skill2"><input type="checkbox" id="job2_skill2" name="skills[]" value="3+yrs softwr dev">
+                                        <li><div class="col-75"><label for="job2_skill2"><input type="checkbox" id="job2_skill2" name="skills[j2s2]" value="1">
                                         3+ years of experience in software development</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job2_skill3"><input type="checkbox" id="job2_skill3" name="skills[]" value="Python/C++ prof">
+                                        <li><div class="col-75"><label for="job2_skill3"><input type="checkbox" id="job2_skill3" name="skills[j2s3]" value="1">
                                         Proficiency in Python, or C++</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job2_skill4"><input type="checkbox" id="job2_skill4" name="skills[]" value="prob-solv skill">
+                                        <li><div class="col-75"><label for="job2_skill4"><input type="checkbox" id="job2_skill4" name="skills[j2s4]" value="1">
                                         Strong problem-solving skills.</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job2_skill5"><input type="checkbox" id="job2_skill5" name="skills[]" value="cloud tech exp">
+                                        <li><div class="col-75"><label for="job2_skill5"><input type="checkbox" id="job2_skill5" name="skills[j2s5]" value="1">
                                         Experience with cloud technologies</label></div></li>
                         
-                                        <li><div class="col-75"><label for="job2_skill6"><input type="checkbox" id="job2_skill6" name="skills[]" value="Agile exp">
+                                        <li><div class="col-75"><label for="job2_skill6"><input type="checkbox" id="job2_skill6" name="skills[j2s6]" value="1">
                                         Familiarity with Agile frameworks</label></div></li>
+
+                                        <li class="subtitle col-75">--------------------------------</li>
+
+                                        <li><div class="col-75"><label for="other"><input type="checkbox" id="other" name="other_checked" value="1">
+                                        Other Skills</label></div></li>
                                     </ul>
                             </fieldset>
                             </div>
@@ -186,7 +191,7 @@
 
                             <div class="row">
                                 <div class="col-25"><label for="other_skills">Other applicable skills: <br></label></div>
-                                    <div class="col-75"><textarea id="other_skills" name="other skills" rows="4" cols="30" placeholder="enter other applicable skills you may have here."></textarea></div>
+                                    <div class="col-75"><textarea id="other_skills" name="other_skills" rows="4" cols="30" placeholder="enter other applicable skills you may have here."></textarea></div>
                             </div>
                         </section>  <!--SP [6/4 5:21]: end skills section-->              
                     
@@ -198,6 +203,6 @@
             </form>
         </main>
         <br>
-        <footer><a href="https://tamstim72.atlassian.net/jira/software/projects/SCRUM/boards/1" target="_blank"><p> Our Jira</p></a></footer>
+        <footer></footer>
     </body>
 </html>
