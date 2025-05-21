@@ -72,7 +72,45 @@
                     echo "<td>" . $street . "<br>" . $suburb . ", " . $state . ", " . $postcode . "</td>";
                     echo "<td>" . $email . "</td>";
                     echo "<td>" . $phone_num . "</td>";
-                    echo "<td>" . $skills_id . "</td>";        // link to the skills table somehow
+                    echo "<td>";  
+                
+                    $skills_query = "SELECT * FROM Skills_ID";
+                    $skills_result = mysqli_query($conn, $skills_query);
+                        if ($skills_result && mysqli_num_rows($skills_result) > 0) {
+                            while ($row = mysqli_fetch_assoc($skills_result)){
+                                $j1s1 = htmlspecialchars($row['j1s1']);
+                                $j1s2 = htmlspecialchars($row['j1s2']);
+                                $j1s3 = htmlspecialchars($row['j1s3']);
+                                $j1s4 = htmlspecialchars($row['j1s4']);
+                                $j1s5 = htmlspecialchars($row['j1s5']);
+                                $j1s6 = htmlspecialchars($row['j1s6']);
+                                $j2s1 = htmlspecialchars($row['j2s1']);
+                                $j2s2 = htmlspecialchars($row['j2s2']);
+                                $j2s3 = htmlspecialchars($row['j2s3']);
+                                $j2s4 = htmlspecialchars($row['j2s4']);
+                                $j2s5 = htmlspecialchars($row['j2s5']);
+                                $j2s6 = htmlspecialchars($row['j2s6']);
+                                            // going to need some IFNULL() things going on for the skills that dont apply 
+                                echo "<ul>";
+                                echo "<li>".$j1s1."</li>";      
+                                echo "<li>".$j1s2."</li>";
+                                echo "<li>".$j1s3."</li>";
+                                echo "<li>".$j1s4."</li>";
+                                echo "<li>".$j1s5."</li>";
+                                echo "<li>".$j1s6."</li>";
+                                echo "<li>".$j2s1."</li>";
+                                echo "<li>".$j2s2."</li>";
+                                echo "<li>".$j2s3."</li>";
+                                echo "<li>".$j2s4."</li>";
+                                echo "<li>".$j2s5."</li>";
+                                echo "<li>".$j2s6."</li>";
+                                echo "</ul>";
+                            }
+                        } else {
+                            echo "<p>No skills found.</p>";
+                        }
+
+                    echo "</td>";        // link to the skills table somehow
                     echo "<td>" . $other_skills . "</td>";
                     echo "<td>" . $dob . "</td>";
                     echo "<td>" . $gender . "</td>";
