@@ -78,7 +78,7 @@
                     echo "<td>" . $phone_num . "</td>";
                     echo "<td>";
                                         
-                    $skills_query = "SELECT * FROM Skills_ID";
+                    $skills_query = "SELECT * FROM eoi_skills";
                     $skills_result = mysqli_query($conn, $skills_query);
                         if ($skills_result && mysqli_num_rows($skills_result) > 0) {
                             while ($row = mysqli_fetch_assoc($skills_result)){
