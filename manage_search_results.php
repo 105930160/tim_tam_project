@@ -36,6 +36,7 @@
                 <th>Phone</th>
                 <th>Skills</th>
                 <th>Other Skills</th>
+                <th>Status</th>
             </tr>
         <?php
 
@@ -61,6 +62,8 @@
                     $phone_num = htmlspecialchars($row['phone_num']);
                     $skills = htmlspecialchars($row['skills']);
                     $other = htmlspecialchars($row['other']);
+                    $status = htmlspecialchars($row['status']);
+
                     echo "<tr>";
                     echo "<td>" . $eoi_num . "</td>";
                     echo "<td>" . $job_ref_num . "</td>";
@@ -71,6 +74,7 @@
                     echo "<td>" . $phone_num . "</td>";
                     echo "<td>" . $skills . "</td>";
                     echo "<td>" . $other . "</td>";
+                    echo "<td>" . $status . "</td>";
                     echo "</tr>";
                     }
             }else{ 
