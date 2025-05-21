@@ -41,96 +41,98 @@
                 <th>Gender</th>
                 <th>Status</th>
             </tr>
-        <?php
+            <?php
 
-        if (isset($_GET['Job_Reference_Number'], $_GET['First_Name'], $_GET['Last_Name'])) {
-            $job_ref_num = mysqli_real_escape_string($conn, $_GET['Job_Reference_Number']);
-            $first_name = mysqli_real_escape_string($conn, $_GET['First_Name']);
-            $last_name = mysqli_real_escape_string($conn, $_GET['Last_Name']);
-        
-            $query = "SELECT * FROM eoi WHERE Job_Reference_Number LIKE '$job_ref_num' OR First_Name LIKE '$first_name' OR Last_Name LIKE '$last_name'";
-            $result = mysqli_query($conn, $query);
+            if (isset($_GET['Job_Reference_Number'], $_GET['First_Name'], $_GET['Last_Name'])) {
+                $job_ref_num = mysqli_real_escape_string($conn, $_GET['Job_Reference_Number']);
+                $first_name = mysqli_real_escape_string($conn, $_GET['First_Name']);
+                $last_name = mysqli_real_escape_string($conn, $_GET['Last_Name']);
+            
+                $query = "SELECT * FROM eoi WHERE Job_Reference_Number LIKE '$job_ref_num' OR First_Name LIKE '$first_name' OR Last_Name LIKE '$last_name'";
+                $result = mysqli_query($conn, $query);
 
-            if ($result && mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)){
-                    $eoi_num = ($row['EOI_ID']);
-                    $job_ref_num = ($row['Job_Reference_Number']);
-                    $first_name = htmlspecialchars($row['First_Name']);
-                    $last_name = htmlspecialchars($row['Last_Name']);
-                    $street = htmlspecialchars($row['Street_Address']);
-                    $suburb = htmlspecialchars($row['Sbuurb/Town']);
-                    $state = htmlspecialchars($row['State']);
-                    $postcode = htmlspecialchars($row['Postcode']);
-                    $email = htmlspecialchars($row['Email_Address']);
-                    $phone_num = htmlspecialchars($row['Phone_Number']);
-                    $skills = htmlspecialchars($row['Skills_ID']);  // link to skills table somehow
-                    $other = htmlspecialchars($row['Other_Skills']);
-                    $dob = htmlspecialchars($row['Date_Of_Birth']);
-                    $gender = htmlspecialchars($row['Gender']);
-                    $status = htmlspecialchars($row['Status']);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)){
+                        $eoi_num = ($row['EOI_ID']);
+                        $job_ref_num = ($row['Job_Reference_Number']);
+                        $first_name = htmlspecialchars($row['First_Name']);
+                        $last_name = htmlspecialchars($row['Last_Name']);
+                        $street = htmlspecialchars($row['Street_Address']);
+                        $suburb = htmlspecialchars($row['Suburb/Town']);
+                        $state = htmlspecialchars($row['State']);
+                        $postcode = htmlspecialchars($row['Postcode']);
+                        $email = htmlspecialchars($row['Email_Address']);
+                        $phone_num = htmlspecialchars($row['Phone_Number']);
+                        $skills = htmlspecialchars($row['Skills_ID']);  // link to skills table somehow
+                        $other = htmlspecialchars($row['Other_Skills']);
+                        $dob = htmlspecialchars($row['Date_Of_Birth']);
+                        $gender = htmlspecialchars($row['Gender']);
+                        $status = htmlspecialchars($row['Status']);
 
-                    echo "<tr>";
-                    echo "<td>" . $eoi_num . "</td>";
-                    echo "<td>" . $job_ref_num . "</td>";
-                    echo "<td>" . $first_name . "</td>";
-                    echo "<td>" . $last_name . "</td>";
-                    echo "<td>" . $street . "<br>" . $suburb . ", " . $state . ", " . $postcode . "</td>";
-                    echo "<td>" . $email . "</td>";
-                    echo "<td>" . $phone_num . "</td>";
-                    echo "<td>";
-                                        
-                    $skills_query = "SELECT * FROM eoi_skills";
-                    $skills_result = mysqli_query($conn, $skills_query);
-                        if ($skills_result && mysqli_num_rows($skills_result) > 0) {
-                            while ($row = mysqli_fetch_assoc($skills_result)){
-                                $j1s1 = htmlspecialchars($row['j1s1']);
-                                $j1s2 = htmlspecialchars($row['j1s2']);
-                                $j1s3 = htmlspecialchars($row['j1s3']);
-                                $j1s4 = htmlspecialchars($row['j1s4']);
-                                $j1s5 = htmlspecialchars($row['j1s5']);
-                                $j1s6 = htmlspecialchars($row['j1s6']);
-                                $j2s1 = htmlspecialchars($row['j2s1']);
-                                $j2s2 = htmlspecialchars($row['j2s2']);
-                                $j2s3 = htmlspecialchars($row['j2s3']);
-                                $j2s4 = htmlspecialchars($row['j2s4']);
-                                $j2s5 = htmlspecialchars($row['j2s5']);
-                                $j2s6 = htmlspecialchars($row['j2s6']);
-                                            // going to need some IFNULL() things going on for the skills that dont apply 
-                                echo "<ul>";
-                                echo "<li>".$j1s1."</li>";      
-                                echo "<li>".$j1s2."</li>";
-                                echo "<li>".$j1s3."</li>";
-                                echo "<li>".$j1s4."</li>";
-                                echo "<li>".$j1s5."</li>";
-                                echo "<li>".$j1s6."</li>";
-                                echo "<li>".$j2s1."</li>";
-                                echo "<li>".$j2s2."</li>";
-                                echo "<li>".$j2s3."</li>";
-                                echo "<li>".$j2s4."</li>";
-                                echo "<li>".$j2s5."</li>";
-                                echo "<li>".$j2s6."</li>";
-                                echo "</ul>";
+                        echo "<tr>";
+                        echo "<td>1" . $eoi_num . "</td>";
+                        echo "<td>1" . $job_ref_num . "</td>";
+                        echo "<td>1" . $first_name . "</td>";
+                        echo "<td>" . $last_name . "</td>";
+                        echo "<td>" . $street . "<br>" . $suburb . ", " . $state . ", " . $postcode . "</td>";
+                        echo "<td>" . $email . "</td>";
+                        echo "<td>" . $phone_num . "</td>";
+                        echo "<td>";
+                                            
+                        $skills_query = "SELECT * FROM eoi_skills";
+                        $skills_result = mysqli_query($conn, $skills_query);
+                            if ($skills_result && mysqli_num_rows($skills_result) > 0) {
+                                while ($row = mysqli_fetch_assoc($skills_result)){
+                                    $j1s1 = htmlspecialchars($row['j1s1']);
+                                    $j1s2 = htmlspecialchars($row['j1s2']);
+                                    $j1s3 = htmlspecialchars($row['j1s3']);
+                                    $j1s4 = htmlspecialchars($row['j1s4']);
+                                    $j1s5 = htmlspecialchars($row['j1s5']);
+                                    $j1s6 = htmlspecialchars($row['j1s6']);
+                                    $j2s1 = htmlspecialchars($row['j2s1']);
+                                    $j2s2 = htmlspecialchars($row['j2s2']);
+                                    $j2s3 = htmlspecialchars($row['j2s3']);
+                                    $j2s4 = htmlspecialchars($row['j2s4']);
+                                    $j2s5 = htmlspecialchars($row['j2s5']);
+                                    $j2s6 = htmlspecialchars($row['j2s6']);
+                                                // going to need some IFNULL() things going on for the skills that dont apply 
+                                    echo "<ul>";
+                                    echo "<li>".$j1s1."</li>";      
+                                    echo "<li>".$j1s2."</li>";
+                                    echo "<li>".$j1s3."</li>";
+                                    echo "<li>".$j1s4."</li>";
+                                    echo "<li>".$j1s5."</li>";
+                                    echo "<li>".$j1s6."</li>";
+                                    echo "<li>".$j2s1."</li>";
+                                    echo "<li>".$j2s2."</li>";
+                                    echo "<li>".$j2s3."</li>";
+                                    echo "<li>".$j2s4."</li>";
+                                    echo "<li>".$j2s5."</li>";
+                                    echo "<li>".$j2s6."</li>";
+                                    echo "</ul>";
+                                }
+                            } else {
+                                echo "<p>No skills found.</p>";
                             }
-                        } else {
-                            echo "<p>No skills found.</p>";
+
+
+
+                        echo "</td>";     // link to skills table somehow. 
+                        echo "<td>" . $other_skills . "</td>";
+                        echo "<td>" . $dob . "</td>";
+                        echo "<td>" . $gender . "</td>";
+                        echo "<td>";
+                        echo "<label>  </label> <input type='select'>";
+                        echo "</td>"; // make select input as part of form
+                        echo "</tr>";
                         }
-
-
-
-                    echo "</td>";     // link to skills table somehow. 
-                    echo "<td>" . $other_skills . "</td>";
-                    echo "<td>" . $dob . "</td>";
-                    echo "<td>" . $gender . "</td>";
-                    echo "<td>" . $status . "</td>"; // make select input as part of form
-                    echo "</tr>";
-                    }
-                    // add delete and update buttons. 'change database' form ends here
-            }else{ 
-                echo "<td colspan='5'>No EOIs found with matching fields.</td>";
+                        // add delete and update buttons. 'change database' form ends here
+                }else{ 
+                    echo "<td colspan='5'>No EOIs found with matching fields.</td>";
+                }
             }
-        }
-        mysqli_close($dbconn);    
-        ?>
+            mysqli_close($dbconn);    
+            ?>
         </table>
 
         </form>
