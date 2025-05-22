@@ -143,6 +143,8 @@
                                                 {
                                                     $row = mysqli_fetch_assoc($result);
                                                     $selected = ($_SESSION['past_submit']['job_reference_number'] ?? '') == $row['id'] ? 'selected' : '';
+                                                    $array = [$row['id'],$row['title']];
+                                                    $GLOBALS['array'] = $array;
                                                     echo "<option value = '".$row['id']."' $selected >" .$row['id']. " - " .$row['title']."</option>";
                                                     
                                                 }
@@ -157,6 +159,26 @@
                             <fieldset> <!--begin required skills-->  
                                 <legend><span>Required Skills:</span></legend>
                                     <ul id="skills_list"> <!--network admin skills-->
+                                        <?php 
+                                            $query = "SELECT job_id,`description` FROM skills";
+                                            $result = mysqli_query($conn,$query);
+                                            for ($j = 0; $j < count($GLOBALS['array']); $j++)
+                                            {
+                                                echo "<li class='subtitle col-75'>----- For ".$GLOBALS['array'][$j][1].": -----</li>";
+                                                for ($i = 0; $i < $result->num_rows; $i++)
+                                                {
+                                                    $row = mysqli_fetch_assoc($result);
+                                                    if ($row["job_id"]==$GLOBALS['array'][$j][0])
+                                                    {
+                                                        echo "<li><div class='col-75'><label for='job".$j."_skill".$i."'><input type='checkbox' id='job".$j."_skill".$i."' name='skills[j".$j."s".$i."]' value='1'>
+                                        ".$row['description']."</label></div></li>";
+                                                    }
+                                                }
+                                            }
+                                        
+                                        
+                                        
+                                        ?>
                                         <li class="subtitle col-75">----- For Network Admin: -----</li>
                                         <li><div class="col-75"><label for="job1_skill1"><input type="checkbox" id="job1_skill1" name="skills[j1s1]" value="1" checked="checked">
                                         Bachelor's degree in Information Tech, Computer Science, or related field.</label></div></li>
