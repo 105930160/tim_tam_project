@@ -70,7 +70,7 @@ if (!$dbconn) {
                         $suburb = htmlspecialchars($row['Suburb/Town']);
                         $state = htmlspecialchars($row['State']);
                         $postcode = htmlspecialchars($row['Postcode']);
-                        $email = htmlspecialchars($row['EmaiL_Address']);
+                        $email = htmlspecialchars($row['Email_Address']);
                         $phone_num = htmlspecialchars($row['Phone_Number']);
                         $skills_id = htmlspecialchars($row['Skills_ID']);  // link the skills table to here somehow..
                         $other_skills = htmlspecialchars($row['Other_Skills']);
@@ -107,7 +107,7 @@ if (!$dbconn) {
                         echo "<td>" . $dob . "</td>";
                         echo "<td>" . $gender . "</td>";
                         echo "<td>";
-                        echo "<label for='status'>.</label> <select id='status' name='status'>";
+                        echo "<label for='status'> </label> <select id='status' name='status'>";
                         echo "<option selected value='".$status."'>".$status."</option>";
                         echo "<option value='new'>New</option>";
                         echo "<option value='current'>Current</option>";

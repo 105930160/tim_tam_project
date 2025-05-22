@@ -109,11 +109,11 @@ if (!$dbconn) {
 
 
                         echo "</td>";     // link to skills table somehow. 
-                        echo "<td>" . $other_skills . "</td>";
+                        echo "<td>" . $other . "</td>";
                         echo "<td>" . $dob . "</td>";
                         echo "<td>" . $gender . "</td>";
                         echo "<td>";
-                        echo "<label for='status'>.</label> <select id='status' name='status'>";
+                        echo "<label for='status'> </label> <select id='status' name='status'>";
                         echo "<option value='".$status."' selected>".$status."</option>";
                         echo "<option value='New'>New</option>";
                         echo "<option value='Current'>Current</option>";
