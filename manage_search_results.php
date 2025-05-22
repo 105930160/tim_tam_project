@@ -1,3 +1,15 @@
+<?php
+$host = "localhost";         // because XAMPP runs the server locally
+$username = "root";          // default username for XAMPP's MySQL
+$password = "";              // default password is empty in XAMPP
+$database = "dummy_eois";  // replace with the actual name of your database
+
+$dbconn = @mysqli_connect($host,$username,$password,$database);
+
+if (!$dbconn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,7 +19,7 @@
     <body>
         <h1>EOI Manager</h1>
         <?php
-        require_once "settings.php";
+        //require_once "settings.php";
         require_once "process_eoi.php";
         $conn = @mysqli_connect ($host,$username,$password,$database);
         if (!$conn) {
@@ -35,7 +47,7 @@
                 <th>Address</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Skills</th>
+                <th>Skills (essential/preferred)</th>
                 <th>Other Skills</th>
                 <th>D.O.B</th>
                 <th>Gender</th>
@@ -70,45 +82,24 @@
                         $status = htmlspecialchars($row['Status']);
 
                         echo "<tr>";
-                        echo "<td>1" . $eoi_num . "</td>";
-                        echo "<td>1" . $job_ref_num . "</td>";
-                        echo "<td>1" . $first_name . "</td>";
+                        echo "<td>" . $eoi_num . "</td>";
+                        echo "<td>" . $job_ref_num . "</td>";
+                        echo "<td>" . $first_name . "</td>";
                         echo "<td>" . $last_name . "</td>";
                         echo "<td>" . $street . "<br>" . $suburb . ", " . $state . ", " . $postcode . "</td>";
                         echo "<td>" . $email . "</td>";
                         echo "<td>" . $phone_num . "</td>";
                         echo "<td>";
                                             
-                        $skills_query = "SELECT * FROM eoi_skills";
+                        $skills_query = "SELECT id, essential FROM skills";
                         $skills_result = mysqli_query($conn, $skills_query);
                             if ($skills_result && mysqli_num_rows($skills_result) > 0) {
                                 while ($row = mysqli_fetch_assoc($skills_result)){
-                                    $j1s1 = htmlspecialchars($row['j1s1']);
-                                    $j1s2 = htmlspecialchars($row['j1s2']);
-                                    $j1s3 = htmlspecialchars($row['j1s3']);
-                                    $j1s4 = htmlspecialchars($row['j1s4']);
-                                    $j1s5 = htmlspecialchars($row['j1s5']);
-                                    $j1s6 = htmlspecialchars($row['j1s6']);
-                                    $j2s1 = htmlspecialchars($row['j2s1']);
-                                    $j2s2 = htmlspecialchars($row['j2s2']);
-                                    $j2s3 = htmlspecialchars($row['j2s3']);
-                                    $j2s4 = htmlspecialchars($row['j2s4']);
-                                    $j2s5 = htmlspecialchars($row['j2s5']);
-                                    $j2s6 = htmlspecialchars($row['j2s6']);
+                                    $desc = htmlspecialchars($row['id']);
+                                    $essential = htmlspecialchars($row['essential']);
                                                 // going to need some IFNULL() things going on for the skills that dont apply 
                                     echo "<ul>";
-                                    echo "<li>".$j1s1."</li>";      
-                                    echo "<li>".$j1s2."</li>";
-                                    echo "<li>".$j1s3."</li>";
-                                    echo "<li>".$j1s4."</li>";
-                                    echo "<li>".$j1s5."</li>";
-                                    echo "<li>".$j1s6."</li>";
-                                    echo "<li>".$j2s1."</li>";
-                                    echo "<li>".$j2s2."</li>";
-                                    echo "<li>".$j2s3."</li>";
-                                    echo "<li>".$j2s4."</li>";
-                                    echo "<li>".$j2s5."</li>";
-                                    echo "<li>".$j2s6."</li>";
+                                    echo "<li>".$desc."(".$essential.")</li>";      
                                     echo "</ul>";
                                 }
                             } else {
@@ -124,9 +115,9 @@
                         echo "<td>";
                         echo "<label for='status'>.</label> <select id='status' name='status'>";
                         echo "<option value='".$status."' selected>".$status."</option>";
-                        echo "<option value='New' selected>New</option>";
-                        echo "<option value='Current' selected>Current</option>";
-                        echo "<option value='Final' selected>Final</option>";
+                        echo "<option value='New'>New</option>";
+                        echo "<option value='Current'>Current</option>";
+                        echo "<option value='Final'>Final</option>";
                         echo "</select>";
                         echo "</td>"; // make select input as part of form
                         echo "</tr>";
