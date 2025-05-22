@@ -61,8 +61,7 @@ if ($conn) {
             echo "</div>";
             echo "<aside>";
                 echo "<h3>Key Responsibilities</h3>";
-                $query2 = "
-                SELECT responsibilities.description FROM job_postings INNER JOIN responsibilities ON job_postings.id = responsibilities.job_id WHERE job_postings.id = " . $row['id'];
+                $query2 = "SELECT responsibilities.description FROM job_postings INNER JOIN responsibilities ON job_postings.id = responsibilities.job_id WHERE job_postings.id = " . $row['id'];
                 $result2 = mysqli_query($conn, $query2);
                 echo "<ol>";
                     while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -72,13 +71,26 @@ if ($conn) {
             echo "</aside>";
             echo "<aside>";
                 echo "<h3>Required Qualifications, Skills, and Attributes</h3>";
+                $query2 = "SELECT skills.description FROM job_postings
+                INNER JOIN skills ON job_postings.id = skills.job_id
+                WHERE job_postings.id = " . $row['id'] . " AND skills.essential = TRUE";
+                $result2 = mysqli_query($conn, $query2);
                 echo "<h4>Essential</h4>";
                 echo "<ul>";
-                    echo "<li>" . $row['essential_skills'] . "</li>";
+                    while ($row2 = mysqli_fetch_assoc($result2)){
+                        echo "<li>" . $row2['description'] . "</li>";
+                    }
+                    
             echo "</ul>";
             echo "<h4>Preferable</h4>";
             echo "<ul>";
-            echo "    <li>" . $row['preferable_skills'] . "</li>";
+                $query2 = "SELECT skills.description FROM job_postings
+                INNER JOIN skills ON job_postings.id = skills.job_id
+                WHERE job_postings.id = " . $row['id'] . " AND skills.essential = FALSE";
+                $result2 = mysqli_query($conn, $query2);
+                hile ($row2 = mysqli_fetch_assoc($result2)){
+                    echo "<li>" . $row2['description'] . "</li>";
+                }
             echo "</ul>";
         echo "</aside>";
     echo "</section>";
