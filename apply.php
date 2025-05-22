@@ -12,6 +12,10 @@
     </head>
 
     <body>    
+        <?php 
+            session_start();
+            require_once("settings.php");
+        ?>
         <header>
             <!--nav is seperated into top and bottom in order to more easily deal with everything-->
             <div id="navtop">
@@ -43,17 +47,17 @@
                         <h2>Your Details:</h2>
                             <div class="row">
                                 <div class="col-25"><label for="first_name">First Name:</label></div>
-                                    <div class="col-75"><input type="text" id="first_name" name="first_name" size="15" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your first name."></div>
+                                    <div class="col-75"><input type="text" id="first_name" name="first_name" size="15" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your first name." value = "<?= htmlspecialchars($_SESSION['past_submit']['first_name'] ?? '')?>"></div>
                             </div><br>
                             
                             <div class="row">
                                 <div class="col-25"><label for="last_name">Last Name:</label></div>
-                                    <div class="col-75"><input type="text" id="last_name" name="last_name" size="15" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your last name."></div> 
+                                    <div class="col-75"><input type="text" id="last_name" name="last_name" size="15" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your last name." value = "<?= htmlspecialchars($_SESSION['past_submit']['last_name'] ?? '')?>"></div> 
                             </div><br> 
 
                             <div class="row">
                                 <div class="col-25"><label for="birth_date">Date of birth:</label></div>
-                                        <div class="col-75"><input type="date" id="birth_date" name="birth_date" required="required" title="select your date of birth."></div>
+                                        <div class="col-75"><input type="date" id="birth_date" name="birth_date" required="required" title="select your date of birth." value = "<?= htmlspecialchars($_SESSION['past_submit']['birth_date'] ?? '')?>"></div>
                             </div>
                             <br>
 
@@ -63,10 +67,10 @@
                                     <legend><span class="col-25">Gender:</span></legend>
                                         <div class="col-75" id="gender_list">
                                             <label for="man"><input type="radio" id="man" name="gender" value="male" checked="checked">Male</label>
-                                            <label for="woman"><input type="radio" id="woman" name="gender" value="female">Female</label>
-                                            <label for="non_binary"><input type="radio" id="non_binary" name="gender" value="non_binary">Non-Binary</label>
-                                            <label for="g_other"><input type="radio" id="g_other" name="gender" value="other">Other<span class="checkmark"></span></label>
-                                            <label for="g_no"><input type="radio" id="g_no" name="gender" value="prefer not to say">Prefer not to say</label>
+                                            <label for="woman"><input type="radio" id="woman" name="gender" value="female" <?= ($_SESSION['past_submit']['gender'] ?? '') == 'female' ? 'checked' : '' ?> >Female</label>
+                                            <label for="non_binary"><input type="radio" id="non_binary" name="gender" value="non_binary" <?= ($_SESSION['past_submit']['gender'] ?? '') == 'non_binary' ? 'checked' : '' ?>>Non-Binary</label>
+                                            <label for="g_other"><input type="radio" id="g_other" name="gender" value="other" <?= ($_SESSION['past_submit']['gender'] ?? '') == 'other' ? 'checked' : '' ?>>Other<span class="checkmark"></span></label>
+                                            <label for="g_no"><input type="radio" id="g_no" name="gender" value="prefer not to say" <?= ($_SESSION['past_submit']['gender'] ?? '') == 'prefer not to say' ? 'checked' : '' ?>>Prefer not to say</label>
                                         </div>
                                 </fieldset>  <!--SP [1/4 3:11pm]: Gender feildset ends-->
                             </div>
@@ -76,13 +80,13 @@
                         <h2>Address:</h2>
                             <div class="row">
                                 <div class="col-25"><label for="street_address">Street Address:</label></div>
-                                    <div class="col-75"><input type="text" id="street_address" name="street_address" maxlength="40" pattern="^[a-zA-Z0-9 ]+$" required="required" placeholder="00 Road St"></div>
+                                    <div class="col-75"><input type="text" id="street_address" name="street_address" maxlength="40" pattern="^[a-zA-Z0-9 ]+$" required="required" placeholder="00 Road St" value = "<?= htmlspecialchars($_SESSION['past_submit']['street_address'] ?? '')?>"></div>
                             </div>
                             <br>
                             
                             <div class="row">
                                 <div class="col-25"><label for="suburb_address">Suburb:</label></div>
-                                    <div class="col-75"><input type="text" id="suburb_address" name="subtown_address"maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="e.g. Richmond" title="suburb"></div>
+                                    <div class="col-75"><input type="text" id="suburb_address" name="subtown_address"maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="e.g. Richmond" title="suburb" value = "<?= htmlspecialchars($_SESSION['past_submit']['subtown_address'] ?? '')?>"></div>
                             </div>
                             <br>
 
@@ -91,21 +95,21 @@
                                     <div class="custom_select col-75">
                                     <select id="state_address" name="state" required>
                                         <option value="" selected>----------</option>
-                                        <option value="VIC">Victoria</option>
-                                        <option value="NSW">New South Wales</option>
-                                        <option value="QLD">Queensland</option>
-                                        <option value="NT">Northern Territory</option>
-                                        <option value="WA">West Australia</option>
-                                        <option value="SA">South Australia</option>
-                                        <option value="TAS">Tasmania</option>
-                                        <option value="ACT">Aus. Capital Territory</option>
+                                        <option value="VIC" <?= ($_SESSION['past_submit']['state'] ?? '') == 'VIC' ? 'selected' : '' ?>>Victoria</option>
+                                        <option value="NSW" <?= ($_SESSION['past_submit']['state'] ?? '') == 'NSW' ? 'selected' : '' ?>>New South Wales</option>
+                                        <option value="QLD" <?= ($_SESSION['past_submit']['state'] ?? '') == 'QLD' ? 'selected' : '' ?>>Queensland</option>
+                                        <option value="NT" <?= ($_SESSION['past_submit']['state'] ?? '') == 'NT' ? 'selected' : '' ?>>Northern Territory</option>
+                                        <option value="WA" <?= ($_SESSION['past_submit']['state'] ?? '') == 'WA' ? 'selected' : '' ?>>West Australia</option>
+                                        <option value="SA" <?= ($_SESSION['past_submit']['state'] ?? '') == 'SA' ? 'selected' : '' ?>>South Australia</option>
+                                        <option value="TAS" <?= ($_SESSION['past_submit']['state'] ?? '') == 'TAS' ? 'selected' : '' ?>>Tasmania</option>
+                                        <option value="ACT" <?= ($_SESSION['past_submit']['state'] ?? '') == 'ACT' ? 'selected' : '' ?>>Aus. Capital Territory</option>
                                     </select>
                                     </div> <!--custom select div -->
                             </div> <!--row div -->
 
                             <div class="row">
                                 <div class="col-25"><label for="postcode">Postcode:</label></div>
-                                    <div class="col-75"><input type="text" id="postcode" name="postcode" size="4" maxlength="4" minlength="4" pattern="^[0-9]{4}$" required="required" placeholder="0000"></div>
+                                    <div class="col-75"><input type="text" id="postcode" name="postcode" size="4" maxlength="4" minlength="4" pattern="^[0-9]{4}$" required="required" placeholder="0000" value = "<?= htmlspecialchars($_SESSION['past_submit']['postcode'] ?? '')?>"></div>
                             </div>  
                             
                         </section><!--SP [1/4 3:15pm]: end address div-->
@@ -114,13 +118,13 @@
                             <h2>How can we reach you?</h2>
                             <div class="row">
                                 <div class="col-25"><label for="applicant_email">Email:</label></div>
-                                    <div class="col-75"><input type="text" id="applicant_email" name="applicant_email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="name@example.com" title="email" required="required"></div>
+                                    <div class="col-75"><input type="text" id="applicant_email" name="applicant_email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="name@example.com" title="email" required="required" value = "<?= htmlspecialchars($_SESSION['past_submit']['applicant_email'] ?? '')?>"></div>
                             </div>
                             <br>
                                 
                             <div class="row">
                                 <div class="col-25"><label for="applicant_phone">Phone:</label></div>
-                                    <div class="col-75"><input type="tel" id="applicant_phone" name="applicant_phone" minlength="8" maxlength="12" pattern="^\d+" placeholder="+X (XXX) XXX XXXX" title="phone number"></div>
+                                    <div class="col-75"><input type="tel" id="applicant_phone" name="applicant_phone" minlength="8" maxlength="12" pattern="^\d+" placeholder="+X (XXX) XXX XXXX" title="phone number" value = "<?= htmlspecialchars($_SESSION['past_submit']['applicant_phone'] ?? '')?>"></div>
                             </div>
                         </section>  <!--end contact section-->
                     
@@ -131,8 +135,19 @@
                                     <div class="custom_select col-75">    
                                     <select id="job_ref_num" name="job_reference_number" required>
                                             <option value="" selected>---------- </option>
-                                            <option value="00001">00001 - Network Admin</option>
-                                            <option value="00002">00002 - Software Developer</option>                                        </select>
+                                            <?php 
+                                                $query = "SELECT id , title  FROM `job_postings`";
+                                                $result = mysqli_query($conn, $query);
+                                                $count = $result->num_rows;
+                                                for ($i = 0; $i < $count; $i++)
+                                                {
+                                                    $row = mysqli_fetch_assoc($result);
+                                                    $selected = ($_SESSION['past_submit']['job_reference_number'] ?? '') == $row['id'] ? 'selected' : '';
+                                                    echo "<option value = '".$row['id']."' $selected >" .$row['id']. " - " .$row['title']."</option>";
+                                                    
+                                                }
+                                            ?>                                  
+                                        </select>
                                     </div> <!--custon select-->
                             </div>
                             <br>
@@ -194,7 +209,17 @@
                                     <div class="col-75"><textarea id="other_skills" name="other_skills" rows="4" cols="30" placeholder="enter other applicable skills you may have here."></textarea></div>
                             </div>
                         </section>  <!--SP [6/4 5:21]: end skills section-->              
-                    
+                         <?php 
+                            if (isset($_SESSION['errors']))
+                            {
+                                echo $_SESSION['errors']['postcode'];
+                                echo $_SESSION['past_submit']['first_name'];
+                            }
+                            else{
+                                echo "hi";
+                            }
+                        
+                        ?>
                         <div class="form_bottom">   
                             <input class="button" type="reset" Value="Reset" title="reset form">
                             <input class="button" type="submit" value="Apply" title="submit form">
