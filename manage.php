@@ -25,7 +25,7 @@
         require_once "process_eoi.php";
         $conn = @mysqli_connect ($host,$username,$password,$database);
         ?>
-        <form>
+        <form method="GET" action="manage_search_results.php">
         <table> <caption>Pending Expressions of Interest:</caption>
             <tr>
                 <th>EOI Num</th>
@@ -116,7 +116,12 @@
                         echo "<td>" . $dob . "</td>";
                         echo "<td>" . $gender . "</td>";
                         echo "<td>";
-                        echo "<label>  </label> <input type='select'>";
+                        echo "<label for='status'>.</label> <select id='status' name='status'>";
+                        echo "<option value='".$status."' selected>".$status."</option>";
+                        echo "<option value='New' selected>New</option>";
+                        echo "<option value='Current' selected>Current</option>";
+                        echo "<option value='Final' selected>Final</option>";
+                        echo "</select>";
                         echo "</td>"; // make select input as part of form
                         echo "</tr>";
                         // add delete and update buttons. 'change database' form ending here

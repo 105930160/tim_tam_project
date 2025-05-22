@@ -25,7 +25,7 @@
             <input type="submit" value="Search">
         </form>
 
-        <form>
+        <form method="GET" action="manage_search_results.php">            
         <table> <caption>Pending Expressions of Interest:</caption>
             <tr>
                 <th>EOI Num</th>
@@ -122,7 +122,12 @@
                         echo "<td>" . $dob . "</td>";
                         echo "<td>" . $gender . "</td>";
                         echo "<td>";
-                        echo "<label>  </label> <input type='select'>";
+                        echo "<label for='status'>.</label> <select id='status' name='status'>";
+                        echo "<option value='".$status."' selected>".$status."</option>";
+                        echo "<option value='New' selected>New</option>";
+                        echo "<option value='Current' selected>Current</option>";
+                        echo "<option value='Final' selected>Final</option>";
+                        echo "</select>";
                         echo "</td>"; // make select input as part of form
                         echo "</tr>";
                         }
