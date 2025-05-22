@@ -84,12 +84,12 @@ if ($conn) {
             echo "</ul>";
             echo "<h4>Preferable</h4>";
             echo "<ul>";
-                $query2 = "SELECT skills.description FROM job_postings
+                $query3 = "SELECT skills.description FROM job_postings
                 INNER JOIN skills ON job_postings.id = skills.job_id
                 WHERE job_postings.id = " . $row['id'] . " AND skills.essential = FALSE";
-                $result2 = mysqli_query($conn, $query2);
-                hile ($row2 = mysqli_fetch_assoc($result2)){
-                    echo "<li>" . $row2['description'] . "</li>";
+                $result3 = mysqli_query($conn, $query3);
+                while ($row3 = mysqli_fetch_assoc($result3)){
+                    echo "<li>" . $row3['description'] . "</li>";
                 }
             echo "</ul>";
         echo "</aside>";
