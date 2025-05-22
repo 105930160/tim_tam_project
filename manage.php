@@ -86,7 +86,7 @@ if (!$dbconn) {
                         echo "<td>" . $email . "</td>";
                         echo "<td>" . $phone_num . "</td>";
                         echo "<td>";  
-                    
+                            echo "<p>";
                         $skills_query = "SELECT id, essential FROM skills";
                         $skills_result = mysqli_query($conn, $skills_query);
                             if ($skills_result && mysqli_num_rows($skills_result) > 0) {
@@ -94,14 +94,14 @@ if (!$dbconn) {
                                     $desc = htmlspecialchars($row['id']);
                                     $essential = htmlspecialchars($row['essential']);
                                                 // going to need some IFNULL() things going on for the skills that dont apply 
-                                    echo "<ul>";
-                                    echo "<li>".$desc."(".$essential.")</li>";      
-                                    echo "</ul>";
+                                    
+                                    echo "".$desc." (".$essential."), ";      
+                                    
                                 }
                             } else {
-                                echo "<p>No skills found.</p>";
+                                echo "<li>No skills found.</li>";
                             }
-
+                            echo "</p>";
                         echo "</td>";        // link to the skills table somehow
                         echo "<td>" . $other_skills . "</td>";
                         echo "<td>" . $dob . "</td>";
