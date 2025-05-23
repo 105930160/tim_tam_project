@@ -138,13 +138,12 @@
                                             <?php 
                                                 $query = "SELECT id , title  FROM `job_postings`";
                                                 $result = mysqli_query($conn, $query);
-                                                $count = $result->num_rows;
-                                                for ($i = 0; $i < $count; $i++)
+                                                $jobs_array = [];
+                                                for ($i = 0; $i < $result->num_rows; $i++)
                                                 {
                                                     $row = mysqli_fetch_assoc($result);
+                                                    $jobs_array[] = $row;
                                                     $selected = ($_SESSION['past_submit']['job_reference_number'] ?? '') == $row['id'] ? 'selected' : '';
-                                                    $array = [$row['id'],$row['title']];
-                                                    $GLOBALS['array'] = $array;
                                                     echo "<option value = '".$row['id']."' $selected >" .$row['id']. " - " .$row['title']."</option>";
                                                     
                                                 }
@@ -162,60 +161,22 @@
                                         <?php 
                                             $query = "SELECT job_id,`description` FROM skills";
                                             $result = mysqli_query($conn,$query);
-                                            for ($j = 0; $j < count($GLOBALS['array']); $j++)
+                                            $skills = [];
+                                            for ($i = 0; $i < $result->num_rows; $i++)
                                             {
-                                                echo "<li class='subtitle col-75'>----- For ".$GLOBALS['array'][$j][1].": -----</li>";
-                                                for ($i = 0; $i < $result->num_rows; $i++)
+                                                $row = mysqli_fetch_assoc($result);
+                                                $skills[$row['job_id']][] = $row['description'];
+                                            }
+                                            for ($i = 0; $i < count($jobs_array); $i++)
+                                            {
+                                                echo "<li class='subtitle col-75'>----- For ".$jobs_array[$i]['title'].": -----</li>";
+                                                for ($j = 0; $j < count($skills[$jobs_array[$i]['id']]); $j++)
                                                 {
-                                                    $row = mysqli_fetch_assoc($result);
-                                                    if ($row["job_id"]==$GLOBALS['array'][$j][0])
-                                                    {
-                                                        echo "<li><div class='col-75'><label for='job".$j."_skill".$i."'><input type='checkbox' id='job".$j."_skill".$i."' name='skills[j".$j."s".$i."]' value='1'>
-                                        ".$row['description']."</label></div></li>";
-                                                    }
+                                                    echo "<li><div class='col-75'><label for='job".$i."_skill".$j."'><input type='checkbox' id='job".$i."_skill".$j."' name='skills[j".$i."s".$j."]' value='1'>"
+                                                    .$skills[$jobs_array[$i]['id']][$j]."</label></div></li>";
                                                 }
                                             }
-                                        
-                                        
-                                        
                                         ?>
-                                        <li class="subtitle col-75">----- For Network Admin: -----</li>
-                                        <li><div class="col-75"><label for="job1_skill1"><input type="checkbox" id="job1_skill1" name="skills[j1s1]" value="1" checked="checked">
-                                        Bachelor's degree in Information Tech, Computer Science, or related field.</label></div></li>
-                        
-                                        <li><div class="col-75"><label for="job1_skill2"><input type="checkbox" id="job1_skill2" name="skills[j1s2]" value="1">
-                                        3 years of experience in network administration.</label></div></li>
-                        
-                                        <li><div class="col-75"><label for="job1_skill3"><input type="checkbox" id="job1_skill3" name="skills[j1s3]" value="1">
-                                        Proficiency in configuring routers and switches.</label></div></li>
-                        
-                                        <li><div class="col-75"><label for="job1_skill4"><input type="checkbox" id="job1_skill4" name="skills[j1s4]" value="1">
-                                        Strong troubleshooting and problem-solving skills.</label></div></li>
-                        
-                                        <li><div class="col-75"><label for="job1_skill5"><input type="checkbox" id="job1_skill5" name="skills[j1s5]" value="1">
-                                        Certifications such as CCNA.</label></div></li>
-                        
-                                        <li><div class="col-75"><label for="job1_skill6"><input type="checkbox" id="job1_skill6" name="skills[j1s6]" value="1">
-                                        Experience with cloud networking</label></div></li>
-                                        
-                                        <li class="subtitle col-75">----- For Software Developer: -----</li> <!--software developer skills-->
-                                        <li><div class="col-75"><label for="job2_skill1"><input type="checkbox" id="job2_skill1" name="skills[j2s1]" value="1">
-                                        Bachelor's degree in Computer Science or related field</label></div></li>
-                        
-                                        <li><div class="col-75"><label for="job2_skill2"><input type="checkbox" id="job2_skill2" name="skills[j2s2]" value="1">
-                                        3+ years of experience in software development</label></div></li>
-                        
-                                        <li><div class="col-75"><label for="job2_skill3"><input type="checkbox" id="job2_skill3" name="skills[j2s3]" value="1">
-                                        Proficiency in Python, or C++</label></div></li>
-                        
-                                        <li><div class="col-75"><label for="job2_skill4"><input type="checkbox" id="job2_skill4" name="skills[j2s4]" value="1">
-                                        Strong problem-solving skills.</label></div></li>
-                        
-                                        <li><div class="col-75"><label for="job2_skill5"><input type="checkbox" id="job2_skill5" name="skills[j2s5]" value="1">
-                                        Experience with cloud technologies</label></div></li>
-                        
-                                        <li><div class="col-75"><label for="job2_skill6"><input type="checkbox" id="job2_skill6" name="skills[j2s6]" value="1">
-                                        Familiarity with Agile frameworks</label></div></li>
 
                                         <li class="subtitle col-75">--------------------------------</li>
 
