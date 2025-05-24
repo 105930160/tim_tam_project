@@ -34,7 +34,7 @@ if (!$dbconn) {
         </form>
         <?php
         //require_once "settings.php";
-        require_once "process_eoi.php";
+        //require_once "process_eoi.php";
         $conn = @mysqli_connect ($host,$username,$password,$database);
         ?>
         <form method="GET" action="manage_search_results.php">

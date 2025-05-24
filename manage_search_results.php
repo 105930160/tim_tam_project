@@ -20,7 +20,7 @@ if (!$dbconn) {
         <h1>EOI Manager</h1>
         <?php
         //require_once "settings.php";
-        require_once "process_eoi.php";
+        //require_once "process_eoi.php";
         $conn = @mysqli_connect ($host,$username,$password,$database);
         if (!$conn) {
             echo "<p>Unable to connect to the db.</p>";
@@ -59,8 +59,23 @@ if (!$dbconn) {
                 $job_ref_num = mysqli_real_escape_string($conn, $_GET['Job_Reference_Number']);
                 $first_name = mysqli_real_escape_string($conn, $_GET['First_Name']);
                 $last_name = mysqli_real_escape_string($conn, $_GET['Last_Name']);
+
+                echo "job ref: ".$job_ref_num.". fname: ".$first_name.". lname: ".$last_name.".";
+                echo "if statement here.";
             
-                $query = "SELECT * FROM eoi WHERE Job_Reference_Number LIKE '$job_ref_num' OR First_Name LIKE '$first_name' OR Last_Name LIKE '$last_name'";
+                if ($job_ref_num == ""){
+                    $job_ref_num = "%";
+                }
+                if ($first_name == ""){
+                    $first_name = "%";
+                }
+                if ($last_name == ""){
+                    $last_name = "%";
+                }
+                echo "job ref: ".$job_ref_num.". fname: ".$first_name.". lname: ".$last_name.".";
+
+                
+                $query = "SELECT * FROM eoi WHERE Job_Reference_Number LIKE '$job_ref_num' AND First_Name LIKE '$first_name' AND Last_Name LIKE '$last_name'";
                 $result = mysqli_query($conn, $query);
 
                 if ($result && mysqli_num_rows($result) > 0) {
