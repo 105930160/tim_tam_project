@@ -219,6 +219,12 @@
                             <input class="button" type="submit" value="Apply" title="submit form">
                         </div> <!--end form bottom-->       
             </section>         
+                    <?php 
+                        echo $_SESSION['message']??"";
+                        unset($_SESSION['message']);
+                        echo $_SESSION['eoi_id']??"";
+                        unset($_SESSION['eoi_id']);
+                    ?>
             </form>
         </main>
         <br>

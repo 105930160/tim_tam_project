@@ -6,40 +6,104 @@ if (isset($_POST['job_reference_number']))
     require_once("settings.php");
     if ($conn) 
     {
-        // $create_table_query = "CREATE TABLE IF NOT EXISTS `eoi` (
-        // `EOI_ID` INT AUTO_INCREMENT PRIMARY KEY,
-        // `Skills_ID` INT NOT NULL,
-        // `Status` VARCHAR(10) DEFAULT 'New',
-        // `Job_Reference_Number` VARCHAR(5) NOT NULL,
-        // `First_Name` VARCHAR(20) NOT NULL,
-        // `Last_Name` VARCHAR(20) NOT NULL,
-        // `Street_Address` VARCHAR(40) NOT NULL,
-        // `Suburb/Town` VARCHAR(40) NOT NULL,
-        // `Postcode` VARCHAR(4) NOT NULL,
-        // `Email_Address` VARCHAR() NOT NULL,
-        // `Phone_Number` VARCHAR(20) NOT NULL,
-        // `Other_Skills` TEXT,
-        // `Date_Of_Birth` DATE,
-        // `Gender` VARCHAR(10),
-        // FOREIGN KEY (`Skills_ID`) REFERENCES `eoi_skills`(`skills_id`));";
-        // mysqli_query($conn,$create_table_query);
-        // // needs to copy and update table to be equal to the number of currently available jobs
-        // $create_table_query = "CREATE TABLE IF NOT EXISTS `eoi_skills` (
-        //     `skills_id` INT AUTO_INCREMENT PRIMARY KEY,
-        //     `j1s1` BOOLEAN DEFAULT 0,
-        //     `j1s2` BOOLEAN DEFAULT 0,
-        //     `j1s3` BOOLEAN DEFAULT 0,
-        //     `j1s4` BOOLEAN DEFAULT 0,
-        //     `j1s5` BOOLEAN DEFAULT 0,
-        //     `j1s6` BOOLEAN DEFAULT 0,
-        //     `j2s1` BOOLEAN DEFAULT 0,
-        //     `j2s2` BOOLEAN DEFAULT 0,
-        //     `j2s3` BOOLEAN DEFAULT 0,
-        //     `j2s4` BOOLEAN DEFAULT 0,
-        //     `j2s5` BOOLEAN DEFAULT 0,
-        //     `j2s6` BOOLEAN DEFAULT 0);";
-        // mysqli_query($conn, $create_table_query);
+                                    /*-------------------------SQL Creation/ Verification-------------------------------*/
+        
+                                    //create the eoi table if it does not exist
+        $create_table_query = "CREATE TABLE IF NOT EXISTS `eoi` (
+        `EOI_ID` INT AUTO_INCREMENT PRIMARY KEY,
+        `Skills_ID` INT NOT NULL,
+        `Status` VARCHAR(10) DEFAULT 'New',
+        `Job_Reference_Number` VARCHAR(5) NOT NULL,
+        `First_Name` VARCHAR(20) NOT NULL,
+        `Last_Name` VARCHAR(20) NOT NULL,
+        `Street_Address` VARCHAR(40) NOT NULL,
+        `Suburb/Town` VARCHAR(40) NOT NULL,
+        `Postcode` VARCHAR(4) NOT NULL,
+        `Email_Address` VARCHAR(50) NOT NULL,
+        `Phone_Number` VARCHAR(20) NOT NULL,
+        `Other_Skills` TEXT,
+        `Date_Of_Birth` DATE,
+        `Gender` VARCHAR(10),
+        FOREIGN KEY (`Skills_ID`) REFERENCES `eoi_skills`(`skills_id`));";
+        mysqli_query($conn,$create_table_query);
 
+        /*block of code dedicated to creating a skills list that responds to creation and deletion of new jobs and skills. */
+
+        //gets and stores every id from the 'jobs_postings' table 
+        $query = "SELECT id  FROM `job_postings`";
+        $result = mysqli_query($conn, $query);
+        $jobs_array = [];
+        for ($i = 0; $i < $result->num_rows; $i++)
+        {
+            $row = mysqli_fetch_assoc($result);
+            $jobs_array[] = $row; 
+        }
+        //gets and stores the existence of every job, categorized by job_id
+        $query = "SELECT job_id FROM skills";
+        $result = mysqli_query($conn,$query);
+        $skills = [];
+        for ($i = 0; $i < $result->num_rows; $i++)
+        {
+            $row = mysqli_fetch_assoc($result);
+            $skills[$row['job_id']][] = 1;
+        }
+        //creates the string to be inserted into the MYSQL query that contains every job
+        $skills_sorted=[];
+        $input = "";
+        for ($i=0; $i<count($skills);$i++)
+        {
+            for ($j = 1; $j <= count($skills[$jobs_array[$i]['id']]); $j++)
+            {
+                $skills_sorted[]= "j".$jobs_array[$i]['id']."s".$j."";
+                //j1s1 means job 1 skill 1
+                $input = $input . ",  `j".$jobs_array[$i]['id']."s".$j."` BOOLEAN DEFAULT 0";
+            }
+        }
+        //checks if eoi_skills exists and then duplicates it 
+        if (mysqli_num_rows(mysqli_query($conn, "SHOW TABLES LIKE 'eoi_skills'"))) 
+        {
+            mysqli_query($conn, "SET foreign_key_checks = 0");
+            mysqli_query($conn, "DROP TABLE IF EXISTS eoi_skills_backup");
+            mysqli_query($conn, "RENAME TABLE eoi_skills TO eoi_skills_backup");
+            mysqli_query($conn, "SET foreign_key_checks = 1");
+        }
+        //creates a new version of eoi_skills
+        $create_table_query = "CREATE TABLE `eoi_skills` (
+            `skills_id` INT AUTO_INCREMENT PRIMARY KEY
+            ".$input.");";
+        mysqli_query($conn, $create_table_query);
+
+
+        //checks if eoi_skills_backup exists and then assigns all old values to the new table
+        if (mysqli_num_rows(mysqli_query($conn, "SHOW TABLES LIKE 'eoi_skills_backup'"))) 
+        {
+            function get_column_names($conn, $table_name) {
+                $columns = [];
+                $result = mysqli_query($conn, "SHOW COLUMNS FROM `$table_name`");
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $columns[] = $row['Field'];
+                }
+                return $columns;
+            }
+
+            $new_cols = get_column_names($conn, 'eoi_skills');
+            $old_cols = get_column_names($conn, 'eoi_skills_backup');
+
+            $common_cols = array_intersect($new_cols, $old_cols);
+
+            if (count($common_cols) > 1) {
+                $columns_str = implode(", ", $common_cols);
+                $copy_query = "
+                    INSERT INTO eoi_skills ($columns_str)
+                    SELECT $columns_str FROM eoi_skills_backup;
+                ";
+                !mysqli_query($conn, $copy_query);
+            }
+        }
+
+        /*------------------------------------------------- data input/ Validation ---------------------------------------*/
+
+        //inputs, making sure that no malicious stuff is hidden inside
         $job_reference_number = mysqli_real_escape_string($conn, trim($_POST['job_reference_number']));
         $first_name = mysqli_real_escape_string($conn, trim($_POST['first_name']));
         $last_name = mysqli_real_escape_string($conn, trim($_POST['last_name']));
@@ -50,13 +114,14 @@ if (isset($_POST['job_reference_number']))
         $email = mysqli_real_escape_string($conn, trim($_POST['applicant_email']));
         $phone = mysqli_real_escape_string($conn, trim($_POST['applicant_phone']));
         $other_skills = mysqli_real_escape_string($conn, trim($_POST['other_skills']));
-        $other_check = mysqli_real_escape_string($conn,trim($_POST['other_checked']))??"";
+        $other_check = mysqli_real_escape_string($conn,trim($_POST['other_checked']??""));
         $dob = mysqli_real_escape_string($conn, trim($_POST['birth_date']));
         $gender = mysqli_real_escape_string($conn, trim($_POST['gender'])); 
         $skills = $_POST["skills"]??"";
         $errors = [];
-        //Put Validation Here
 
+        //validaton
+        //uses regex
         if (!preg_match('/^[a-zA-Z]+$/',$first_name))
         {
             $errors['f_name'] = "Invalid first name";
@@ -81,7 +146,8 @@ if (isset($_POST['job_reference_number']))
         {
             $errors['email'] = "Please enter a valid email.";
         }
-        if (( (substr($dob,0,4) > date("Y")) || ((substr($dob,0,4) == date("Y") && substr($dob,5,2)> date("m")) || ((substr($dob,0,4) == date("Y") && substr($dob,5,2) == date("m")&&substr($dob,8,2) > date("d"))))) || !$dob)
+        //birthdate cannot be after today or before 110 years ago (maybe someone could be that old)
+        if (( (substr($dob,0,4) > date("Y")) || ((substr($dob,0,4) == date("Y") && substr($dob,5,2)> date("m")) || ((substr($dob,0,4) == date("Y") && substr($dob,5,2) == date("m")&&substr($dob,8,2) > date("d"))))) || (!$dob) || (substr($dob,0,4) < date("Y")-110))
         {
             $errors['birth_date'] = "invalid birth date";
         }
@@ -159,16 +225,12 @@ if (isset($_POST['job_reference_number']))
             }
         }
         
-        //validate email format
-
-
-        //phone number digit validation
-
         //if other is ticked in the skills list then the other skills text box cannot be empty  
         if ($other_check && !$other_skills)
         {
             $errors['other'] = "You have checked 'other'. please indicate what other applicable skills you may have.";
         }
+        //if any errors are found then exit back to apply.php to fix
         if ($errors)
         {
             $_SESSION['errors']=$errors;
@@ -177,31 +239,39 @@ if (isset($_POST['job_reference_number']))
             exit;
         }
 
-
-
+        /*--------------------------------------------SQL INSERT---------------------------------------------------*/
+        $insert_to_query_values = "";
+        $insert_to_query_columns = "";
+        for ($i=0; $i < count($skills_sorted);$i++)
+        {
+            if ($i == count($skills_sorted)-1 )
+            {
+                $insert_to_query_values = $insert_to_query_values . "'".mysqli_real_escape_string($conn, $skills[$skills_sorted[$i]]??"")."'";
+                $insert_to_query_columns = $insert_to_query_columns . $skills_sorted[$i] ;
+            }
+            else 
+            {
+               // echo $skills_sorted[$i];
+                //echo $skills[$skills_sorted[$i]];
+               //echo $skills["j1s2"];
+                $insert_to_query_values = $insert_to_query_values . "'".mysqli_real_escape_string($conn, $skills[$skills_sorted[$i]]??"")."',";
+                $insert_to_query_columns = $insert_to_query_columns . $skills_sorted[$i] .", ";
+            }
+        }
 
         $query = "INSERT INTO eoi_skills 
-            (j1s1, j1s2, j1s3, j1s4, j1s5, j1s6, j2s1, j2s2, j2s3, j2s4, j2s5, j2s6) 
+            (".$insert_to_query_columns.") 
             VALUES (
-                '".mysqli_real_escape_string($conn, $skills["j1s1"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j1s2"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j1s3"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j1s4"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j1s5"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j1s6"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j2s1"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j2s2"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j2s3"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j2s4"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j2s5"] ?? "")."',
-                '".mysqli_real_escape_string($conn, $skills["j2s6"] ?? "")."'
+                ".$insert_to_query_values."
             )";
+
+
         mysqli_query($conn, $query);
 
         $result = mysqli_query($conn, "SELECT skills_id FROM eoi_skills ORDER BY skills_id DESC LIMIT 1");
         $row = mysqli_fetch_assoc($result);
         $skills_id = $row['skills_id'];
-
+        
         $query = "INSERT INTO eoi 
             (Skills_ID, Status, Job_Reference_Number, First_Name, Last_Name, Street_Address, `Suburb/Town`, `State` , Postcode, Email_Address, Phone_Number, Other_Skills, Date_Of_Birth, Gender) 
             VALUES (
@@ -216,10 +286,6 @@ if (isset($_POST['job_reference_number']))
         $_SESSION['eoi_id'] = $eoi_id;
         header("Location: apply.php");
         exit();
-    } 
-    else 
-    {
-        echo "Database connection failed.";
     }
 } 
 else 
