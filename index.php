@@ -15,25 +15,8 @@
 <body>
     <!--didn't put in a header because i didn't see why we needed one-->
     <!--also we could make the navbar fixed at the top of the page. something to discuss also.-->
-
-    <header>
-        <!--nav is seperated into top and bottom in order to more easily deal with everything-->
-        <div id="navtop">
-            <!--likewise, navtop is seperated into two seperate containers-->
-            <div id="navtopmiddle">
-                <a href="index.php"><img id="logo" src="Images/GenericITCompanyLogo.png" alt="Generic IT Company Logo"></a>
-            </div>
-            <aside>
-                <a href="mailto:info@genericitcompany.com.au" id="contactus"><p>Contact Us!</p></a>
-            </aside>
-       </div>
-        <nav>
-                <a id="homebutton" href="index.php"><p>Home</p></a>
-                <a href="apply.php"><p>Apply</p></a>
-                <a href="about.php"><p>About</p></a>
-                <a href="jobs.php"><p>Jobs</p></a>
-        </nav>
-    </header>
+  
+    <?php include 'header.inc'; ?>
     <!--Main for all the... Main stuff (:O)-->
     <main>
         <figure>
@@ -77,9 +60,6 @@
             </article>
         </section>
     </main>
-    <footer>
-        <a href="https://tamstim72.atlassian.net/jira/software/projects/SCRUM/boards/1" target="_blank"><p> Our Jira</p></a>
-        <a href="https://github.com/105930160/tim_tam_project" target="_blank"><p>Our GitHub</p></a>
-    </footer>
+    <?php include 'footer.inc'; ?>
 </body>
 </html>
