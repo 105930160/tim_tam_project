@@ -2,9 +2,9 @@
     $host = "localhost";
     $username = "root";
     $password = "";
-    $database = "akira_db";
+    $database = "tim_tam_db";
 
-    $conn = mysqli_connect($host,$username,$password,$database);
+    $dbconn = mysqli_connect($host,$username,$password,$database);
     
 
 

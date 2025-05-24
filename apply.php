@@ -156,7 +156,7 @@
                                             <option value="" selected>---------- </option>
                                             <?php 
                                                 $query = "SELECT id , title  FROM `job_postings`";
-                                                $result = mysqli_query($conn, $query);
+                                                $result = mysqli_query($dbconn, $query);
                                                 $jobs_array = [];
                                                 for ($i = 0; $i < $result->num_rows; $i++)
                                                 {
@@ -180,7 +180,7 @@
                                     <ul id="skills_list"> <!--network admin skills-->
                                         <?php 
                                             $query = "SELECT job_id,`description` FROM skills";
-                                            $result = mysqli_query($conn,$query);
+                                            $result = mysqli_query($dbconn,$query);
                                             $skills = [];
                                             for ($i = 0; $i < $result->num_rows; $i++)
                                             {
