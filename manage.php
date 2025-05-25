@@ -29,140 +29,143 @@ if (!$dbconn) {
             require_once "header.inc";
             session_start();
             if (!isset($_SESSION['manager_id'])) {
-                header('Location: manager_login.php');
+                //header('Location: manager_login.php');
             }
         ?>
         <main>
                  
-            <h1>EOI Manager</h1>
+            <!-- style attribute here is necessary because php gets unpacked after html so none of the php table gets any css styling -->
 
-            <!--search boxes begin here-->
-            <form method="POST" action="manage_search_results.php">
-                <label for="job_ref">Job position:</label>
-                <input type="text" id="job_ref" name="Job_Reference_Number">
-                <label for="fname">First name:</label>
-                <input type="text" id="fname" name="First_Name">
-                <label for="lname">Last name:</label>
-                <input type="text" id="lname" name="Last_Name">
-                <input type="submit" value="Search">
-            </form> <!-- search boxes end -->
-            
-            <!-- begin delete and update form (has to be up here to include the select inputs in the table)-->
-            <form method="POST" action="delete_eoi.php">
+            <h1 id="form_title">EOI Manager</h1>    
+                <!--search boxes begin here-->
+                <form method="POST" action="manage_search_results.php">
+                    <label for="job_ref">Job position:</label>
+                    <input type="text" id="job_ref" name="Job_Reference_Number" style="width:5%">
+                    <label for="fname">First name:</label>
+                    <input type="text" id="fname" name="First_Name" maxlength="30" style="width:20%">
+                    <label for="lname">Last name:</label>
+                    <input type="text" id="lname" name="Last_Name" maxlength="35" style="width:20%">
+                    <input type="submit" value="Search" class="button">
+                </form> <!-- search boxes end -->
+                <hr>
+                
+                <!-- begin EOI display table -->
+                <table> 
+                    <caption id="tablecap">Pending Expressions of Interest:</caption>
+                    <tr>
+                        <th>EOI</th>
+                        <th>Job Ref</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Contact details</th>
+                        <th>Skills List</th>
+                        <th>Other Skills</th>
+                        <th>D.O.B</th>
+                        <th>Status</th>
+                    </tr>
 
-            <!-- begin EOI display table -->
-            <table> 
-                <caption>Pending Expressions of Interest:</caption>
-                <tr>
-                    <th>EOI</th>
-                    <th>Job Ref</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Contact details</th>
-                    <th>Skills List</th>
-                    <th>Other Skills</th>
-                    <th>D.O.B</th>
-                    <th>Gender</th>
-                    <th>Status</th>
-                </tr>
-
-                <!-- begin table body + EOI displays -->
-                <?php
-                    require_once "settings.php";
-                    $conn = @mysqli_connect ($host,$username,$password,$database);
-                    if (!$conn) {
-                        echo "<p>Unable to connect to the db.</p>";
-                    }
-                    
-                    // begin table body + EOI displays:
-                    $query = "SELECT * FROM eoi";
-                    $result = mysqli_query($conn, $query);
-                    if ($result && mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)){
-                            $eoi_num = ($row['EOI_ID']);
-                            $job_ref_num = ($row['Job_Reference_Number']);
-                            $first_name = htmlspecialchars($row['First_Name']);
-                            $last_name = htmlspecialchars($row['Last_Name']);
-                            $street = htmlspecialchars($row['Street_Address']);
-                            $suburb = htmlspecialchars($row['Suburb/Town']);
-                            $state = htmlspecialchars($row['State']);
-                            $postcode = htmlspecialchars($row['Postcode']);
-                            $email = htmlspecialchars($row['Email_Address']);
-                            $phone_num = htmlspecialchars($row['Phone_Number']);
-                            $skills_id = htmlspecialchars($row['Skills_ID']);  // link the skills table to here somehow..
-                            $other_skills = htmlspecialchars($row['Other_Skills']);
-                            $dob = htmlspecialchars($row['Date_Of_Birth']);
-                            $gender = htmlspecialchars($row['Gender']);
-                            $status = htmlspecialchars($row['Status']);
-                                // htmlspecialchars used here to ensure the values in the databasee can be displayed properly
-
-                            // one EOI table row start
-                            echo "\n\n\t\t\t\t <!-- new table row -->";
-                            echo "\n\t\t\t\t<tr>";
-                            echo "\n\t\t\t\t\t<td>".$eoi_num."</td>";
-                            echo "\n\t\t\t\t\t<td>".$job_ref_num."</td>";
-                            echo "\n\t\t\t\t\t<td>".$first_name." ".$last_name."</td>";
-                            echo "\n\t\t\t\t\t<td>".$street."<br>".$suburb.", ".$state.", ".$postcode."</td>";
-                            echo "\n\t\t\t\t\t<td>Email: ".$email."<br>Phone: ".$phone_num."</td>";
-                            
-                            // START skills table cell. 
-                            // currently using skills table, must switch to skills key from eoi table.
-                            // may want to use an array for the skills?
-                            echo "\n\n\t\t\t\t\t<!-- skills list -->";
-                            echo "\n\t\t\t\t\t<td><p>";  
-                                $skills_query = "SELECT id, essential FROM skills";
-                                $skills_result = mysqli_query($conn, $skills_query);
-                                if ($skills_result && mysqli_num_rows($skills_result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($skills_result)){
-                                        $desc = htmlspecialchars($row['id']);
-                                        $essential = htmlspecialchars($row['essential']);
-                                                    // going to need some IFNULL() things going on for the skills that dont apply 
-                                        
-                                        echo "".$desc." (".$essential."), ";      
-                                        
-                                    }
-                                } else {
-                                    echo "<li>No skills found.</li>";
-                                }
-                            echo "</p></td>";
-                            // END skills list cell.
-
-                            // continue EOI table row
-                            echo "\n\t\t\t\t\t<td>" . $other_skills . "</td>";
-                            echo "\n\t\t\t\t\t<td>" . $dob . "</td>";
-                            echo "\n\t\t\t\t\t<td>" . $gender . "</td>";
-
-                            echo "\n\n\t\t\t\t\t<!-- select status -->";
-                            echo "\n\t\t\t\t\t<td>";    // select status to update
-                            echo "<form method='POST' action='update_eoi.php'>";
-                                echo "\n\t\t\t\t\t\t<input type='hidden' name='eoi' value='".$eoi_num."'>";
-                                echo "\n\t\t\t\t\t\t<label for='".$eoi_num."_status'> </label> <select id='".$eoi_num."_status' name='status'>";
-                                    echo "\n\t\t\t\t\t\t\t<option selected value='".$status."'>".$status."</option>";
-                                    echo "\n\t\t\t\t\t\t\t<option value='New'>New</option>";
-                                    echo "\n\t\t\t\t\t\t\t<option value='Current'>Current</option>";
-                                    echo "\n\t\t\t\t\t\t\t<option value='Final'>Final</option>";
-                                    echo "\n\t\t\t\t\t\t\t<input type='submit' value='Update'>";
-                                echo "\n\t\t\t\t\t\t</select></form>";
-                            echo "\n\t\t\t\t\t</td>"; 
-                            echo "\n\t\t\t\t</tr>\n";
-                            // END EOI table row
-                            }
-                        }else{ 
-                            echo "\n\t\t\t\t\t<td colspan='5'> no EOIs found in the database.</td>\n\t\t\t";
+                    <!-- begin table body + EOI displays -->
+                    <?php
+                        require_once "settings.php";
+                        $conn = @mysqli_connect ($host,$username,$password,$database);
+                        if (!$conn) {
+                            echo "<p>Unable to connect to the db.</p>";
                         }
-                    mysqli_close($dbconn);
-                ?>
+                        
+                        // begin table body + EOI displays:
+                        $query = "SELECT * FROM eoi";
+                        $result = mysqli_query($conn, $query);
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)){
+                                $eoi_num = ($row['EOI_ID']);
+                                $job_ref_num = ($row['Job_Reference_Number']);
+                                $first_name = htmlspecialchars($row['First_Name']);
+                                $last_name = htmlspecialchars($row['Last_Name']);
+                                $street = htmlspecialchars($row['Street_Address']);
+                                $suburb = htmlspecialchars($row['Suburb/Town']);
+                                $state = htmlspecialchars($row['State']);
+                                $postcode = htmlspecialchars($row['Postcode']);
+                                $email = htmlspecialchars($row['Email_Address']);
+                                $phone_num = htmlspecialchars($row['Phone_Number']);
+                                $skills_id = htmlspecialchars($row['Skills_ID']);  // link the skills table to here somehow..
+                                $other_skills = htmlspecialchars($row['Other_Skills']);
+                                $dob = htmlspecialchars($row['Date_Of_Birth']);
+                                $gender = htmlspecialchars($row['Gender']);
+                                $status = htmlspecialchars($row['Status']);
+                                    // htmlspecialchars used here to ensure the values in the databasee can be displayed properly
 
-            </table> <!-- end EOI display table -->
-            
-            <!-- continue change database form -->
-                <span id="delete_section"> <!-- update + delete records form continues -->
-                    <label for="delete">Delete EOIs with reference number:</label>
-                    <input type="text" id="delete" name="delete_eois">
-                    <input type="submit" value="Delete EOIs">
-                </span>
-            </form> <!-- end update + delete records form -->
+                                // one EOI table row start
+                                echo "\n\n\t\t\t\t <!-- new table row -->";
+                                echo "\n\t\t\t\t<tr>";
+                                echo "\n\t\t\t\t\t<td>".$eoi_num."</td>";
+                                echo "\n\t\t\t\t\t<td>".$job_ref_num."</td>";
+                                echo "\n\t\t\t\t\t<td>".$first_name." ".$last_name."</td>";
+                                echo "\n\t\t\t\t\t<td>".$street."<br>".$suburb.", ".$state.", ".$postcode."</td>";
+                                echo "\n\t\t\t\t\t<td>Email: ".$email."<br>Phone: ".$phone_num."</td>";
+                                
+                                // START skills table cell. 
+                                // currently using skills table, must switch to skills key from eoi table.
+                                // may want to use an array for the skills?
+                                echo "\n\n\t\t\t\t\t<!-- skills list -->";
+                                echo "\n\t\t\t\t\t<td>";  
+                                    $skills_query = "SELECT * FROM eoi_skills WHERE skills_id ='$skills_id'";
+                                    $skills_result = mysqli_query($conn, $skills_query);
+                                    if ($skills_result && mysqli_num_rows($skills_result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($skills_result)){
 
+                                            // made array of skill names to print, using the 1 or 0 in the eoi_skills table to tell whether to print or not
+                                            echo "<p>";
+                                            $skills_list = array("", "j1s1", "j1s2", "j1s3", "j1s4", "j1s5", "j1s6", "j2s1", "j2s2", "j2s3", "j2s4", "j2s5", "j2s6");
+                                            $i = 0;
+                                            foreach ($row as $skill){
+                                                if ($skill == 1 ){
+                                                    echo "".$skills_list[$i]."<br>";
+                                                }
+                                                $i++;  
+                                            }
+                                        }
+                                    } else {
+                                        echo "<p>No skills found.";
+                                    }
+                                echo "</p></td>";
+                                // END skills list cell.
+
+                                // continue EOI table row
+                                echo "\n\t\t\t\t\t<td style='white-space:wrap'>" . $other_skills . "</td>";
+                                echo "\n\t\t\t\t\t<td>" . $dob . "</td>";
+
+                                // the select boxes and update buttons to update status for an eoi.
+                                echo "\n\t\t\t\t\t<td>";    
+                                echo "<form method='POST' action='update_eoi.php'>";
+                                    echo "\n\t\t\t\t\t\t<input type='hidden' name='eoi' value='".$eoi_num."'>";
+                                    echo "\n\t\t\t\t\t\t<label for='".$eoi_num."_status'> </label> <select id='".$eoi_num."_status' name='status'>";
+                                        echo "\n\t\t\t\t\t\t\t<option selected value='".$status."'>".$status."</option>";
+                                        echo "\n\t\t\t\t\t\t\t<option value='New'>New</option>";
+                                        echo "\n\t\t\t\t\t\t\t<option value='Current'>Current</option>";
+                                        echo "\n\t\t\t\t\t\t\t<option value='Final'>Final</option>";
+                                        echo "\n\t\t\t\t\t\t\t</select>";
+                                    echo "\n\t\t\t\t\t\t<input type='submit' value='Update'></form>";
+                                echo "\n\t\t\t\t\t</td>"; 
+                                echo "\n\t\t\t\t</tr>\n";
+                                // END EOI table row
+                                }
+                            }else{ 
+                                echo "\n\t\t\t\t\t<td colspan='5'> no EOIs found in the database.</td>\n\t\t\t";
+                            }
+                        mysqli_close($dbconn);
+                    ?>
+
+                </table> <!-- end EOI display table -->
+                
+                <!-- allowing records to be deleted by the job reference number -->
+                <form method="POST" action="delete_eoi.php">
+                    <span id="delete_section"> <!-- update + delete records form continues -->
+                        <label for="delete">Delete EOIs with reference number:</label>
+                        <input type="text" id="delete" name="delete_eois" maxlength="10" style="width:5%">
+                        <input type="submit" value="Delete EOIs" class="button">
+                    </span>
+                </form> <!-- end update + delete records form -->
+            </section>
         </main>
         <?php require_once "footer.inc"; ?>
 
