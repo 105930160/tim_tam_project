@@ -25,9 +25,12 @@ if (!$dbconn) {
     </head>
 
     <body>
-        <?php require_once "header.inc";
-        session_start();
-        $_SESSION['username'] = "John";
+        <?php 
+            require_once "header.inc";
+            session_start();
+            if (!isset($_SESSION['manager_id'])) {
+                header('Location: manager_login.php');
+            }
         ?>
         <main>
                  
