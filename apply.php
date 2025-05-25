@@ -25,17 +25,17 @@
                         <h2>Your Details:</h2>
                             <div class="row">
                                 <div class="col-25"><label for="first_name">First Name:</label></div>
-                                    <div class="col-75"><input type="text" id="first_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your first name."></div>
+                                    <div class="col-75"><input type="text" id="first_name" name="first_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your first name."></div>
                             </div><br>
                             
                             <div class="row">
                                 <div class="col-25"><label for="last_name">Last Name:</label></div>
-                                    <div class="col-75"><input type="text" id="last_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your last name."></div> 
+                                    <div class="col-75"><input type="text" id="last_name" name="last_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your last name."></div> 
                             </div><br> 
 
                             <div class="row">
                                 <div class="col-25"><label for="birth_date">Date of birth:</label></div>
-                                        <div class="col-75"><input type="date" id="birth_date" required="required" title="select your date of birth."></div>
+                                        <div class="col-75"><input type="date" id="birth_date" name="date_of_birth" required="required" title="select your date of birth."></div>
                             </div>
                             <br>
 
@@ -44,8 +44,8 @@
                                 <fieldset id="gender_field">  <!--SP [1/4 3:11pm]: Gender feildset begins-->
                                     <legend><span class="col-25">Gender:</span></legend>
                                         <div class="col-75" id="gender_list">
-                                            <label for="man"><input type="radio" id="man" name="gender" value="man" required="required" checked="checked">Man</label>
-                                            <label for="woman"><input type="radio" id="woman" name="gender" value="woman">Woman</label>
+                                            <label for="male"><input type="radio" id="male" name="gender" value="male" required="required" checked="checked">Male</label>
+                                            <label for="female"><input type="radio" id="female" name="gender" value="female">Female</label>
                                             <label for="non_binary"><input type="radio" id="non_binary" name="gender" value="non_binary">Non-Binary</label>
                                             <label for="g_other"><input type="radio" id="g_other" name="gender" value="other">Other<span class="checkmark"></span></label>
                                             <label for="g_no"><input type="radio" id="g_no" name="gender" value="prefer not to say">Prefer not to say</label>
@@ -58,13 +58,13 @@
                         <h2>Address:</h2>
                             <div class="row">
                                 <div class="col-25"><label for="street_address">Street Address:</label></div>
-                                    <div class="col-75"><input type="text" id="street_address" maxlength="40" pattern="^[a-zA-Z0-9 ]+$" required="required" placeholder="00 Road St"></div>
+                                    <div class="col-75"><input type="text" id="street_address" name="street_address" maxlength="40" pattern="^[a-zA-Z0-9 ]+$" required="required" placeholder="00 Road St"></div>
                             </div>
                             <br>
                             
                             <div class="row">
                                 <div class="col-25"><label for="suburb_address">Suburb:</label></div>
-                                    <div class="col-75"><input type="text" id="suburb_address" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="e.g. Richmond" title="suburb"></div>
+                                    <div class="col-75"><input type="text" id="suburb_address" name="suburb_address" maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="e.g. Richmond" title="suburb"></div>
                             </div>
                             <br>
 
@@ -87,7 +87,7 @@
 
                             <div class="row">
                                 <div class="col-25"><label for="postcode">Postcode:</label></div>
-                                    <div class="col-75"><input type="text" id="postcode" size="4" maxlength="4" pattern="^([0-9]{4})([200|9944])$" required="required" placeholder="0000"></div>
+                                    <div class="col-75"><input type="text" id="postcode" name="postcode" size="4" maxlength="4" pattern="^([0-9]{4})([200|9944])$" required="required" placeholder="0000"></div>
                             </div>  
                             
                         </section><!--SP [1/4 3:15pm]: end address div-->
@@ -96,13 +96,13 @@
                             <h2>How can we reach you?</h2>
                             <div class="row">
                                 <div class="col-25"><label for="applicant_email">Email:</label></div>
-                                    <div class="col-75"><input type="text" id="applicant_email" pattern="^.+@.+\..{1,2,3}$" placeholder="name@example.com" title="email" required="required"></div>
+                                    <div class="col-75"><input type="text" name="email" id="applicant_email" pattern="^.+@.+\..{1,2,3}$" placeholder="name@example.com" title="email" required="required"></div>
                             </div>
                             <br>
                                 
                             <div class="row">
                                 <div class="col-25"><label for="applicant_phone">Phone:</label></div>
-                                    <div class="col-75"><input type="tel" id="applicant_phone" maxlength="12" pattern="^\d+" placeholder="+X (XXX) XXX XXXX" title="phone number"></div>
+                                    <div class="col-75"><input type="tel" id="applicant_phone" name="phone" maxlength="12" pattern="^\d+" placeholder="+X (XXX) XXX XXXX" title="phone number"></div>
                             </div>
                         </section>  <!--end contact section-->
                     
