@@ -22,7 +22,7 @@ if (!$dbconn) {
     
     <body>
         <?php 
-            require_once "header.inc";
+            include "header.inc";
             session_start();
             if (!isset($_SESSION['manager_id'])) {
                // header('Location: manager_login.php');
@@ -114,8 +114,8 @@ if (!$dbconn) {
                                 // one EOI table row start
                                 echo "\n\n\t\t\t\t <!-- new table row -->";
                                 echo "\n\t\t\t\t<tr>";
-                                echo "\n\t\t\t\t\t<td>".$eoi_num."</td>";
-                                echo "\n\t\t\t\t\t<td>".$job_ref_num."</td>";
+                                echo "\n\t\t\t\t\t<td scope='column'><span style='color: #e7e7e7'>eoi</span><br>".$eoi_num."</td>";
+                                echo "\n\t\t\t\t\t<td scope='column'><span style='color: #e7e7e7'>eoi</span><br>".$job_ref_num."</td>";
                                 echo "\n\t\t\t\t\t<td>".$first_name." ".$last_name."</td>";
                                 echo "\n\t\t\t\t\t<td>".$street."<br>".$suburb.", ".$state.", ".$postcode."</td>";
                                 echo "\n\t\t\t\t\t<td>Email: ".$email."<br>Phone: ".$phone_num."</td>";
@@ -130,7 +130,7 @@ if (!$dbconn) {
                                     if ($skills_result && mysqli_num_rows($skills_result) > 0) {
                                         while ($row = mysqli_fetch_assoc($skills_result)){
 
-                                            echo "<p>";
+                                            echo "<p><span style='color: #e7e7e7'>skills:</span><br>";
                                             $skills_list = array("", "j1s1", "j1s2", "j1s3", "j1s4", "j1s5", "j1s6", "j2s1", "j2s2", "j2s3", "j2s4", "j2s5", "j2s6");
                                             $i = 0;
                                             foreach ($row as $skill){
@@ -147,14 +147,14 @@ if (!$dbconn) {
                                 // END skills table cell.
 
                                 // continue EOI table row
-                                echo "\n\t\t\t\t\t<td>" . $other_skills . "</td>";
+                                echo "\n\t\t\t\t\t<td style='white-space:wrap'><span style='color: #e7e7e7'>Other skills</span><br>" . $other_skills . "</td>";
                                 echo "\n\t\t\t\t\t<td>" . $dob . "</td>";
 
                                 echo "\n\n\t\t\t\t\t<!-- select status -->";
                                 echo "\n\t\t\t\t\t<td>";    // select status to update
                                 echo "<form method='POST' action='update_eoi.php'>";
                                     echo "\n\t\t\t\t\t\t<input type='hidden' name='eoi' value='".$eoi_num."'>";
-                                    echo "\n\t\t\t\t\t\t<label for='".$eoi_num."_status'> </label> <select id='".$eoi_num."_status' name='status'>";
+                                    echo "\n\t\t\t\t\t\t<label for='".$eoi_num."_status' style='color: #e7e7e7'>Status</label> <select id='".$eoi_num."_status' name='status'>";
                                         echo "\n\t\t\t\t\t\t\t<option selected value='".$status."'>".$status."</option>";
                                         echo "\n\t\t\t\t\t\t\t<option value='New'>New</option>";
                                         echo "\n\t\t\t\t\t\t\t<option value='Current'>Current</option>";
@@ -182,6 +182,6 @@ if (!$dbconn) {
                 </form> <!-- end update + delete records form -->
             </section>
         </main>
-        <?php require_once "footer.inc"; ?>
+        <?php include "footer.inc"; ?>
     </body>
 </html>
