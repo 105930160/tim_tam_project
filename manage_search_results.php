@@ -21,7 +21,10 @@ if (!$dbconn) {
     </head>
     
     <body>
-        <?php require_once "header.inc"; ?>
+        <?php require_once "header.inc";
+        session_start();
+        echo "Welcome, " . $_SESSION['username'];
+        ?>
         <main> 
             <h1>EOI Manager</h1>
             
