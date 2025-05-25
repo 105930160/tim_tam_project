@@ -37,8 +37,9 @@ if (!$dbconn) {
                 <label for="lname">Last name:</label>
                 <input type="text" id="lname" name="Last_Name">
                 <input type="submit" value="Search">
-            </form> <!-- search boxes end -->
             <hr>
+            </form> <!-- search boxes end -->
+            
                 
 
             <!-- begin delete and update form (has to be up here to include the select inputs in the table)-->
@@ -145,12 +146,15 @@ if (!$dbconn) {
 
                             echo "\n\n\t\t\t\t\t<!-- select status -->";
                             echo "\n\t\t\t\t\t<td>";    // select status to update
+                            echo "<form method='POST' action='update_eoi.php'>";
+                                echo "\n\t\t\t\t\t\t<input type='hidden' name='eoi' value='".$eoi_num."'>";
                                 echo "\n\t\t\t\t\t\t<label for='".$eoi_num."_status'> </label> <select id='".$eoi_num."_status' name='status'>";
                                     echo "\n\t\t\t\t\t\t\t<option selected value='".$status."'>".$status."</option>";
-                                    echo "\n\t\t\t\t\t\t\t<option value='new'>New</option>";
-                                    echo "\n\t\t\t\t\t\t\t<option value='current'>Current</option>";
-                                    echo "\n\t\t\t\t\t\t\t<option value='final'>Final</option>";
-                                echo "\n\t\t\t\t\t\t</select>";
+                                    echo "\n\t\t\t\t\t\t\t<option value='New'>New</option>";
+                                    echo "\n\t\t\t\t\t\t\t<option value='Current'>Current</option>";
+                                    echo "\n\t\t\t\t\t\t\t<option value='Final'>Final</option>";
+                                    echo "\n\t\t\t\t\t\t\t<input type='submit' value='Update'>";
+                                echo "\n\t\t\t\t\t\t</select></form>";
                             echo "\n\t\t\t\t\t</td>"; 
                             echo "\n\t\t\t\t</tr>\n";
                             // END EOI table row
@@ -166,10 +170,7 @@ if (!$dbconn) {
                     <label for="delete">Delete EOIs with reference number:</label>
                     <input type="text" id="delete" name="delete_eois">
                     <input type="submit" value="Delete EOIs">
-                </span>
-                <span id="update">
-                    <input type="submit" value="Update">
-                </span>            
+                </span>         
             </form> <!-- end update + delete records form -->
             
         </main>
