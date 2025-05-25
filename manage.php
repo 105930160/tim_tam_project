@@ -43,7 +43,6 @@ if (!$dbconn) {
                 <input type="text" id="lname" name="Last_Name">
                 <input type="submit" value="Search">
             </form> <!-- search boxes end -->
-            <hr> 
             
             <!-- begin delete and update form (has to be up here to include the select inputs in the table)-->
             <form method="POST" action="update_eoi.php">

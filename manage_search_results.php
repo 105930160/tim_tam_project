@@ -37,7 +37,6 @@ if (!$dbconn) {
                 <label for="lname">Last name:</label>
                 <input type="text" id="lname" name="Last_Name">
                 <input type="submit" value="Search">
-            <hr>
             </form> <!-- search boxes end -->
             
                 
