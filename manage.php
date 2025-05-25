@@ -35,6 +35,7 @@ if (!$dbconn) {
         <main>
                  
             <!-- style attribute here is necessary because php gets unpacked after html so none of the php table gets any css styling -->
+            <section id="table_section" style="background-color: #e7e7e7; padding: 1rem; margin: 1rem auto; border-radius: 12px; max-width: 900px;">  
 
             <h1 id="form_title">EOI Manager</h1>    
                 <!--search boxes begin here-->
