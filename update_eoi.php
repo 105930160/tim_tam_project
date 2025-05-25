@@ -11,6 +11,10 @@ if (!$dbconn) {
 }
 
 session_start();
+if (!isset($_SESSION['manager_id'])) {
+    header('Location: manager_login.php');
+}
+
 require_once("settings.php"); 
 $dbconn = mysqli_connect($host, $username, $password, $database);
 
