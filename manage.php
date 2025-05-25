@@ -45,7 +45,7 @@ if (!$dbconn) {
             </form> <!-- search boxes end -->
             
             <!-- begin delete and update form (has to be up here to include the select inputs in the table)-->
-            <form method="POST" action="update_eoi.php">
+            <form method="POST" action="delete_eoi.php">
 
             <!-- begin EOI display table -->
             <table> 

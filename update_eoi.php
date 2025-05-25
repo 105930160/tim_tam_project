@@ -11,14 +11,14 @@ if (!$dbconn) {
 }
 
 session_start();
-require_once("settings.php"); // from lab09
-
+require_once("settings.php"); 
 $dbconn = mysqli_connect($host, $username, $password, $database);
 
 if (!$dbconn) {
     die("Database connection failed: ".mysqli_connect_error());
 }
 
+    // gets the eoi number and the status to update the corresponding reccord to
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $eoi = $_POST['eoi'];
         $update = trim($_POST['status']);
