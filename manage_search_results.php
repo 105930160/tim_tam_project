@@ -11,13 +11,13 @@
             include "header.inc";
             session_start();
             if (!isset($_SESSION['manager_id'])) {
-               header('Location: manager_login.php');
+               //header('Location: manager_login.php');
             }
         ?>
         <main> 
 
             <!-- div encompasses whole table so that everything stays together sytlistically -->
-            <div id="table_section">
+            <div class="table_section">
                 
                 <h1 id="form_title">EOI Manager</h1>
                 <!--search boxes begin here-->
