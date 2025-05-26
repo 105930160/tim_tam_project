@@ -99,7 +99,7 @@
 
                                                 // made array of skill names to print, using the 1 or 0 in the eoi_skills table to tell whether to print or not
                                                 echo "<p><span class='invisible'>skills:</span><br>";
-                                                $skills_list = array("", "j1s1", "j1s2", "j1s3", "j1s4", "j1s5", "j1s6", "j2s1", "j2s2", "j2s3", "j2s4", "j2s5", "j2s6");
+                                                $skills_list = array("", "j1s1", "j1s2", "j1s3", "j1s4", "j1s5", "j1s6", "j4s1", "j4s2", "j4s3", "j4s4", "j4s5", "j4s6");
                                                 $i = 0;
                                                 foreach ($row as $skill){
                                                     if ($skill == 1 ){
