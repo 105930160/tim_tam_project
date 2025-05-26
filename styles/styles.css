@@ -46,6 +46,21 @@ form {
     border-radius: 12px;
     max-width: 900px;
 }
+/*styling for  apply page form error messages*/
+.error
+{
+    background-color: rgb(28, 105, 0);
+    color:white;
+    text-align: center;
+    border-radius: 1em;
+}
+/*styling for apply page form success message*/
+#success
+{
+    background-color: #000000;
+    color: #00ff48;
+    text-align: center;
+}
 
 /* form body */
 .form_main {
@@ -657,4 +672,76 @@ input[type=text].long_text {
     transition-duration: 0.4s;
     background-color: #157030;
     font-weight: bold; 
+}
+
+/*----------------------------some CSS needed for styling manager registration/login, project part 2 ----------------*/
+
+#manager_registration_username {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#manager_registration_password {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#manager_registration_password_confirmatiion {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#manager_login_username {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#manager_login_password {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#login_signup_signout_buttons {
+    text-align: left;
+    float: left;
+}
+
+#login_heading {
+    text-align: center;
+    color: #00ff48;
+}
+
+#registration_heading {
+    text-align: center;
+    color: #00ff48;
 }
