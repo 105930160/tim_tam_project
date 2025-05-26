@@ -39,7 +39,9 @@ if ( ! $stmt->prepare($query)) {
 $stmt->bind_param("ss", $_POST["username"], $password_hash);
 
 if ($stmt->execute()) {
-    echo "Registration successful. Login from <a href='manager_login.php'>login</a>.";
+    //echo "Registration successful. Login from <a href='manager_login.php'>login</a>.";
+    echo "Registration Successful. You will be redirected to login page shortly";
+    header("Refresh: 5; manager_login.php");
     exit;
 } else {
     die($conn->error . " " . $conn->errno);
