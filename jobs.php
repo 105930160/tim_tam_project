@@ -54,7 +54,7 @@ if ($conn) {
     $query = "SELECT * FROM job_postings";
     $result = mysqli_query($conn, $query);
     if ($result) {
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) { // getting every job posting in the db
             echo "<section class='jobPosting'>";
             echo "<div>";
             echo "<h2>" . $row['title'] . " (REF: " . str_pad($row['id'], 5, '0', STR_PAD_LEFT) . ")</h2>";
@@ -76,7 +76,7 @@ if ($conn) {
                 echo "<h3>Required Qualifications, Skills, and Attributes</h3>";
                 $query2 = "SELECT skills.description FROM job_postings
                 INNER JOIN skills ON job_postings.id = skills.job_id
-                WHERE job_postings.id = " . $row['id'] . " AND skills.essential = TRUE";
+                WHERE job_postings.id = " . $row['id'] . " AND skills.essential = TRUE"; // this finds skills decription from job id
                 $result2 = mysqli_query($conn, $query2);
                 echo "<h4>Essential</h4>";
                 echo "<ul>";
@@ -89,7 +89,7 @@ if ($conn) {
             echo "<ul>";
                 $query3 = "SELECT skills.description FROM job_postings
                 INNER JOIN skills ON job_postings.id = skills.job_id
-                WHERE job_postings.id = " . $row['id'] . " AND skills.essential = FALSE";
+                WHERE job_postings.id = " . $row['id'] . " AND skills.essential = FALSE"; // same again unessential ones
                 $result3 = mysqli_query($conn, $query3);
                 while ($row3 = mysqli_fetch_assoc($result3)){
                     echo "<li>" . $row3['description'] . "</li>";
@@ -111,3 +111,4 @@ if ($conn) {
     <?php include 'footer.inc'; ?>
 </body>
 </html>
+
