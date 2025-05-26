@@ -8,10 +8,11 @@
     
     <body>
         <?php 
+            require_once "settings.php";            
             include "header.inc";
             session_start();
             if (!isset($_SESSION['manager_id'])) {
-               //header('Location: manager_login.php');
+               header('Location: manager_login.php');
             }
         ?>
         <main> 
@@ -49,11 +50,7 @@
 
                     <!-- begin table body + EOI displays -->
                     <?php
-                        require_once "settings.php";
-                        $conn = @mysqli_connect ($host,$username,$password,$database);
-                        if (!$conn) {
-                            echo "<p>Unable to connect to the db.</p>";
-                        }
+
 
                         // get values from search fields as submitted and assign to variables. 
                         if (isset($_POST['Job_Reference_Number'], $_POST['First_Name'], $_POST['Last_Name'])) {

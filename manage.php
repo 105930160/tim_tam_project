@@ -13,6 +13,7 @@
 
     <body>
         <?php 
+            require_once "settings.php";
             include "header.inc";
             session_start();
             if (!isset($_SESSION['manager_id'])) {
@@ -53,11 +54,7 @@
 
                         <!-- begin table body + EOI displays -->
                         <?php
-                            require_once "settings.php";
-                            $conn = @mysqli_connect ($host,$username,$password,$database);
-                            if (!$conn) {
-                                echo "<p>Unable to connect to the db.</p>";
-                            }
+                            
                             
                             // begin table body + EOI displays:
                             $query = "SELECT * FROM eoi";
