@@ -30,19 +30,19 @@ if (!$dbconn) {
         ?>
         <main> 
 
-            <!-- style attribute here is necessary because php gets unpacked after html so none of the php table gets any css styling -->
-            <section id="table_section" style="background-color: #e7e7e7; padding: 1rem; margin: 1rem auto; border-radius: 12px; max-width: 900px;">  
+            <!-- div encompasses whole table so that everything stays together sytlistically -->
+            <div id="table_section">
                 
                 <h1 id="form_title">EOI Manager</h1>
                 <!--search boxes begin here-->
-                <form method="POST" action="manage_search_results.php">
+                <form method="POST" action="manage_search_results.php" id="search_bars">
                     <label for="job_ref">Job position:</label>
-                    <input type="text" id="job_ref" name="Job_Reference_Number" style="width:5%">
+                    <input type="text" id="job_ref" name="Job_Reference_Number" class="short_text">
                     <label for="fname">First name:</label>
-                    <input type="text" id="fname" name="First_Name" maxlength="30" style="width:20%">
+                    <input type="text" id="fname" name="First_Name" maxlength="30" class="long_text">
                     <label for="lname">Last name:</label>
-                    <input type="text" id="lname" name="Last_Name" maxlength="35" style="width:20%">
-                    <input type="submit" value="Search" class="button">
+                    <input type="text" id="lname" name="Last_Name" maxlength="35" class="long_text">
+                    <input type="submit" value="Search" class="small_button">
                 </form> <!-- search boxes end -->
                 <hr>
                     
@@ -114,15 +114,13 @@ if (!$dbconn) {
                                 // one EOI table row start
                                 echo "\n\n\t\t\t\t <!-- new table row -->";
                                 echo "\n\t\t\t\t<tr>";
-                                echo "\n\t\t\t\t\t<td scope='column'><span style='color: #e7e7e7'>eoi</span><br>".$eoi_num."</td>";
-                                echo "\n\t\t\t\t\t<td scope='column'><span style='color: #e7e7e7'>eoi</span><br>".$job_ref_num."</td>";
+                                echo "\n\t\t\t\t\t<td scope='column'><span class='invisible'>eoi</span><br>".$eoi_num."</td>";
+                                echo "\n\t\t\t\t\t<td scope='column'><span class='invisible'>eoi</span><br>".$job_ref_num."</td>";
                                 echo "\n\t\t\t\t\t<td>".$first_name." ".$last_name."</td>";
                                 echo "\n\t\t\t\t\t<td>".$street."<br>".$suburb.", ".$state.", ".$postcode."</td>";
                                 echo "\n\t\t\t\t\t<td>Email: ".$email."<br>Phone: ".$phone_num."</td>";
                                 
                                 // START skills table cell. 
-                                // currently using skills table, must switch to skills key from eoi table.
-                                // may want to use an array for the skills?
                                 echo "\n\n\t\t\t\t\t<!-- skills list -->";
                                 echo "\n\t\t\t\t\t<td>";
                                     $skills_query = "SELECT * FROM eoi_skills WHERE skills_id ='$skills_id'";
@@ -130,7 +128,7 @@ if (!$dbconn) {
                                     if ($skills_result && mysqli_num_rows($skills_result) > 0) {
                                         while ($row = mysqli_fetch_assoc($skills_result)){
 
-                                            echo "<p><span style='color: #e7e7e7'>skills:</span><br>";
+                                            echo "<p><span class='invisible'>skills:</span><br>";
                                             $skills_list = array("", "j1s1", "j1s2", "j1s3", "j1s4", "j1s5", "j1s6", "j2s1", "j2s2", "j2s3", "j2s4", "j2s5", "j2s6");
                                             $i = 0;
                                             foreach ($row as $skill){
@@ -147,20 +145,20 @@ if (!$dbconn) {
                                 // END skills table cell.
 
                                 // continue EOI table row
-                                echo "\n\t\t\t\t\t<td style='white-space:wrap'><span style='color: #e7e7e7'>Other skills</span><br>" . $other_skills . "</td>";
+                                echo "\n\t\t\t\t\t<td style='white-space:wrap'><span class='invisible'>Other skills</span><br>" . $other_skills . "</td>";
                                 echo "\n\t\t\t\t\t<td>" . $dob . "</td>";
 
-                                echo "\n\n\t\t\t\t\t<!-- select status -->";
-                                echo "\n\t\t\t\t\t<td>";    // select status to update
+                                // the select boxes and update buttons to update status for an eoi.
+                                echo "\n\t\t\t\t\t<td>";    
                                 echo "<form method='POST' action='update_eoi.php'>";
                                     echo "\n\t\t\t\t\t\t<input type='hidden' name='eoi' value='".$eoi_num."'>";
-                                    echo "\n\t\t\t\t\t\t<label for='".$eoi_num."_status' style='color: #e7e7e7'>Status</label> <select id='".$eoi_num."_status' name='status'>";
+                                    echo "\n\t\t\t\t\t\t<label for='".$eoi_num."_status' class='invisible'>Status</label> <select id='".$eoi_num."_status' name='status'>";
                                         echo "\n\t\t\t\t\t\t\t<option selected value='".$status."'>".$status."</option>";
                                         echo "\n\t\t\t\t\t\t\t<option value='New'>New</option>";
                                         echo "\n\t\t\t\t\t\t\t<option value='Current'>Current</option>";
                                         echo "\n\t\t\t\t\t\t\t<option value='Final'>Final</option>";
-                                        echo "\n\t\t\t\t\t\t\t</select>";
-                                    echo "\n\t\t\t\t\t\t<input type='submit' value='Update'></form>";
+                                        echo "\n\t\t\t\t\t\t\t</select><br>";
+                                    echo "\n\t\t\t\t\t\t<input type='submit' value='Update' class='small_button'></form>";
                                 echo "\n\t\t\t\t\t</td>"; 
                                 echo "\n\t\t\t\t</tr>\n";
                                 // END EOI table row
@@ -176,11 +174,13 @@ if (!$dbconn) {
                 <form method="POST" action="delete_eoi.php">
                     <span id="delete_section"> <!-- update + delete records form continues -->
                         <label for="delete">Delete EOIs with reference number:</label>
-                        <input type="text" id="delete" name="delete_eois" maxlength="10" style="width:5%">
-                        <input type="submit" value="Delete EOIs">
+                        <input type="text" id="delete" name="delete_eois" maxlength="10" class="short_text">
+                        <input type="submit" value="Delete EOIs" class="small_button">
                     </span>         
-                </form> <!-- end update + delete records form -->
-            </section>
+                </form> 
+                <!-- end delete records form -->
+            </div>
+
         </main>
         <?php include "footer.inc"; ?>
     </body>
