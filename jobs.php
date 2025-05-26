@@ -44,78 +44,66 @@
             </ul>
         </aside>
     </section> -->
-    <section class="jobPosting">
-        <div>
-            <h2>Network Administrator (REF: 00001)</h2>
-            <p>We are seeking a skilled and detail-oriented Network Administrator to join our IT team. 
-                The ideal candidate will be responsible for maintaining, configuring, and securing our computer networks and related computing environments. 
-                This includes hardware, systems software, applications software, and all configurations.</p>
-            <p><strong>Salary Range:</strong> $75,000 - $115,000 per year</p>
-            <p><strong>Reports To:</strong> IT Manager</p>
-        </div>
-        <aside>
-            <h3>Key Responsibilities</h3>
-            <ol>
-                <li>Manage and maintain network infrastructure</li>
-                <li>Monitor network performance and troubleshoot issues</li>
-                <li>Ensure network security and compliance with policies</li>
-                <li>Install and configure network hardware and software</li>
-                <li>Provide technical support for network-related issues</li>
-            </ol>
-        </aside>
-        <aside>
-            <h3>Required Qualifications, Skills, and Attributes</h3>
-            <h4>Essential</h4>
-            <ul>
-                <li>Bachelor’s degree in Information Technology, Computer Science, or related field</li>
-                <li>3 years of experience in network administration</li>
-                <li>Proficiency in configuring routers and switches</li>
-                <li>Strong troubleshooting and problem-solving skills</li>
-            </ul>
-            <h4>Preferable</h4>
-            <ul>
-                <li>Certifications such as CCNA</li>
-                <li>Experience with cloud networking</li>
-            </ul>
-        </aside>
-    </section>
 
-    <section class="jobPosting">
-        <div>
-            <h2>Software Developer (REF: 00002)</h2>
-            <p>We are looking for a talented and motivated Software Developer to design, build, and maintain efficient, reusable, and reliable code. 
-                You will collaborate with cross-functional teams to develop innovative software solutions that meet client needs and business goals. 
-                The ideal candidate is a team player with a passion for problem-solving, clean code, and continuous improvement.</p>
-            <p><strong>Salary Range:</strong> $90,000 - $130,000 per year</p>
-            <p><strong>Reports To:</strong> Lead Software Engineer</p>
-        </div>
-        <aside>
-            <h3>Key Responsibilities</h3>
-            <ol>
-                <li>Develop and maintain software applications</li>
-                <li>Collaborate with teams</li>
-                <li>Write clean and efficient code</li>
-                <li>Participate in code reviews</li>
-                <li>Debug and troubleshoot software issues</li>
-            </ol>
-        </aside>
-        <aside>
-            <h3>Required Qualifications, Skills, and Attributes</h3>
-            <h4>Essential</h4>
-            <ul>
-                <li>Bachelor’s degree in Computer Science or related field</li>
-                <li>3+ years of experience in software development</li>
-                <li>Proficiency in Python, or C++</li>
-                <li>Strong problem-solving skills</li>
-                <li>Experience with version control systems such as git.</li>
-            </ul>
-            <h4>Preferable</h4>
-            <ul>
-                <li>Experience with cloud technologies</li>
-                <li>Familiarity with Agile frameworks</li>
-            </ul>
-        </aside>
-    </section>
+    <?php
+require_once("settings.php");
+if ($conn) {
+    $query = "SELECT * FROM job_postings";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<section class='jobPosting'>";
+            echo "<div>";
+            echo "<h2>" . $row['title'] . " (REF: " . str_pad($row['id'], 5, '0', STR_PAD_LEFT) . ")</h2>";
+            echo "<p>" . $row['description'] . "</p>";
+            echo "<p><strong>Salary Range:</strong> $" . $row['salary_lower'] . " - $" . $row['salary_upper'] . " per year</p>";
+            echo "<p><strong>Reports To:</strong> " . $row['reports_to'] . "</p>";
+            echo "</div>";
+            echo "<aside>";
+                echo "<h3>Key Responsibilities</h3>";
+                $query2 = "SELECT responsibilities.description FROM job_postings INNER JOIN responsibilities ON job_postings.id = responsibilities.job_id WHERE job_postings.id = " . $row['id'];
+                $result2 = mysqli_query($conn, $query2);
+                echo "<ol>";
+                    while ($row2 = mysqli_fetch_assoc($result2)) {
+                        echo "<li>" . $row2['description'] . "</li>";
+                    }
+                echo "</ol>";
+            echo "</aside>";
+            echo "<aside>";
+                echo "<h3>Required Qualifications, Skills, and Attributes</h3>";
+                $query2 = "SELECT skills.description FROM job_postings
+                INNER JOIN skills ON job_postings.id = skills.job_id
+                WHERE job_postings.id = " . $row['id'] . " AND skills.essential = TRUE";
+                $result2 = mysqli_query($conn, $query2);
+                echo "<h4>Essential</h4>";
+                echo "<ul>";
+                    while ($row2 = mysqli_fetch_assoc($result2)){
+                        echo "<li>" . $row2['description'] . "</li>";
+                    }
+                    
+            echo "</ul>";
+            echo "<h4>Preferable</h4>";
+            echo "<ul>";
+                $query3 = "SELECT skills.description FROM job_postings
+                INNER JOIN skills ON job_postings.id = skills.job_id
+                WHERE job_postings.id = " . $row['id'] . " AND skills.essential = FALSE";
+                $result3 = mysqli_query($conn, $query3);
+                while ($row3 = mysqli_fetch_assoc($result3)){
+                    echo "<li>" . $row3['description'] . "</li>";
+                }
+            echo "</ul>";
+        echo "</aside>";
+    echo "</section>";
+
+        }
+    } else {
+        echo "<p>There are no jobs to display.</p>";
+    }
+    mysqli_close($conn);
+} else {
+    echo "<p>Unable to connect</p>";
+}
+?>
     
     <?php include 'footer.inc'; ?>
 </body>
