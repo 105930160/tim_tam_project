@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
-    
+
     <?php include 'header.inc'; ?>
 
     <main class="aboutmain">

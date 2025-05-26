@@ -21,6 +21,7 @@
     <!--also we could make the navbar fixed at the top of the page. something to discuss also.-->
 
     <?php include_once 'header.inc'; ?>
+
     <!--Main for all the... Main stuff (:O)-->
     <main>
         <figure>
