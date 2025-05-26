@@ -4,7 +4,7 @@
     $password = "";
     $database = "akira_db";
 
-    $dbconn = mysqli_connect($host,$username,$password,$database);
+    $conn = mysqli_connect($host,$username,$password,$database);
     
 
 

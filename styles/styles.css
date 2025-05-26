@@ -56,6 +56,12 @@ form {
     text-align: center;
     border-radius: 1em;
 }
+#success
+{
+    background-color: #000000;
+    color: #00ff48;
+    text-align: center;
+}
 
 /* form body */
 .form_main {
