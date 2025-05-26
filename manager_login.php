@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
         <br>
         <input type="submit" value="login">
+        <a class="register" href="manager_registration.php"><button type = "button" >register an account</button></a>
 
     </form>
 

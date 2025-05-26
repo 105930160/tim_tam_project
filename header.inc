@@ -1,13 +1,13 @@
 <header>
     <!--nav is seperated into top and bottom in order to more easily deal with everything-->
     <div id="navtop">
-        <div id="login_signup_signout_buttons">
+        <!--<div id="login_signup_signout_buttons">
             <?php if (isset($_SESSION["manager_id"])): ?>
                 <p>You are logged in. <a href="logout.php">Log out</a></p>
             <?php else: ?>
                 <p><a href="manager_login.php">Log in</a> or <a href="manager_registration.php">Sign up</a></p>
             <?php endif; ?>
-        </div>
+        </div>-->
         <!--likewise, navtop is seperated into two seperate divs-->
         <div id="navtopmiddle">
             <a href="index.php"><img id="logo" src="Images/GenericITCompanyLogo.png" alt="Generic IT Company Logo"></a>
