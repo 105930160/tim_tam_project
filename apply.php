@@ -67,8 +67,8 @@
                                 <fieldset id="gender_field">  <!--SP [1/4 3:11pm]: Gender feildset begins-->
                                     <legend><span class="col-25">Gender:</span></legend>
                                         <div class="col-75" id="gender_list">
-                                            <label for="man"><input type="radio" id="man" name="gender" value="male" checked="checked">Male</label>
-                                            <label for="woman"><input type="radio" id="woman" name="gender" value="female" <?= ($past_submit['gender'] ?? '') == 'female' ? 'checked' : '' ?> >Female</label>
+                                            <label for="male"><input type="radio" id="male" name="gender" value="male" checked="checked">Male</label>
+                                            <label for="female"><input type="radio" id="female" name="gender" value="female" <?= ($past_submit['gender'] ?? '') == 'female' ? 'checked' : '' ?> >Female</label>
                                             <label for="non_binary"><input type="radio" id="non_binary" name="gender" value="non_binary" <?= ($past_submit['gender'] ?? '') == 'non_binary' ? 'checked' : '' ?>>Non-Binary</label>
                                             <label for="g_other"><input type="radio" id="g_other" name="gender" value="other" <?= ($past_submit['gender'] ?? '') == 'other' ? 'checked' : '' ?>>Other<span class="checkmark"></span></label>
                                             <label for="g_no"><input type="radio" id="g_no" name="gender" value="prefer not to say" <?= ($past_submit['gender'] ?? '') == 'prefer not to say' ? 'checked' : '' ?>>Prefer not to say</label>
