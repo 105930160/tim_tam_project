@@ -745,3 +745,43 @@ input[type=text].long_text {
     text-align: center;
     color: #00ff48;
 }
+
+/*-------------------- enhancements.php styling -----------------------------*/
+
+#enhancements_heading {
+    text-align: center;
+    color: #00ff48;
+}
+
+#enhance_1div {
+    color: #00ff48;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#enhance_2div {
+    color: #00ff48;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#enhance_3div {
+    color: #00ff48;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
