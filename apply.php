@@ -18,7 +18,6 @@
             if (isset($_SESSION['errors']))
             {
                 $errors = $_SESSION['errors'];
-                unset($_SESSION['errors']);
             }
             if (isset($_SESSION['past_submit']))
             {
@@ -40,20 +39,28 @@
                             <div class="row">
                                 <div class="col-25"><label for="first_name">First Name:</label></div>
                                     <div class="col-75"><input type="text" id="first_name" name="first_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your first name." value = "<?= htmlspecialchars($past_submit['first_name'] ?? '')?>"></div>
-                                    <?= $errors['f_name'] ?? ""?>
-                                </div><br>
+                                </div>
+                                <?php if (isset($errors['f_name']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['f_name']."</div>";
+                                    }?><br>
                             
                             <div class="row">
                                 <div class="col-25"><label for="last_name">Last Name:</label></div>
-                                    <div class="col-75"><input type="text" id="last_name" name="last_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your last name." value = "<?= htmlspecialchars($past_submit['last_name'] ?? '')?>"></div> 
-                                    <?= $errors['l_name'] ?? ""?>                                
-                                </div><br> 
+                                    <div class="col-75"><input type="text" id="last_name" name="last_name" size="15" maxlength="20" pattern="^[a-zA-Z]+$" required="required" placeholder="-----" title="please enter your last name." value = "<?= htmlspecialchars($past_submit['last_name'] ?? '')?>"></div>                            
+                                </div><?php if (isset($errors['l_name']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['l_name']."</div>";
+                                    }?><br> 
 
                             <div class="row">
                                 <div class="col-25"><label for="birth_date">Date of birth:</label></div>
-                                        <div class="col-75"><input type="date" id="birth_date" name="birth_date" required="required" title="select your date of birth." value = "<?= htmlspecialchars($past_submit['birth_date'] ?? '')?>"></div>
-                                        <?= $errors['birth_date'] ?? ""?>
-                                    </div>
+                                        <div class="col-75"><input type="date" id="birth_date" name="birth_date" required="required" title="select your date of birth." value = "<?= htmlspecialchars($past_submit['birth_date'] ?? '')?>"></div>                                    
+                                </div>
+                                <?php if (isset($errors['birth_date']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['birth_date']."</div>";
+                                    }?>
                             <br>
 
                             <div class="row">
@@ -76,15 +83,21 @@
                             <div class="row">
                                 <div class="col-25"><label for="street_address">Street Address:</label></div>
                                     <div class="col-75"><input type="text" id="street_address" name="street_address" maxlength="40" pattern="^[a-zA-Z0-9 ]+$" required="required" placeholder="00 Road St" value = "<?= htmlspecialchars($past_submit['street_address'] ?? '')?>"></div>
-                                    <?= $errors['street_address'] ?? ""?>
                                 </div>
+                                <?php if (isset($errors['street_address']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['street_address']."</div>";
+                                    }?>
                             <br>
                             
                             <div class="row">
                                 <div class="col-25"><label for="suburb_address">Suburb:</label></div>
                                     <div class="col-75"><input type="text" id="suburb_address" name="subtown_address"maxlength="40" pattern="^[a-zA-Z]+$" required="required" placeholder="e.g. Richmond" title="suburb" value = "<?= htmlspecialchars($past_submit['subtown_address'] ?? '')?>"></div>
-                                    <?= $errors['subtown_address'] ?? ""?>
                                 </div>
+                                <?php if (isset($errors['subtown_address']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['subtown_address']."</div>";
+                                    }?>
                             <br>
 
                             <div class="row">
@@ -101,15 +114,22 @@
                                         <option value="TAS" <?= ($past_submit['state'] ?? '') == 'TAS' ? 'selected' : '' ?>>Tasmania</option>
                                         <option value="ACT" <?= ($past_submit['state'] ?? '') == 'ACT' ? 'selected' : '' ?>>Aus. Capital Territory</option>
                                     </select>
-                                    <?= $errors['state']??""?>
                                     </div> <!--custom select div -->
+                                    
                             </div> <!--row div -->
+                            <?php if (isset($errors['state']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['state']."</div>";
+                                    }?>
 
                             <div class="row">
                                 <div class="col-25"><label for="postcode">Postcode:</label></div>
                                     <div class="col-75"><input type="text" id="postcode" name="postcode" size="4" maxlength="4" minlength="4" pattern="^[0-9]{4}$" required="required" placeholder="0000" value = "<?= htmlspecialchars($past_submit['postcode'] ?? '')?>"></div>
-                                    <?= $errors['postcode'] ?? ""?>
                                 </div>  
+                                <?php if (isset($errors['postcode']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['postcode']."</div>";
+                                    }?>
                             
                         </section><!--SP [1/4 3:15pm]: end address div-->
                     
@@ -118,15 +138,21 @@
                             <div class="row">
                                 <div class="col-25"><label for="applicant_email">Email:</label></div>
                                     <div class="col-75"><input type="text" id="applicant_email" name="applicant_email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="name@example.com" title="email" required="required" value = "<?= htmlspecialchars($past_submit['applicant_email'] ?? '')?>"></div>
-                                    <?= $errors['email'] ?? ""?>
                                 </div>
+                                <?php if (isset($errors['email']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['email']."</div>";
+                                    }?>
                             <br>
                                 
                             <div class="row">
                                 <div class="col-25"><label for="applicant_phone">Phone:</label></div>
                                     <div class="col-75"><input type="tel" id="applicant_phone" name="applicant_phone" minlength="8" maxlength="12" pattern="^\d+" placeholder="+X (XXX) XXX XXXX" title="phone number" value = "<?= htmlspecialchars($past_submit['applicant_phone'] ?? '')?>"></div>
-                                    <?= $errors['phone'] ?? ""?>
                                 </div>
+                                <?php if (isset($errors['phone']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['phone']."</div>";
+                                    }?>
                         </section>  <!--end contact section-->
                     
                         <section class="form_section" id="skills">   <!--SP [1/4 3:51]: begin skills div. technical skills checkboxes-->
@@ -150,9 +176,13 @@
                                                 }
                                             ?>                                  
                                         </select>
-                                    <?= $errors['job_reference_number'] ?? ""?>
                                     </div> <!--custon select-->
+                                    
                             </div>
+                            <?php if (isset($errors['job_reference_number']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['job_reference_number']."</div>";
+                                    }?>
                             <br>
                             
                             <div class="row">
@@ -193,8 +223,11 @@
                             <div class="row">
                                 <div class="col-25"><label for="other_skills">Other applicable skills: <br></label></div>
                                     <div class="col-75"><textarea id="other_skills" name="other_skills" rows="4" cols="30" placeholder="enter other applicable skills you may have here."><?= htmlspecialchars($past_submit['other_skills'] ?? '')?></textarea></div>
-                                    <?= $errors['other'] ?? ""?>
                                 </div>
+                                <?php if (isset($errors['other']))
+                                    {
+                                        echo "<div class=\"error\">".$errors['other']."</div>";
+                                    }?>
                         </section>  <!--SP [6/4 5:21]: end skills section-->              
                         <div class="form_bottom">   
                             <input class="button" type="reset" Value="Reset" title="reset form">

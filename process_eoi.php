@@ -3,6 +3,9 @@ session_start();
 
 if (isset($_POST['job_reference_number'])) 
 {
+    if (isset($_SESSION['errors']))  unset($_SESSION['errors']);
+    if (isset($_SESSION['past_submit']))  unset($_SESSION['past_submit']);
+
     require_once("settings.php");
     if ($dbconn) 
     {

@@ -11,8 +11,8 @@
     </div>
     <nav>
         <a id="homebutton" href="index.php"><p>Home</p></a>
+        <a href="jobs.php"><p>Jobs</p></a>
         <a id="applybutton" href="apply.php"><p>Apply</p></a>
         <a href="about.php"><p>About</p></a>
-        <a href="jobs.php"><p>Jobs</p></a>
     </nav>
 </header>
