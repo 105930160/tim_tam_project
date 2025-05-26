@@ -13,7 +13,7 @@ if (!$dbconn) {
 
 session_start();
 if (!isset($_SESSION['manager_id'])) {
-    //header('Location: manager_login.php');
+    header('Location: manager_login.php');
 }
 require_once("settings.php"); 
 
