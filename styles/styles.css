@@ -675,7 +675,11 @@ input[type=text].long_text {
 }
 
 /*----------------------------some CSS needed for styling manager registration/login, project part 2 ----------------*/
-
+.register:visited, .register 
+{
+    color: #000000;
+    text-decoration: none;
+}
 #manager_registration_username {
     color: darkgreen;
     background-color: rgba(105, 105, 105, 0.154);
