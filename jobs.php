@@ -1,10 +1,5 @@
 <?php
-
 session_start();
-if (!isset($_SESSION['manager_id'])) {
-    header('Location: manager_login.php');
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
