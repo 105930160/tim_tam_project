@@ -1,3 +1,10 @@
+<?php 
+    require_once "settings.php";
+    session_start();
+    if (!isset($_SESSION['manager_id'])) {
+        header('Location: manager_login.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,17 +14,14 @@
     </head>
     
     <body>
-        <?php 
-            include "header.inc";
-            session_start();
-            if (!isset($_SESSION['manager_id'])) {
-               header('Location: manager_login.php');
-            }
-        ?>
+    
+    <?php include "header.inc";?>
+
+    
         <main> 
 
             <!-- div encompasses whole table so that everything stays together sytlistically -->
-            <div id="table_section">
+            <div class="table_section">
                 
                 <h1 id="form_title">EOI Manager</h1>
                 <!--search boxes begin here-->
@@ -49,11 +53,7 @@
 
                     <!-- begin table body + EOI displays -->
                     <?php
-                        require_once "settings.php";
-                        $conn = @mysqli_connect ($host,$username,$password,$database);
-                        if (!$conn) {
-                            echo "<p>Unable to connect to the db.</p>";
-                        }
+
 
                         // get values from search fields as submitted and assign to variables. 
                         if (isset($_POST['Job_Reference_Number'], $_POST['First_Name'], $_POST['Last_Name'])) {
