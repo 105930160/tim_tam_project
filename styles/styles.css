@@ -46,6 +46,13 @@ form {
     border-radius: 12px;
     max-width: 900px;
 }
+.error
+{
+    background-color: rgb(28, 105, 0);
+    color:white;
+    text-align: center;
+    border-radius: 1em;
+}
 
 /* form body */
 .form_main {
