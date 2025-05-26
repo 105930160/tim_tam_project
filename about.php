@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +16,7 @@
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
+
     <?php include 'header.inc'; ?>
 
     <main class="aboutmain">
@@ -22,13 +27,17 @@
                 <h2 id="contributionsheading">Contributions</h2> <!-- descriptive id used for <h2> element for ease of understanding and avoiding CSS conflict with other <h2>-->
             <dl>
                 <dt>Angel</dt>
-                <dd>Created github project. Created and styled the jobs page</dd>
+                <dd>Part 1: Created github project. Created and styled the jobs page</dd>
+                <dd>Part 2: Updated the jobs page to pull a list of jobs from a PHP database</dd>
                 <dt>Sasha</dt>
-                <dd>Drew up initial design for header, navbar and footer. Created and styled the Application page</dd>
+                <dd>Part 1: Drew up initial design for header, navbar and footer. Created and styled the Application page</dd>
+                <dd>Part 2: Created Manage.php with search functions for the EOI</dd>
                 <dt>Akira</dt>
-                <dd>Created group email and Jira, created and styled HTML template. Created and styled the home page</dd>
+                <dd>Part 1: Created group email and Jira, created and styled HTML template. Created and styled the home page</dd>
+                <dd>Part 2: Built EOI table, with validation for the records</dd>
                 <dt>Ethan</dt>
-                <dd>Created and styled the About page</dd>
+                <dd>Part 1: Created and styled the About page</dd>
+                <dd>part 2: Handled the extensions for manager registration and login</dd>
             </dl>
             </section>
 
@@ -52,7 +61,7 @@
             <section id="tablesection"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading, id used for easy styling of whole section -->
                 <h2 id="intereststableheading">Group Interests</h2> <!-- descriptive id used for <h2> element for ease of understanding and avoiding CSS conflict with other <h2>-->
                 <table id="intereststable">
-                    <caption id="tablecap">Of course we all love HTML and CSS, why wouldnt we!</caption>
+                    <caption id="tablecap">Of course we all love HTML CSS, and PHP. It's so fun! (bonus marks please)</caption>
                     <thead>
                         <tr>
                             <th class="tableheading">Name</th> <!-- class used as multiple elements of the table require same styling -->
@@ -64,7 +73,7 @@
                         <tr>
                             <td class="tablecell">Angel</td> <!-- class used as multiple elements of the table require same styling -->
                             <td class="tablecell">Music, Programming</td>
-                            <td class="tablecell" rowspan="4">Using HTML and CSS to create webpages!</td> <!--merge this into all 4 cells of final column-->
+                            <td class="tablecell" rowspan="4">Using HTML, CSS and PHP to create webpages!</td> <!--merge this into all 4 cells of final column-->
                         </tr>
                         <tr>
                             <td class="tablecell">Sasha</td> <!-- class used as multiple elements of the table require same styling -->
