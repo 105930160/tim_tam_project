@@ -1,3 +1,10 @@
+<?php 
+    require_once "settings.php";
+    session_start();
+    if (!isset($_SESSION['manager_id'])) {
+        header('Location: manager_login.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,14 +14,10 @@
     </head>
     
     <body>
-        <?php 
-            require_once "settings.php";            
-            include "header.inc";
-            session_start();
-            if (!isset($_SESSION['manager_id'])) {
-               header('Location: manager_login.php');
-            }
-        ?>
+    
+    <?php include "header.inc";?>
+
+    
         <main> 
 
             <!-- div encompasses whole table so that everything stays together sytlistically -->
