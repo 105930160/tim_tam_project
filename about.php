@@ -26,7 +26,7 @@
             <section id="contributions"> <!-- 4 main parts of the page, each in a section as it holds a related set of info + its heading, id used for easy styling of whole section -->
                 <h2 id="contributionsheading">Contributions</h2> <!-- descriptive id used for <h2> element for ease of understanding and avoiding CSS conflict with other <h2>-->
             <dl>
-            <dt>Angel</dt>
+                <dt>Angel</dt>
                 <dd>Part 1: Created github project. Created and styled the jobs page</dd>
                 <dd>Part 2: Updated the jobs page to pull a list of jobs from a PHP database</dd>
                 <dt>Sasha</dt>
