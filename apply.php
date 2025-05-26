@@ -22,8 +22,7 @@
             if (isset($_SESSION['past_submit']))
             {
                 $past_submit = $_SESSION['past_submit'];
-                unset($_SESSION['past_submit']);
-            }
+           }
         ?>
         <?php include 'header.inc'; ?>
         <!--Main for all the... Main stuff (:O)-->
@@ -184,6 +183,7 @@
                                         echo "<div class=\"error\">".$errors['job_reference_number']."</div>";
                                     }?>
                             <br>
+                            <div id="conn"></div>
                             
                             <div class="row">
                             <div class="col-25"><span class="list_label">Required skills:</span></div>
@@ -210,7 +210,43 @@
                                                 }
                                             }
                                         ?>
-
+                                        <!-- <script type="text/javascript">
+                                            const element = document.getElementById("job_ref_num");
+                                            if (element!="")
+                                            {
+                                                var text = element.options[element.selectedIndex].text.substring(0,1);
+                                                var title = element.options[element.selectedIndex].text.substring(4);
+                                                document.write(title);
+                                                skills = <?php echo json_encode($skills);?>;
+                                                past_submit = <?php echo json_encode($past_submit);?>;
+                                                document.write("<li class='subtitle col-75'>----- For "+title+": -----</li>")
+                                                //alert(skills[text].length);
+                                                for ( let i = 0; i < skills[text].length; i++ )
+                                                {
+                                                    var checked = past_submit.skills?.["j"+text+"s"+i+""] == 1 ? 'checked' : '';
+                                                    //alert(checked);
+                                                    document.write("<li><div class='col-75'><label for='job"+text+"_skill"+i+"'><input type='checkbox' id='job"+text+"_skill"+i+"' name='skills[j"+text+"s"+i+"]' value='1' "+checked+">"
+                                                    +skills[text][i]+"</label></div></li>");
+                                                }
+                                                //document.write(write);
+                                            }
+                                            element.addEventListener('change',function(event){
+                                                var text = element.options[element.selectedIndex].text.substring(0,1);
+                                                var title = element.options[element.selectedIndex].text.substring(4);
+                                                document.write(title);
+                                                skills = <?php echo json_encode($skills);?>;
+                                                past_submit = <?php echo json_encode($past_submit);?>;
+                                                document.write("<li class='subtitle col-75'>----- For "+title+": -----</li>")
+                                                //alert(skills[text].length);
+                                                for ( let i = 0; i < skills[text].length; i++ )
+                                                {
+                                                    var checked = past_submit.skills?.["j"+text+"s"+i+""] == 1 ? 'checked' : '';
+                                                    //alert(checked);
+                                                    document.write("<li><div class='col-75'><label for='job"+text+"_skill"+i+"'><input type='checkbox' id='job"+text+"_skill"+i+"' name='skills[j"+text+"s"+i+"]' value='1' "+checked+">"
+                                                    +skills[text][i]+"</label></div></li>");
+                                                }
+                                            });
+                                        </script> -->
                                         <li class="subtitle col-75">--------------------------------</li>
 
                                         <li><div class="col-75"><label for="other"><input type="checkbox" id="other" name="other_checked" value="1" <?= ($past_submit['other_checked'] ?? '') == 1 ? 'checked' : '' ?> >
