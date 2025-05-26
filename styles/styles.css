@@ -46,12 +46,20 @@ form {
     border-radius: 12px;
     max-width: 900px;
 }
+/*styling for  apply page form error messages*/
 .error
 {
     background-color: rgb(28, 105, 0);
     color:white;
     text-align: center;
     border-radius: 1em;
+}
+/*styling for apply page form success message*/
+#success
+{
+    background-color: #000000;
+    color: #00ff48;
+    text-align: center;
 }
 
 /* form body */
@@ -667,7 +675,11 @@ input[type=text].long_text {
 }
 
 /*----------------------------some CSS needed for styling manager registration/login, project part 2 ----------------*/
-
+.register:visited, .register 
+{
+    color: #000000;
+    text-decoration: none;
+}
 #manager_registration_username {
     color: darkgreen;
     background-color: rgba(105, 105, 105, 0.154);
@@ -736,4 +748,44 @@ input[type=text].long_text {
 #registration_heading {
     text-align: center;
     color: #00ff48;
+}
+
+/*-------------------- enhancements.php styling -----------------------------*/
+
+#enhancements_heading {
+    text-align: center;
+    color: #00ff48;
+}
+
+#enhance_1div {
+    color: #00ff48;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#enhance_2div {
+    color: #00ff48;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#enhance_3div {
+    color: #00ff48;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
 }

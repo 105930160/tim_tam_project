@@ -37,7 +37,7 @@
                 <dd>Part 2: Built EOI table, with validation for the records</dd>
                 <dt>Ethan</dt>
                 <dd>Part 1: Created and styled the About page</dd>
-                <dd>part 2: Handled the extensions for manager registration and login</dd>
+                <dd>part 2: Handled the extensions for manager registration and login as well as <a href="enhancements.php">ENHANCEMENTS</a></dd>
             </dl>
             </section>
 

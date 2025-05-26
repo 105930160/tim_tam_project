@@ -7,7 +7,7 @@ if (isset($_POST['job_reference_number']))
     if (isset($_SESSION['past_submit']))  unset($_SESSION['past_submit']);
 
     require_once("settings.php");
-    if ($dbconn) 
+    if ($conn) 
     {
                                     /*-------------------------SQL Creation/ Verification-------------------------------*/
         
@@ -28,13 +28,13 @@ if (isset($_POST['job_reference_number']))
         `Date_Of_Birth` DATE,
         `Gender` VARCHAR(10),
         FOREIGN KEY (`Skills_ID`) REFERENCES `eoi_skills`(`skills_id`));";
-        mysqli_query($dbconn,$create_table_query);
+        mysqli_query($conn,$create_table_query);
 
         /*block of code dedicated to creating a skills list that responds to creation and deletion of new jobs and skills. */
 
         //gets and stores every id from the 'jobs_postings' table 
         $query = "SELECT id  FROM `job_postings`";
-        $result = mysqli_query($dbconn, $query);
+        $result = mysqli_query($conn, $query);
         $jobs_array = [];
         for ($i = 0; $i < $result->num_rows; $i++)
         {
@@ -43,7 +43,7 @@ if (isset($_POST['job_reference_number']))
         }
         //gets and stores the existence of every job, categorized by job_id
         $query = "SELECT job_id FROM skills";
-        $result = mysqli_query($dbconn,$query);
+        $result = mysqli_query($conn,$query);
         $skills = [];
         for ($i = 0; $i < $result->num_rows; $i++)
         {
@@ -63,34 +63,34 @@ if (isset($_POST['job_reference_number']))
             }
         }
         //checks if eoi_skills exists and then duplicates it 
-        if (mysqli_num_rows(mysqli_query($dbconn, "SHOW TABLES LIKE 'eoi_skills'"))) 
+        if (mysqli_num_rows(mysqli_query($conn, "SHOW TABLES LIKE 'eoi_skills'"))) 
         {
-            mysqli_query($dbconn, "SET foreign_key_checks = 0");
-            mysqli_query($dbconn, "DROP TABLE IF EXISTS eoi_skills_backup");
-            mysqli_query($dbconn, "RENAME TABLE eoi_skills TO eoi_skills_backup");
-            mysqli_query($dbconn, "SET foreign_key_checks = 1");
+            mysqli_query($conn, "SET foreign_key_checks = 0");
+            mysqli_query($conn, "DROP TABLE IF EXISTS eoi_skills_backup");
+            mysqli_query($conn, "RENAME TABLE eoi_skills TO eoi_skills_backup");
+            mysqli_query($conn, "SET foreign_key_checks = 1");
         }
         //creates a new version of eoi_skills
         $create_table_query = "CREATE TABLE `eoi_skills` (
             `skills_id` INT AUTO_INCREMENT PRIMARY KEY
             ".$input.");";
-        mysqli_query($dbconn, $create_table_query);
+        mysqli_query($conn, $create_table_query);
 
 
         //checks if eoi_skills_backup exists and then assigns all old values to the new table
-        if (mysqli_num_rows(mysqli_query($dbconn, "SHOW TABLES LIKE 'eoi_skills_backup'"))) 
+        if (mysqli_num_rows(mysqli_query($conn, "SHOW TABLES LIKE 'eoi_skills_backup'"))) 
         {
-            function get_column_names($dbconn, $table_name) {
+            function get_column_names($conn, $table_name) {
                 $columns = [];
-                $result = mysqli_query($dbconn, "SHOW COLUMNS FROM `$table_name`");
+                $result = mysqli_query($conn, "SHOW COLUMNS FROM `$table_name`");
                 while ($row = mysqli_fetch_assoc($result)) {
                     $columns[] = $row['Field'];
                 }
                 return $columns;
             }
 
-            $new_cols = get_column_names($dbconn, 'eoi_skills');
-            $old_cols = get_column_names($dbconn, 'eoi_skills_backup');
+            $new_cols = get_column_names($conn, 'eoi_skills');
+            $old_cols = get_column_names($conn, 'eoi_skills_backup');
 
             $common_cols = array_intersect($new_cols, $old_cols);
 
@@ -100,26 +100,26 @@ if (isset($_POST['job_reference_number']))
                     INSERT INTO eoi_skills ($columns_str)
                     SELECT $columns_str FROM eoi_skills_backup;
                 ";
-                !mysqli_query($dbconn, $copy_query);
+                !mysqli_query($conn, $copy_query);
             }
         }
 
         /*------------------------------------------------- data input/ Validation ---------------------------------------*/
 
         //inputs, making sure that no malicious stuff is hidden inside
-        $job_reference_number = mysqli_real_escape_string($dbconn, trim($_POST['job_reference_number']));
-        $first_name = mysqli_real_escape_string($dbconn, trim($_POST['first_name']));
-        $last_name = mysqli_real_escape_string($dbconn, trim($_POST['last_name']));
-        $street_address = mysqli_real_escape_string($dbconn, trim($_POST['street_address']));
-        $subtown_address = mysqli_real_escape_string($dbconn, trim($_POST['subtown_address']));
-        $state = mysqli_real_escape_string($dbconn, trim($_POST['state']));
-        $postcode = mysqli_real_escape_string($dbconn, trim($_POST['postcode']));
-        $email = mysqli_real_escape_string($dbconn, trim($_POST['applicant_email']));
-        $phone = mysqli_real_escape_string($dbconn, trim($_POST['applicant_phone']));
-        $other_skills = mysqli_real_escape_string($dbconn, trim($_POST['other_skills']));
-        $other_check = mysqli_real_escape_string($dbconn,trim($_POST['other_checked']??""));
-        $dob = mysqli_real_escape_string($dbconn, trim($_POST['birth_date']));
-        $gender = mysqli_real_escape_string($dbconn, trim($_POST['gender'])); 
+        $job_reference_number = mysqli_real_escape_string($conn, trim($_POST['job_reference_number']));
+        $first_name = mysqli_real_escape_string($conn, trim($_POST['first_name']));
+        $last_name = mysqli_real_escape_string($conn, trim($_POST['last_name']));
+        $street_address = mysqli_real_escape_string($conn, trim($_POST['street_address']));
+        $subtown_address = mysqli_real_escape_string($conn, trim($_POST['subtown_address']));
+        $state = mysqli_real_escape_string($conn, trim($_POST['state']));
+        $postcode = mysqli_real_escape_string($conn, trim($_POST['postcode']));
+        $email = mysqli_real_escape_string($conn, trim($_POST['applicant_email']));
+        $phone = mysqli_real_escape_string($conn, trim($_POST['applicant_phone']));
+        $other_skills = mysqli_real_escape_string($conn, trim($_POST['other_skills']));
+        $other_check = mysqli_real_escape_string($conn,trim($_POST['other_checked']??""));
+        $dob = mysqli_real_escape_string($conn, trim($_POST['birth_date']));
+        $gender = mysqli_real_escape_string($conn, trim($_POST['gender'])); 
         $skills = $_POST["skills"]??"";
         $errors = [];
 
@@ -249,7 +249,7 @@ if (isset($_POST['job_reference_number']))
         {
             if ($i == count($skills_sorted)-1 )
             {
-                $insert_to_query_values = $insert_to_query_values . "'".mysqli_real_escape_string($dbconn, $skills[$skills_sorted[$i]]??"")."'";
+                $insert_to_query_values = $insert_to_query_values . "'".mysqli_real_escape_string($conn, $skills[$skills_sorted[$i]]??"")."'";
                 $insert_to_query_columns = $insert_to_query_columns . $skills_sorted[$i] ;
             }
             else 
@@ -257,7 +257,7 @@ if (isset($_POST['job_reference_number']))
                // echo $skills_sorted[$i];
                 //echo $skills[$skills_sorted[$i]];
                //echo $skills["j1s2"];
-                $insert_to_query_values = $insert_to_query_values . "'".mysqli_real_escape_string($dbconn, $skills[$skills_sorted[$i]]??"")."',";
+                $insert_to_query_values = $insert_to_query_values . "'".mysqli_real_escape_string($conn, $skills[$skills_sorted[$i]]??"")."',";
                 $insert_to_query_columns = $insert_to_query_columns . $skills_sorted[$i] .", ";
             }
         }
@@ -269,9 +269,9 @@ if (isset($_POST['job_reference_number']))
             )";
 
 
-        mysqli_query($dbconn, $query);
+        mysqli_query($conn, $query);
 
-        $result = mysqli_query($dbconn, "SELECT skills_id FROM eoi_skills ORDER BY skills_id DESC LIMIT 1");
+        $result = mysqli_query($conn, "SELECT skills_id FROM eoi_skills ORDER BY skills_id DESC LIMIT 1");
         $row = mysqli_fetch_assoc($result);
         $skills_id = $row['skills_id'];
 
@@ -280,9 +280,9 @@ if (isset($_POST['job_reference_number']))
             VALUES (
                 '$skills_id', 'New', '$job_reference_number', '$first_name', '$last_name', '$street_address', 
                 '$subtown_address','$state' ,'$postcode', '$email', '$phone', '$other_skills', '$dob', '$gender')";
-        mysqli_query($dbconn, $query);
+        mysqli_query($conn, $query);
 
-        $result = mysqli_query($dbconn, "SELECT EOI_ID FROM eoi ORDER BY skills_id DESC LIMIT 1");
+        $result = mysqli_query($conn, "SELECT EOI_ID FROM eoi ORDER BY skills_id DESC LIMIT 1");
         $row = mysqli_fetch_assoc($result);
         $eoi_id = $row['EOI_ID'];
         $_SESSION['message'] = "Application submitted successfully.";

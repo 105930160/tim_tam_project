@@ -37,7 +37,7 @@
         </div>
         <br>
         <input type="submit" value="register">
-
+        <a class="register" href="manager_registration.php"><button type = "button" >log in to an existing account</button></a>
     </form>
 
 <?php include_once 'footer.inc'; ?>
