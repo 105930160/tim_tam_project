@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +20,8 @@
     <!--didn't put in a header because i didn't see why we needed one-->
     <!--also we could make the navbar fixed at the top of the page. something to discuss also.-->
 
-    <?php include 'header.inc'; ?>
+    <?php include_once 'header.inc'; ?>
+
     <!--Main for all the... Main stuff (:O)-->
     <main>
         <figure>
