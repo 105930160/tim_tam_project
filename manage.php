@@ -48,7 +48,7 @@
                             <th>Name</th>
                             <th>Address</th>
                             <th>Contact details</th>
-                            <th>Skills List</th>
+                            <th>Skills</th>
                             <th>Other Skills</th>
                             <th>D.O.B</th>
                             <th>Status</th>
@@ -85,9 +85,9 @@
                                     echo "\n\t\t\t\t<tr>";
                                     echo "\n\t\t\t\t\t<td scope='column'><span class='invisible'>eoi</span><br>".$eoi_num."</td>";    // <span> element there to be a hidden label for screen readers
                                     echo "\n\t\t\t\t\t<td scope='column'><span class='invisible'>job</span><br>".$job_ref_num."</td>";
-                                    echo "\n\t\t\t\t\t<td>".$first_name." ".$last_name."</td>";
-                                    echo "\n\t\t\t\t\t<td>".$street."<br>".$suburb.", ".$state.", ".$postcode."</td>";
-                                    echo "\n\t\t\t\t\t<td>Email: ".$email."<br>Phone: ".$phone_num."</td>";
+                                    echo "\n\t\t\t\t\t<td><br>".$first_name." ".$last_name."</td>";
+                                    echo "\n\t\t\t\t\t<td><br>".$street."<br>".$suburb.", ".$state.", ".$postcode."</td>";
+                                    echo "\n\t\t\t\t\t<td><br>Email: ".$email."<br>Phone: ".$phone_num."</td>";
                                     
                                     // START skills table cell. 
                                     echo "\n\n\t\t\t\t\t<!-- skills list -->";
@@ -98,32 +98,32 @@
                                             while ($row = mysqli_fetch_assoc($skills_result)){
 
                                                 // made array of skill names to print, using the 1 or 0 in the eoi_skills table to tell whether to print or not
-                                                echo "<p><span class='invisible'>skills:</span><br>";
-                                                $skills_list = array("", "j1s1", "j1s2", "j1s3", "j1s4", "j1s5", "j1s6", "j4s1", "j4s2", "j4s3", "j4s4", "j4s5", "j4s6");
+                                                echo "<span class='invisible'>skills:</span><br>";
+                                                $skills_list = array("", "j1s1<br>", "j1s2<br>", "j1s3<br>", "j1s4<br>", "j1s5<br>", "j1s6<br>", "j4s1<br>", "j4s2<br>", "j4s3<br>", "j4s4<br>", "j4s5<br>", "j4s6<br>");
                                                 $i = 0;
                                                 foreach ($row as $skill){
                                                     if ($skill == 1 ){
-                                                        echo "".$skills_list[$i]."<br>";
+                                                        echo "".$skills_list[$i]."";
                                                     }
                                                     $i++;  
                                                 }
                                             }
                                         } else {
-                                            echo "<p>No skills found.";
+                                            echo "No skills found.";
                                         }
-                                    echo "</p></td>";
+                                    echo "</td>";
                                     // END skills list cell.
 
                                     // continue EOI table row
                                     echo "\n\t\t\t\t\t<td style='white-space:wrap'><span class='invisible'>Other skills</span><br>" . $other_skills . "</td>";
-                                    echo "\n\t\t\t\t\t<td>" . $dob . "</td>";
+                                    echo "\n\t\t\t\t\t<td><br>" . $dob . "</td>";
 
                                     // the select boxes and update buttons to update status for an eoi.
                                     echo "\n\t\t\t\t\t<td>";    
-                                    echo "<form method='POST' action='update_eoi.php'>";
+                                    echo "\n\t\t\t\t\t<form method='POST' action='update_eoi.php' id='update_form'>";
                                         echo "\n\t\t\t\t\t\t<input type='hidden' name='eoi' value='".$eoi_num."'>";
                                         echo "\n\t\t\t\t\t\t<label for='".$eoi_num."_status' class='invisible'>Status</label> <select id='".$eoi_num."_status' name='status'>";
-                                            echo "\n\t\t\t\t\t\t\t<option selected value='".$status."'>".$status."</option>";
+                                            echo "\n\t\t\t\t\t\t\t<option selected value=''>".$status."</option>";
                                             echo "\n\t\t\t\t\t\t\t<option value='New'>New</option>";
                                             echo "\n\t\t\t\t\t\t\t<option value='Current'>Current</option>";
                                             echo "\n\t\t\t\t\t\t\t<option value='Final'>Final</option>";
@@ -136,7 +136,7 @@
                                 }else{ 
                                     echo "\n\t\t\t\t\t<td colspan='5'> no EOIs found in the database.</td>\n\t\t\t";
                                 }
-                            mysqli_close($dbconn);
+                            mysqli_close($conn);
                         ?>
 
                     </table> <!-- end EOI display table -->
@@ -146,7 +146,7 @@
                         <span id="delete_section"> <!-- update + delete records form continues -->
                             <label for="delete">Delete EOIs with reference number:</label>
                             <input type="text" id="delete" name="delete_eois" maxlength="10" class="short_text">
-                            <input type="submit" value="Delete EOIs" class="small_button">
+                            <input type="submit" value="Delete EOIs" class="small_button" id="delete_button">
                         </span>
                     </form> 
                     <!-- end delete records form -->
