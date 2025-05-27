@@ -1,16 +1,15 @@
+
+
+
 /*
-filename: styles.css
 authors: Ethan Roden, Angel Parra, Sasha Panisset , Akira Ellis
 created: 26/03/25
 last modified: 14/04/25
 description: singular css document, used for all pages. 
 */
 
+
 /* ---------------------------------------------------------------------apply.html css----------------------------------------------*/
-/* nav bar: changing the colour of the apply button to signal current page */
-#applybutton {
-    background-color: #1A8E3C;
-}
 
 /* form heading */
 #form_title {
@@ -46,6 +45,21 @@ form {
     margin: 1rem auto;
     border-radius: 12px;
     max-width: 900px;
+}
+/*styling for  apply page form error messages*/
+.error
+{
+    background-color: rgb(28, 105, 0);
+    color:white;
+    text-align: center;
+    border-radius: 1em;
+}
+/*styling for apply page form success message*/
+#success
+{
+    background-color: #000000;
+    color: #00ff48;
+    text-align: center;
 }
 
 /* form body */
@@ -308,6 +322,14 @@ nav a:hover
 {
     border-left: 1px solid white
 }
+#aboutbutton
+{
+    background-color: #1A8E3C;
+}
+#jobsbutton
+{
+    background-color: #1A8E3C;
+}
 /*basic footer stuff really*/
 footer
 {
@@ -318,12 +340,15 @@ footer
     margin:0;
     padding:0;
     clear:both;
-    height: 30px;
+    min-height: 30px;
+    padding: 15px;
+    padding-bottom: 5px;
 }
 footer a p 
 {
     color: #00ff48;
     margin:0;
+    margin-top: 5px;
 }
 body
 {
@@ -440,4 +465,366 @@ figure
     padding-left: 12.5vw;
     text-shadow: 4px 4px 1px rgb(0, 3, 1);
 
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------*/
+/*about.html CSS*/
+
+/* ID used for the <h1> of the about page */
+#aboutheading {
+    text-align: center;
+    color: #00ff48;
+}
+
+/* used for making a CSS grid containing the 4 main parts of the page, sets up size of each row and column using fraction measurement */
+.containerabout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 3fr;
+    gap: 10px;
+    justify-items: stretch;
+    align-items: stretch;
+    justify-content: start;
+    align-content: start;
+    grid-auto-flow: row;
+    width: 90%;
+    margin: 0%;
+    padding: 15px;
+}
+
+/* media query used to allow the container to adjust size based on smaller screens */
+/* this section of code is from the week 5 lessons on canvas */
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* id for the <section> that is group information */
+#groupinfo {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
+    color: #00ff48;
+    border-radius: 15px;
+    padding: 2%;
+    margin: auto;
+}
+
+/* id for <h2> of group information section */
+#groupinfoheading {
+    text-align: center;
+}
+
+/* id for group photo section <h2 element */
+#groupphotoheading {
+    text-align: center;
+}
+
+/* id for the <section> containing the group photo and accompanying elements */
+#figsec {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
+    color: #00ff48;
+    text-align: center;
+    border-radius: 15px;
+    float: right;
+}
+
+/* styling the figure caption in the figure section*/
+#figcapabout {
+    color: #00ff48;
+    text-align: center;
+}
+
+/* styling the <img> in the group photo section */
+#grouppic {
+    border: solid 2px #00ff48;
+    max-width: 100%;
+    height: auto;
+}
+
+/* id for <h2> of contributions section*/
+#contributionsheading {
+    text-align: center;
+}
+
+/* id for the <section> that is about the group contributions */
+#contributions {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: auto;
+    grid-area: auto;
+    order: 0;
+    color: #00ff48;
+    border-radius: 15px;
+    padding: 2%;
+    margin: auto;
+}
+
+/* id for the table <section> on about page */
+#tablesection {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+    align-self: center;
+    grid-area: auto;
+    order: 0;
+    color: #00ff48;
+    caption-side: bottom;
+    border-radius: 15px;
+    padding: 2%;
+    margin: auto;
+}
+
+/* id used for interest table <h2> element */
+#intereststableheading {
+    text-align: center;
+    color: #00ff48;
+}
+
+/* id for caption of the table */
+#tablecap {
+    font-size: larger;
+}
+
+/* class is used here for styling as there are multiple of the same thing to be styled */
+.tableheading {
+    border: 1px solid;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #000000;
+}
+
+/* class used to stlye multiple of the same thing */
+.tableheading:hover {
+    background-color: #00ff48;
+    color: #000000;
+}
+
+/* class is used here for styling as there are multiple of the same thing to be styled */
+.tablecell {
+    background-color: #000000;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* class used to stlye multiple of the same thing */
+.tablecell:hover {
+    background-color: #00ff48;
+    color: #000000;
+}
+
+/* -------------------------------------- manage.php and manage_search_results.php styling ----------------------- */
+
+/* table styling */
+div.table_section > table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    
+}
+div.table_section > table th {
+    background-color:#157030;
+    color: #ffffff ;
+}
+div.table_section > table td {
+ padding: 5px;
+ vertical-align: top;
+}
+
+/* table background */
+div.table_section {
+    background-color: #e7e7e7;
+    padding: 1rem;
+    margin: 1rem auto;
+    border-radius: 12px;
+    max-width: 900px;
+}
+
+#search_bars{
+    margin: 0 0 0 50px;
+}
+
+input[type=text].short_text {      /* managing dimentions of textbox inputs */
+    width: 5%;
+    padding: 7px 0;
+    margin-right: 10px;
+}
+input[type=text].long_text {
+    width: 20%;
+    padding: 7px 0;
+    margin-right: 10px;
+}
+
+.invisible {                /* sytling for invisible labels */
+    color: #e7e7e7;
+    font-size: 1px;
+}
+
+.small_button {                       /* small button styling */
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin: 0% 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+     
+}
+.small_button:hover, #delete_button:hover {
+    transition-duration: 0.4s;
+    background-color: #157030;
+    font-weight: bold; 
+}
+
+#delete_button {
+    background-color: maroon;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin: 0% 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* update forms styling */
+form#update_form {
+    padding: 0px 2px;
+    margin: 0px auto;
+    
+}
+form#update_form select {
+    padding: 7px 0;
+    text-align: center;
+    margin-top: 4px 0;
+    position:relative;
+    top: -10px;
+}
+/*----------------------------some CSS needed for styling manager registration/login, project part 2 ----------------*/
+.register:visited, .register 
+{
+    color: #000000;
+    text-decoration: none;
+}
+#manager_registration_username {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#manager_registration_password {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#manager_registration_password_confirmatiion {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#manager_login_username {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#manager_login_password {
+    color: darkgreen;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#login_signup_signout_buttons {
+    text-align: left;
+    float: left;
+}
+
+#login_heading {
+    text-align: center;
+    color: #00ff48;
+}
+
+#registration_heading {
+    text-align: center;
+    color: #00ff48;
+}
+
+/*-------------------- enhancements.php styling -----------------------------*/
+
+#enhancements_heading {
+    text-align: center;
+    color: #00ff48;
+}
+
+#enhance_1div {
+    color: #00ff48;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#enhance_2div {
+    color: #00ff48;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#enhance_3div {
+    color: #00ff48;
+    background-color: rgba(105, 105, 105, 0.154);
+    width:100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
 }
