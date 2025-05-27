@@ -612,18 +612,33 @@ figure
 }
 
 /* -------------------------------------- manage.php and manage_search_results.php styling ----------------------- */
-/* table background */
 
-#search_bars{
-    margin: 0 0 0 50px;
+/* table styling */
+div.table_section > table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    
+}
+div.table_section > table th {
+    background-color:#157030;
+    color: #ffffff ;
+}
+div.table_section > table td {
+ padding: 5px;
+ vertical-align: top;
 }
 
+/* table background */
 div.table_section {
     background-color: #e7e7e7;
     padding: 1rem;
     margin: 1rem auto;
     border-radius: 12px;
     max-width: 900px;
+}
+
+#search_bars{
+    margin: 0 0 0 50px;
 }
 
 input[type=text].short_text {      /* managing dimentions of textbox inputs */
@@ -653,8 +668,33 @@ input[type=text].long_text {
     display: inline-block;
      
 }
-.small_button:hover {
+.small_button:hover, #delete_button:hover {
     transition-duration: 0.4s;
     background-color: #157030;
     font-weight: bold; 
+}
+
+#delete_button {
+    background-color: maroon;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin: 0% 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* update forms styling */
+form#update_form {
+    padding: 0px 2px;
+    margin: 0px auto;
+    
+}
+form#update_form select {
+    padding: 7px 0;
+    text-align: center;
+    margin-top: 4px 0;
+    position:relative;
+    top: -10px;
 }
