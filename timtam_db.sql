@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 26, 2025 at 12:17 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost
+-- Generation Time: May 28, 2025 at 07:40 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -90,16 +90,17 @@ CREATE TABLE `job_postings` (
   `description` text DEFAULT NULL,
   `salary_lower` int(11) DEFAULT NULL,
   `salary_upper` int(11) DEFAULT NULL,
-  `reports_to` varchar(100) DEFAULT NULL
+  `reports_to` varchar(100) DEFAULT NULL,
+  `date_added` date DEFAULT curdate()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `job_postings`
 --
 
-INSERT INTO `job_postings` (`id`, `title`, `description`, `salary_lower`, `salary_upper`, `reports_to`) VALUES
-(1, 'Network Administrator', 'We are seeking a skilled and detail-oriented Network Administrator to join our IT team. \r\nThe ideal candidate will be responsible for maintaining, configuring, and securing our computer networks and related computing environments. \r\nThis includes hardware, systems software, applications software, and all configurations.', 75000, 115000, 'IT Manager'),
-(4, 'Software Developer', 'We are looking for a talented and motivated Software Developer to design, build, and maintain efficient, reusable, and reliable code. \r\nYou will collaborate with cross-functional teams to develop innovative software solutions that meet client needs and business goals. \r\nThe ideal candidate is a team player with a passion for problem-solving, clean code, and continuous improvement.', 90000, 130000, 'Lead Software Engineer');
+INSERT INTO `job_postings` (`id`, `title`, `description`, `salary_lower`, `salary_upper`, `reports_to`, `date_added`) VALUES
+(1, 'Network Administrator', 'We are seeking a skilled and detail-oriented Network Administrator to join our IT team. \r\nThe ideal candidate will be responsible for maintaining, configuring, and securing our computer networks and related computing environments. \r\nThis includes hardware, systems software, applications software, and all configurations.', 75000, 115000, 'IT Manager', '2025-05-28'),
+(4, 'Software Developer', 'We are looking for a talented and motivated Software Developer to design, build, and maintain efficient, reusable, and reliable code. \r\nYou will collaborate with cross-functional teams to develop innovative software solutions that meet client needs and business goals. \r\nThe ideal candidate is a team player with a passion for problem-solving, clean code, and continuous improvement.', 90000, 130000, 'Lead Software Engineer', '2025-05-28');
 
 -- --------------------------------------------------------
 

@@ -438,14 +438,21 @@ figure
 /* this is the main container to hold all info of each job position */
 .jobPosting {
     background-color: #e2e2e2c2;
-    padding: 2rem;
     margin: 2rem auto;
     border-radius: 12px;
-    max-width: 75vw;
+    max-width: 90vw;
     display: flex;
+    
+    flex-direction: column;
+    box-shadow: 15px 15px 1px rgb(0, 3, 1);
+}
+.contentHolder{
+    /* background-color: #000000; */
     align-items: flex-start;
     justify-content: space-around;
-    box-shadow: 15px 15px 1px rgb(0, 3, 1);
+    /* max-width: 75vw; */
+    margin: 2rem;
+    display: flex;
 }
 /* used to display responsibilities and qualifications */
 .jobPosting aside {
@@ -465,6 +472,9 @@ figure
     padding-left: 12.5vw;
     text-shadow: 4px 4px 1px rgb(0, 3, 1);
 
+}
+.dateAdded{
+    margin: 2rem;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -795,30 +805,7 @@ form#update_form select {
     text-align: center;
     color: #00ff48;
 }
-
-#enhance_1div {
-    color: #00ff48;
-    background-color: rgba(105, 105, 105, 0.154);
-    width:100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    resize: vertical;
-}
-
-#enhance_2div {
-    color: #00ff48;
-    background-color: rgba(105, 105, 105, 0.154);
-    width:100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    resize: vertical;
-}
-
-#enhance_3div {
+.enhance {
     color: #00ff48;
     background-color: rgba(105, 105, 105, 0.154);
     width:100%;

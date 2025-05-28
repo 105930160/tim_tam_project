@@ -24,7 +24,7 @@ session_start();
 
 <h1 id="enhancements_heading">Enhancements</h1>
 <br>
-<div id="enhance_1div">
+<div class="enhance">
 <h3>ENHANCEMENT 1:</h3>
 <h4>Create a manager registration page with server side validation requiring unique username and a password rule, and store this information in a table.</h4>
 
@@ -57,7 +57,7 @@ session_start();
 </p>
 </div>
 <br>
-<div id="enhance_2div">
+<div class="enhance">
 <h3>ENHANCEMENT 2:</h3>
 <h4>Control access to manage.php by checking username and password.</h4>
 <p>
@@ -92,7 +92,15 @@ session_start();
 </p>
 </div>
 <br>
-<div id="enhance_3div">
+<div class="enhance">
+    <h3>ENHANCEMENT 3:</h3>
+    <p>- Date added column added to job_posting table <br>
+        - loads from table and displays on each job posting<br>
+        - auto gets the date the row was added and adds it<br>
+    </p>
+</div>
+<br>
+<div class="enhance">
 <h3>Things I had to do for both these enhancements, not sure where to write them:</h3>
 <p>
 - Add 'session start' statements to all other main pages, so login carries across<br>
@@ -103,6 +111,7 @@ session_start();
 - With the combination of these login and logout buttons being part of the 'header.inc' and a 'session start' being included on every page, your login status is tracked across the whole website and you can login/logout from any page, with it being reflected site wide<br>
 </p>
 </div>
+
 
 <?php include_once 'footer.inc'; ?>
 

@@ -56,8 +56,9 @@ if ($conn) {
     if ($result) {
         while ($row = mysqli_fetch_assoc($result)) { // getting every job posting in the db
             echo "<section class='jobPosting'>";
+            echo "<div class='contentHolder'>";
             echo "<div>";
-            echo "<h2>" . $row['title'] . " (REF: " . str_pad($row['id'], 5, '0', STR_PAD_LEFT) . ")</h2>";
+            echo "<h2>" . $row['title'] . "<br>(REF: " . str_pad($row['id'], 5, '0', STR_PAD_LEFT) . ")</h2>";
             echo "<p>" . $row['description'] . "</p>";
             echo "<p><strong>Salary Range:</strong> $" . $row['salary_lower'] . " - $" . $row['salary_upper'] . " per year</p>";
             echo "<p><strong>Reports To:</strong> " . $row['reports_to'] . "</p>";
@@ -96,6 +97,8 @@ if ($conn) {
                 }
             echo "</ul>";
         echo "</aside>";
+        echo '</div>';
+        echo "<p class='dateAdded'>Date added: " . $row['date_added'];
     echo "</section>";
 
         }
