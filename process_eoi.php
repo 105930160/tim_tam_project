@@ -1,8 +1,9 @@
 <?php 
 session_start();
-
+//if the page is visited without being posted from the form redirects to apply.php 
 if (isset($_POST['job_reference_number'])) 
 {
+    //resets session errors and past_submit values
     if (isset($_SESSION['errors']))  unset($_SESSION['errors']);
     if (isset($_SESSION['past_submit']))  unset($_SESSION['past_submit']);
 
@@ -243,6 +244,8 @@ if (isset($_POST['job_reference_number']))
         }
 
         /*--------------------------------------------SQL INSERT---------------------------------------------------*/
+        
+        //getting and storing values and column names to insert into database
         $insert_to_query_values = "";
         $insert_to_query_columns = "";
         for ($i=0; $i < count($skills_sorted);$i++)
@@ -261,7 +264,7 @@ if (isset($_POST['job_reference_number']))
                 $insert_to_query_columns = $insert_to_query_columns . $skills_sorted[$i] .", ";
             }
         }
-
+        //inserting innit
         $query = "INSERT INTO eoi_skills 
             (".$insert_to_query_columns.") 
             VALUES (
@@ -281,10 +284,11 @@ if (isset($_POST['job_reference_number']))
                 '$skills_id', 'New', '$job_reference_number', '$first_name', '$last_name', '$street_address', 
                 '$subtown_address','$state' ,'$postcode', '$email', '$phone', '$other_skills', '$dob', '$gender')";
         mysqli_query($conn, $query);
-
+        //yay have a fun time inserting the queyr into the database
         $result = mysqli_query($conn, "SELECT EOI_ID FROM eoi ORDER BY skills_id DESC LIMIT 1");
         $row = mysqli_fetch_assoc($result);
         $eoi_id = $row['EOI_ID'];
+        //to show success message
         $_SESSION['message'] = "Application submitted successfully.";
         $_SESSION['eoi_id'] = $eoi_id;
         header("Location: apply.php");
